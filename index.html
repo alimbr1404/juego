@@ -955,6 +955,45 @@
           extra: `<circle cx="140" cy="155" r="15" fill="#4a90d9" stroke="#333" stroke-width="1.5"/><path d="M130 145 Q140 155 150 145" stroke="#2dcc70" stroke-width="2" fill="none"/><path d="M130 165 Q140 155 150 165" stroke="#2dcc70" stroke-width="2" fill="none"/><line x1="140" y1="140" x2="140" y2="170" stroke="#333" stroke-width="1"/><line x1="125" y1="155" x2="155" y2="155" stroke="#333" stroke-width="1"/>` },
       ];
 
+      // ===== SISTEMA DE ALEATORIEDAD MEJORADO =====
+      let historialCartas = [];
+      const MAX_HISTORIAL = 4; // Recordamos las últimas 4 cartas
+
+      function obtenerCartaAleatoriaMejorada() {
+        // Si el historial está vacío, devolvemos una carta aleatoria normal
+        if (historialCartas.length === 0) {
+          const carta = cartas[Math.floor(Math.random() * cartas.length)];
+          historialCartas.push(carta);
+          return carta;
+        }
+
+        // Creamos una copia del mazo y filtramos las cartas que han salido recientemente
+        let mazoFiltrado = cartas.filter(carta => {
+          // Excluimos las cartas que están en el historial
+          return !historialCartas.some(hist => hist === carta);
+        });
+
+        // Si todas las cartas están en el historial (muy improbable con 22 cartas y 4 de historial)
+        // pero por si acaso, reiniciamos el historial
+        if (mazoFiltrado.length === 0) {
+          historialCartas = [];
+          const carta = cartas[Math.floor(Math.random() * cartas.length)];
+          historialCartas.push(carta);
+          return carta;
+        }
+
+        // Seleccionamos una carta aleatoria del mazo filtrado
+        const cartaElegida = mazoFiltrado[Math.floor(Math.random() * mazoFiltrado.length)];
+        
+        // Actualizamos el historial (añadimos la nueva y quitamos la más antigua si es necesario)
+        historialCartas.push(cartaElegida);
+        if (historialCartas.length > MAX_HISTORIAL) {
+          historialCartas.shift(); // Eliminamos la más antigua
+        }
+
+        return cartaElegida;
+      }
+
       // ===== DOM =====
       const nombreEl = document.getElementById('cartaNombre');
       const numeroEl = document.getElementById('cartaNumero');
@@ -967,10 +1006,6 @@
       const cartaTarot = document.getElementById('cartaTarot');
       const flipContainer = document.getElementById('flipContainer');
       const chispasCont = document.getElementById('chispas');
-
-      function obtenerCartaAleatoria() {
-        return cartas[Math.floor(Math.random() * cartas.length)];
-      }
 
       function pintarCarta(carta) {
         nombreEl.textContent = carta.nombre;
@@ -998,7 +1033,7 @@
       }
 
       function actualizarLectura() {
-        const carta = obtenerCartaAleatoria();
+        const carta = obtenerCartaAleatoriaMejorada();
 
         flipContainer.classList.add('girando');
         cartaTarot.classList.remove('brillo-burst');
@@ -1025,7 +1060,10 @@
       });
 
       window.addEventListener('load', () => {
-        pintarCarta(obtenerCartaAleatoria());
+        // Inicializamos con una carta aleatoria (sin historial)
+        const cartaInicial = cartas[Math.floor(Math.random() * cartas.length)];
+        historialCartas.push(cartaInicial);
+        pintarCarta(cartaInicial);
       });
     })();
   </script>
