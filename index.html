@@ -60,12 +60,116 @@
       50% { opacity: 0.9; }
     }
 
+    /* ===== MENÚ DE INICIO ===== */
+    .menu-inicio {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(10, 5, 16, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 1.5rem;
+      animation: fadeIn 0.6s ease;
+    }
+    .menu-inicio.oculto {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .menu-contenedor {
+      background: linear-gradient(160deg, #3a1e4d, #1c0e28);
+      border: 2px solid var(--gold);
+      border-radius: 28px;
+      padding: 2.5rem 2rem;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 0 60px rgba(183, 123, 219, 0.3), 0 20px 60px rgba(0,0,0,0.6);
+      text-align: center;
+    }
+
+    .menu-contenedor h2 {
+      color: var(--gold-light);
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      margin-bottom: 0.3rem;
+      letter-spacing: 3px;
+    }
+    .menu-contenedor .sub {
+      color: #c9a3dc;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 1.8rem;
+      opacity: 0.8;
+    }
+
+    .menu-contenedor label {
+      display: block;
+      color: #d8bce8;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: left;
+      margin-bottom: 0.3rem;
+      margin-top: 1rem;
+    }
+
+    .menu-contenedor input {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border-radius: 12px;
+      border: 1px solid #6f4489;
+      background: rgba(255,255,255,0.06);
+      color: #f7ecff;
+      font-family: 'Georgia', serif;
+      font-size: 1rem;
+      transition: border 0.3s ease;
+    }
+    .menu-contenedor input:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(232, 200, 116, 0.15);
+    }
+    .menu-contenedor input::placeholder {
+      color: #6a4a7a;
+    }
+
+    .menu-contenedor .btn-iniciar {
+      margin-top: 1.8rem;
+      background: linear-gradient(160deg, #7b46a0, #4a2260);
+      border: 1px solid #c795e0;
+      border-bottom: 3px solid #7d4b9e;
+      color: #f7ecff;
+      font-family: 'Georgia', serif;
+      font-size: 1.05rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 0.85rem 1.6rem;
+      border-radius: 50px 14px 50px 14px;
+      cursor: pointer;
+      width: 100%;
+      box-shadow: 0 0 26px rgba(138, 74, 176, 0.55), 0 6px 0 #2a1233;
+      transition: transform 0.15s ease, box-shadow 0.25s ease;
+    }
+    .menu-contenedor .btn-iniciar:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 44px rgba(183, 123, 219, 0.75), 0 8px 0 #2a1233;
+    }
+    .menu-contenedor .btn-iniciar:active {
+      transform: translateY(4px);
+      box-shadow: 0 0 22px rgba(155, 77, 202, 0.6), 0 2px 0 #2a1233;
+    }
+
     /* ===== HEADER ===== */
     header {
       position: relative;
       z-index: 2;
       text-align: center;
-      margin-bottom: 1.2rem;
+      margin-bottom: 0.8rem;
       width: 100%;
       padding: 0 0.5rem;
     }
@@ -85,17 +189,107 @@
 
     .subtitulo {
       display: inline-block;
-      margin-top: 0.4rem;
+      margin-top: 0.2rem;
       color: #d8bce8;
-      font-size: clamp(0.6rem, 1.8vw, 0.75rem);
+      font-size: clamp(0.5rem, 1.6vw, 0.7rem);
       letter-spacing: 4px;
       text-transform: uppercase;
-      padding: 0.35rem 1.2rem;
+      padding: 0.25rem 1.2rem;
       border-top: 1px solid #8a5aae;
       border-bottom: 1px solid #8a5aae;
       background: rgba(70, 30, 90, .25);
       border-radius: 40px;
       white-space: nowrap;
+    }
+
+    /* Info del jugador */
+    .info-jugador {
+      color: #c9a3dc;
+      font-size: clamp(0.65rem, 1.8vw, 0.8rem);
+      letter-spacing: 1px;
+      margin-top: 0.3rem;
+      opacity: 0.9;
+    }
+    .info-jugador span {
+      color: var(--gold-light);
+    }
+
+    /* ===== PROGRESO ===== */
+    .progreso-container {
+      width: 100%;
+      max-width: 340px;
+      margin: 0.6rem auto 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      z-index: 2;
+      position: relative;
+    }
+    .progreso-bar {
+      flex: 1;
+      height: 6px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(232, 200, 116, 0.2);
+    }
+    .progreso-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+      border-radius: 10px;
+      transition: width 0.5s ease;
+    }
+    .progreso-texto {
+      color: #c9a3dc;
+      font-size: clamp(0.6rem, 1.4vw, 0.7rem);
+      letter-spacing: 1px;
+      white-space: nowrap;
+      min-width: 60px;
+      text-align: right;
+    }
+
+    /* ===== HISTORIAL DE CARTAS ===== */
+    .historial {
+      display: flex;
+      gap: 0.3rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0.3rem 0 0.6rem;
+      z-index: 2;
+      position: relative;
+      max-width: 340px;
+    }
+    .historial-item {
+      width: 32px;
+      height: 44px;
+      border-radius: 6px;
+      background: linear-gradient(160deg, #3a1e4d, #1c0e28);
+      border: 1px solid #6f4489;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.5rem;
+      color: var(--gold-light);
+      font-weight: 600;
+      opacity: 0.5;
+      transition: all 0.4s ease;
+      padding: 0.1rem;
+      text-align: center;
+      line-height: 1.1;
+    }
+    .historial-item.revelada {
+      opacity: 1;
+      border-color: var(--gold);
+      box-shadow: 0 0 12px rgba(232, 200, 116, 0.25);
+    }
+    .historial-item .num {
+      font-size: 0.6rem;
+    }
+    .historial-item .nom {
+      font-size: 0.35rem;
+      opacity: 0.7;
+      display: block;
     }
 
     /* ===== ESCENARIO ===== */
@@ -169,7 +363,6 @@
       z-index: 3;
     }
 
-    /* Foil sutil */
     .tarot-card .foil {
       position: absolute;
       inset: 0;
@@ -379,7 +572,7 @@
       position: relative;
       z-index: 2;
       text-align: center;
-      margin-top: 1.4rem;
+      margin-top: 0.8rem;
       width: 100%;
       max-width: 340px;
       padding: 0 0.5rem;
@@ -410,7 +603,11 @@
       transform: translateY(4px);
       box-shadow: 0 0 22px rgba(155, 77, 202, .6), 0 2px 0 #2a1233;
     }
-    /* Mejor toque en móviles */
+    .btn-tarot:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none !important;
+    }
     @media (hover: none) {
       .btn-tarot:hover {
         transform: none;
@@ -418,11 +615,132 @@
       }
     }
 
+    /* ===== LECTURA FINAL ===== */
+    .lectura-final {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      background: rgba(10, 5, 16, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 1.5rem;
+      animation: fadeIn 0.6s ease;
+    }
+    .lectura-final.visible {
+      display: flex;
+    }
+
+    .lectura-contenedor {
+      background: linear-gradient(160deg, #3a1e4d, #1c0e28);
+      border: 2px solid var(--gold);
+      border-radius: 28px;
+      padding: 2rem 1.8rem;
+      max-width: 520px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 0 60px rgba(183, 123, 219, 0.3), 0 20px 60px rgba(0,0,0,0.6);
+    }
+    .lectura-contenedor::-webkit-scrollbar {
+      width: 4px;
+    }
+    .lectura-contenedor::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 10px;
+    }
+
+    .lectura-contenedor h2 {
+      color: var(--gold-light);
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      text-align: center;
+      letter-spacing: 3px;
+      margin-bottom: 0.3rem;
+    }
+    .lectura-contenedor .lectura-sub {
+      color: #c9a3dc;
+      text-align: center;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 1.2rem;
+      opacity: 0.8;
+    }
+
+    .lectura-cartas-resumen {
+      display: flex;
+      gap: 0.4rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+    .lectura-carta-mini {
+      width: 38px;
+      height: 52px;
+      border-radius: 6px;
+      background: linear-gradient(160deg, #4a2760, #2a1638);
+      border: 1px solid var(--gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.45rem;
+      color: var(--gold-light);
+      text-align: center;
+      line-height: 1.1;
+      padding: 0.2rem;
+    }
+    .lectura-carta-mini .num {
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .lectura-carta-mini .nom {
+      font-size: 0.35rem;
+      opacity: 0.8;
+    }
+
+    .lectura-texto {
+      color: #e6d7f0;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      line-height: 1.7;
+      text-align: justify;
+      background: rgba(255,255,255,0.04);
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      border-left: 3px solid var(--gold);
+      margin: 0.5rem 0 1.2rem;
+    }
+    .lectura-texto .highlight {
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+
+    .btn-reiniciar {
+      background: linear-gradient(160deg, #7b46a0, #4a2260);
+      border: 1px solid #c795e0;
+      border-bottom: 3px solid #7d4b9e;
+      color: #f7ecff;
+      font-family: 'Georgia', serif;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.7rem 1.4rem;
+      border-radius: 50px 14px 50px 14px;
+      cursor: pointer;
+      width: 100%;
+      box-shadow: 0 0 26px rgba(138, 74, 176, 0.55), 0 6px 0 #2a1233;
+      transition: transform 0.15s ease, box-shadow 0.25s ease;
+    }
+    .btn-reiniciar:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 44px rgba(183, 123, 219, 0.75), 0 8px 0 #2a1233;
+    }
+
     .pie {
-      margin-top: 1.2rem;
+      margin-top: 0.8rem;
       text-align: center;
       color: #8a6a9c;
-      font-size: clamp(0.6rem, 1.6vw, 0.75rem);
+      font-size: clamp(0.5rem, 1.4vw, 0.65rem);
       letter-spacing: 2px;
     }
     .pie span {
@@ -434,9 +752,9 @@
       100% { opacity: 1; text-shadow: 0 0 14px #c38ce0; }
     }
 
-    /* ===== RESPONSIVE FINO ===== */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 480px) {
-      body { padding: 0.8rem 0.4rem; }
+      body { padding: 0.6rem 0.3rem; }
       .escenario { --card-w: 72vw; max-width: 280px; }
       .tarot-card::before { inset: 5px; border-radius: 10px; }
       .indice.tl { top: 4px; left: 5px; }
@@ -446,12 +764,18 @@
       .significado { font-size: clamp(0.5rem, 1.6vw, 0.65rem); min-height: 2.2em; }
       .keywords span { font-size: clamp(0.4rem, 1.1vw, 0.5rem); padding: 0.1rem 0.35rem; }
       .btn-tarot { padding: 0.6rem 1rem; font-size: clamp(0.75rem, 2.8vw, 0.95rem); }
+      .menu-contenedor { padding: 1.8rem 1.2rem; }
+      .lectura-contenedor { padding: 1.5rem 1rem; }
+      .historial-item { width: 26px; height: 36px; }
+      .historial-item .nom { display: none; }
     }
 
     @media (max-width: 360px) {
       .escenario { --card-w: 68vw; max-width: 240px; }
       h1 { font-size: clamp(1.2rem, 4.5vw, 1.6rem); letter-spacing: 2px; }
       .subtitulo { font-size: clamp(0.45rem, 1.4vw, 0.55rem); padding: 0.2rem 0.8rem; letter-spacing: 2px; }
+      .lectura-carta-mini { width: 30px; height: 42px; }
+      .lectura-carta-mini .nom { display: none; }
     }
 
     @media (min-width: 1024px) {
@@ -466,11 +790,57 @@
 
   <div class="estrellas" id="estrellas"></div>
 
+  <!-- ===== MENÚ DE INICIO ===== -->
+  <div class="menu-inicio" id="menuInicio">
+    <div class="menu-contenedor">
+      <h2>🐱 Cleo Vidente</h2>
+      <div class="sub">✦ Tarot Gatuno ✦</div>
+      
+      <label for="nombreInput">📛 Tu nombre</label>
+      <input type="text" id="nombreInput" placeholder="Ej: Luna" maxlength="20" autocomplete="given-name">
+      
+      <label for="fechaInput">📅 Tu fecha de nacimiento</label>
+      <input type="date" id="fechaInput" max="2010-12-31">
+      
+      <button class="btn-iniciar" id="btnIniciar">✦ Comenzar Lectura ✦</button>
+      <div style="margin-top:0.8rem;color:#6a4a7a;font-size:0.6rem;letter-spacing:1px;">5 cartas revelarán tu destino gatuno</div>
+    </div>
+  </div>
+
+  <!-- ===== LECTURA FINAL ===== -->
+  <div class="lectura-final" id="lecturaFinal">
+    <div class="lectura-contenedor">
+      <h2>🔮 Tu Lectura</h2>
+      <div class="lectura-sub" id="lecturaSaludo">para ti, viajero</div>
+      
+      <div class="lectura-cartas-resumen" id="lecturaResumen"></div>
+      
+      <div class="lectura-texto" id="lecturaTexto">
+        Las cartas han hablado...
+      </div>
+      
+      <button class="btn-reiniciar" id="btnReiniciar">♢ Nueva Lectura ♢</button>
+    </div>
+  </div>
+
   <header>
     <h1><span class="patita">🐾</span> Cleo Vidente <span class="patita">🐾</span></h1>
     <div class="subtitulo">✦ Tarot Gatuno ✦</div>
+    <div class="info-jugador" id="infoJugador">Bienvenido, <span>viajero</span> ✦</div>
   </header>
 
+  <!-- ===== PROGRESO ===== -->
+  <div class="progreso-container">
+    <div class="progreso-bar">
+      <div class="progreso-fill" id="progresoFill"></div>
+    </div>
+    <span class="progreso-texto" id="progresoTexto">0 / 5</span>
+  </div>
+
+  <!-- ===== HISTORIAL ===== -->
+  <div class="historial" id="historial"></div>
+
+  <!-- ===== ESCENARIO ===== -->
   <div class="escenario">
     <div class="carta-fantasma f2"></div>
     <div class="carta-fantasma f1"></div>
@@ -500,7 +870,7 @@
   </div>
 
   <div class="controles">
-    <button class="btn-tarot" id="btnLectura">♢ Tirar las Cartas ♢</button>
+    <button class="btn-tarot" id="btnLectura" disabled>♢ Tirar Carta ♢</button>
     <div class="pie"><span>☆ el destino tiene bigotes ☆</span></div>
   </div>
 
@@ -531,7 +901,7 @@
         crema: { ear: '#d9b98a', earIn: '#ffe6c2', mask: null, head: '#f0d9b5', body: '#f0d9b5', belly: '#fbeed7', leg: '#f0d9b5', tail: '#d9b98a', tailTip: '#fbeed7', nose: '#c98a6b', eye: '#d99a3d', accent: '#e0b878' },
       };
 
-      // ===== PIEZAS =====
+      // ===== PIEZAS DE DIBUJO (MISMO CÓDIGO QUE ANTES) =====
       function orejas(pal) {
         return `
           <path d="M80 85 L65 40 L105 70 Z" fill="${pal.ear}" stroke="#1a1a1a33" stroke-width="1.5"/>
@@ -562,9 +932,7 @@
       }
 
       function ojos(pal, estado) {
-        const c1 = 112,
-          c2 = 168,
-          cy = 115;
+        const c1 = 112, c2 = 168, cy = 115;
         const iris = pal.eye;
         const iris2 = pal.eye2 || pal.eye;
         if (estado === 'cerrado') {
@@ -957,24 +1325,19 @@
 
       // ===== SISTEMA DE ALEATORIEDAD MEJORADO =====
       let historialCartas = [];
-      const MAX_HISTORIAL = 4; // Recordamos las últimas 4 cartas
+      const MAX_HISTORIAL = 4;
 
       function obtenerCartaAleatoriaMejorada() {
-        // Si el historial está vacío, devolvemos una carta aleatoria normal
         if (historialCartas.length === 0) {
           const carta = cartas[Math.floor(Math.random() * cartas.length)];
           historialCartas.push(carta);
           return carta;
         }
 
-        // Creamos una copia del mazo y filtramos las cartas que han salido recientemente
         let mazoFiltrado = cartas.filter(carta => {
-          // Excluimos las cartas que están en el historial
           return !historialCartas.some(hist => hist === carta);
         });
 
-        // Si todas las cartas están en el historial (muy improbable con 22 cartas y 4 de historial)
-        // pero por si acaso, reiniciamos el historial
         if (mazoFiltrado.length === 0) {
           historialCartas = [];
           const carta = cartas[Math.floor(Math.random() * cartas.length)];
@@ -982,19 +1345,23 @@
           return carta;
         }
 
-        // Seleccionamos una carta aleatoria del mazo filtrado
         const cartaElegida = mazoFiltrado[Math.floor(Math.random() * mazoFiltrado.length)];
-        
-        // Actualizamos el historial (añadimos la nueva y quitamos la más antigua si es necesario)
         historialCartas.push(cartaElegida);
         if (historialCartas.length > MAX_HISTORIAL) {
-          historialCartas.shift(); // Eliminamos la más antigua
+          historialCartas.shift();
         }
-
         return cartaElegida;
       }
 
-      // ===== DOM =====
+      // ===== LÓGICA DEL JUEGO =====
+      let nombreJugador = 'viajero';
+      let fechaJugador = '';
+      let cartasTiradas = [];
+      let turnoActual = 0;
+      const TOTAL_CARTAS = 5;
+      let juegoActivo = false;
+      let cartaActual = null;
+
       const nombreEl = document.getElementById('cartaNombre');
       const numeroEl = document.getElementById('cartaNumero');
       const significadoEl = document.getElementById('cartaSignificado');
@@ -1006,7 +1373,21 @@
       const cartaTarot = document.getElementById('cartaTarot');
       const flipContainer = document.getElementById('flipContainer');
       const chispasCont = document.getElementById('chispas');
+      const progresoFill = document.getElementById('progresoFill');
+      const progresoTexto = document.getElementById('progresoTexto');
+      const historialEl = document.getElementById('historial');
+      const infoJugador = document.getElementById('infoJugador');
+      const btnIniciar = document.getElementById('btnIniciar');
+      const menuInicio = document.getElementById('menuInicio');
+      const nombreInput = document.getElementById('nombreInput');
+      const fechaInput = document.getElementById('fechaInput');
+      const lecturaFinal = document.getElementById('lecturaFinal');
+      const lecturaSaludo = document.getElementById('lecturaSaludo');
+      const lecturaTexto = document.getElementById('lecturaTexto');
+      const lecturaResumen = document.getElementById('lecturaResumen');
+      const btnReiniciar = document.getElementById('btnReiniciar');
 
+      // Función para pintar carta
       function pintarCarta(carta) {
         nombreEl.textContent = carta.nombre;
         numeroEl.textContent = carta.romano;
@@ -1018,6 +1399,7 @@
         cartaTarot.style.setProperty('--accent', P[carta.coat].accent);
       }
 
+      // Lanzar chispas
       function lanzarChispas() {
         chispasCont.innerHTML = '';
         const n = 14;
@@ -1032,9 +1414,97 @@
         setTimeout(() => { chispasCont.innerHTML = ''; }, 1400);
       }
 
-      function actualizarLectura() {
-        const carta = obtenerCartaAleatoriaMejorada();
+      // Actualizar progreso e historial
+      function actualizarUI() {
+        const progreso = (turnoActual / TOTAL_CARTAS) * 100;
+        progresoFill.style.width = progreso + '%';
+        progresoTexto.textContent = `${turnoActual} / ${TOTAL_CARTAS}`;
 
+        // Historial
+        historialEl.innerHTML = '';
+        for (let i = 0; i < TOTAL_CARTAS; i++) {
+          const div = document.createElement('div');
+          div.className = 'historial-item';
+          if (i < cartasTiradas.length) {
+            div.classList.add('revelada');
+            div.innerHTML = `<span class="num">${cartasTiradas[i].num}</span><span class="nom">${cartasTiradas[i].nombre.substring(0, 8)}</span>`;
+          } else {
+            div.innerHTML = `<span class="num">?</span>`;
+          }
+          historialEl.appendChild(div);
+        }
+
+        // Botón
+        if (turnoActual >= TOTAL_CARTAS) {
+          btn.disabled = true;
+          btn.textContent = '✦ Lectura Completa ✦';
+          mostrarLecturaFinal();
+        } else {
+          btn.disabled = false;
+          btn.textContent = `♢ Tirar Carta ${turnoActual+1}/${TOTAL_CARTAS} ♢`;
+        }
+      }
+
+      // Mostrar lectura final
+      function mostrarLecturaFinal() {
+        // Generar resumen de cartas
+        lecturaResumen.innerHTML = '';
+        cartasTiradas.forEach(c => {
+          const div = document.createElement('div');
+          div.className = 'lectura-carta-mini';
+          div.innerHTML = `<span class="num">${c.num}</span><span class="nom">${c.nombre}</span>`;
+          lecturaResumen.appendChild(div);
+        });
+
+        // Generar mensaje personalizado
+        const nombres = cartasTiradas.map(c => c.nombre);
+        const mensaje = generarLectura(nombres, nombreJugador);
+        lecturaTexto.innerHTML = mensaje;
+
+        const edad = calcularEdad(fechaJugador);
+        let saludo = `para <span class="highlight">${nombreJugador}</span>`;
+        if (edad) saludo += ` ✦ ${edad} años`;
+        lecturaSaludo.innerHTML = saludo;
+
+        lecturaFinal.classList.add('visible');
+      }
+
+      // Calcular edad
+      function calcularEdad(fecha) {
+        if (!fecha) return null;
+        const hoy = new Date();
+        const nac = new Date(fecha);
+        let edad = hoy.getFullYear() - nac.getFullYear();
+        const m = hoy.getMonth() - nac.getMonth();
+        if (m < 0 || (m === 0 && hoy.getDate() < nac.getDate())) edad--;
+        return edad;
+      }
+
+      // Generar lectura personalizada
+      function generarLectura(nombres, nombre) {
+        const mensajes = [
+          `Querido(a) <span class="highlight">${nombre}</span>, las cartas han hablado. Tu camino comienza con <span class="highlight">${nombres[0]}</span>, una invitación a la aventura. <span class="highlight">${nombres[1]}</span> te recuerda que tienes el poder de crear tu realidad. Con <span class="highlight">${nombres[2]}</span>, la intuición se vuelve tu guía. <span class="highlight">${nombres[3]}</span> trae un mensaje de transformación profunda. Y finalmente, <span class="highlight">${nombres[4]}</span> corona tu viaje con la certeza de que todo está en su lugar. Confía en el proceso, <span class="highlight">${nombre}</span>. El universo conspira a tu favor. 🌙`,
+
+          `<span class="highlight">${nombre}</span>, tu esencia vibra con estas cartas: <span class="highlight">${nombres[0]}</span> te llama a soltar el miedo, <span class="highlight">${nombres[1]}</span> te da las herramientas para construir, <span class="highlight">${nombres[2]}</span> te conecta con tu sabiduría interior, <span class="highlight">${nombres[3]}</span> te muestra que el cambio es necesario, y <span class="highlight">${nombres[4]}</span> te abraza con la plenitud del logro. Eres más fuerte de lo que crees, ${nombre}. Sigue adelante. ✨`,
+
+          `Las estrellas te guían, <span class="highlight">${nombre}</span>. ${nombres[0]} te invita a dar el primer paso con fe. ${nombres[1]} te recuerda que la magia está en tus manos. ${nombres[2]} te susurra que escuches tu voz interior. ${nombres[3]} te enseña que la transformación es parte de la vida. ${nombres[4]} te asegura que todo esfuerzo tiene su recompensa. Confía en tu viaje, ${nombre}. 🐱`,
+
+          `Querido <span class="highlight">${nombre}</span>, el tarot gatuno te revela: ${nombres[0]} es el inicio de tu nueva historia. ${nombres[1]} te da el poder de manifestar tus sueños. ${nombres[2]} te conecta con los misterios del alma. ${nombres[3]} te invita a renacer. ${nombres[4]} te muestra que el mundo es tuyo. ¡Atrévete a vivir tu destino, ${nombre}! 🌟`
+        ];
+
+        return mensajes[Math.floor(Math.random() * mensajes.length)];
+      }
+
+      // Tirar una carta
+      function tirarCarta() {
+        if (turnoActual >= TOTAL_CARTAS || !juegoActivo) return;
+
+        const carta = obtenerCartaAleatoriaMejorada();
+        cartaActual = carta;
+        cartasTiradas.push(carta);
+        turnoActual++;
+
+        // Animación
         flipContainer.classList.add('girando');
         cartaTarot.classList.remove('brillo-burst');
         void cartaTarot.offsetWidth;
@@ -1048,21 +1518,93 @@
 
         setTimeout(() => { flipContainer.classList.remove('girando'); }, 950);
         setTimeout(() => { cartaTarot.classList.remove('brillo-burst'); }, 1300);
+
+        // Actualizar UI después de la animación
+        setTimeout(() => { actualizarUI(); }, 1400);
       }
 
-      btn.addEventListener('click', actualizarLectura);
-      // Soporte para tecla Enter o espacio (accesibilidad)
+      // Iniciar juego
+      function iniciarJuego() {
+        const nombre = nombreInput.value.trim() || 'viajero';
+        const fecha = fechaInput.value || '';
+
+        nombreJugador = nombre;
+        fechaJugador = fecha;
+        cartasTiradas = [];
+        turnoActual = 0;
+        juegoActivo = true;
+        historialCartas = [];
+
+        infoJugador.innerHTML = `Bienvenido, <span>${nombreJugador}</span> ✦`;
+        menuInicio.classList.add('oculto');
+        lecturaFinal.classList.remove('visible');
+
+        // Carta inicial aleatoria
+        const cartaInicial = cartas[Math.floor(Math.random() * cartas.length)];
+        pintarCarta(cartaInicial);
+        actualizarUI();
+        btn.disabled = false;
+      }
+
+      // Reiniciar
+      function reiniciarJuego() {
+        lecturaFinal.classList.remove('visible');
+        menuInicio.classList.remove('oculto');
+        juegoActivo = false;
+        cartasTiradas = [];
+        turnoActual = 0;
+        historialCartas = [];
+        btn.disabled = true;
+        progresoFill.style.width = '0%';
+        progresoTexto.textContent = '0 / 5';
+        historialEl.innerHTML = '';
+        for (let i = 0; i < TOTAL_CARTAS; i++) {
+          const div = document.createElement('div');
+          div.className = 'historial-item';
+          div.innerHTML = `<span class="num">?</span>`;
+          historialEl.appendChild(div);
+        }
+        // Resetear nombre y fecha
+        nombreInput.value = '';
+        fechaInput.value = '';
+      }
+
+      // ===== EVENTOS =====
+      btn.addEventListener('click', tirarCarta);
       btn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
+        if ((e.key === 'Enter' || e.key === ' ') && !btn.disabled) {
           e.preventDefault();
-          actualizarLectura();
+          tirarCarta();
         }
       });
 
+      btnIniciar.addEventListener('click', iniciarJuego);
+      btnIniciar.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          iniciarJuego();
+        }
+      });
+
+      btnReiniciar.addEventListener('click', reiniciarJuego);
+
+      // Enter en inputs del menú
+      nombreInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') btnIniciar.click();
+      });
+      fechaInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') btnIniciar.click();
+      });
+
+      // Inicializar el historial visual
       window.addEventListener('load', () => {
-        // Inicializamos con una carta aleatoria (sin historial)
+        for (let i = 0; i < TOTAL_CARTAS; i++) {
+          const div = document.createElement('div');
+          div.className = 'historial-item';
+          div.innerHTML = `<span class="num">?</span>`;
+          historialEl.appendChild(div);
+        }
         const cartaInicial = cartas[Math.floor(Math.random() * cartas.length)];
-        historialCartas.push(cartaInicial);
         pintarCarta(cartaInicial);
       });
     })();
