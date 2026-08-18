@@ -22,18 +22,17 @@
         }
 
         .tarot-card {
-            max-width: 900px;
+            max-width: 700px;
             width: 100%;
             background: linear-gradient(145deg, #3b1f4a, #241530);
-            padding: 2.8rem 2rem;
-            border-radius: 4rem 2rem 4rem 2rem;
+            padding: 2.5rem 1.8rem;
+            border-radius: 3rem 1.5rem 3rem 1.5rem;
             box-shadow: 
                 0 20px 60px rgba(106, 13, 173, 0.7),
                 inset 0 0 40px rgba(180, 90, 220, 0.3),
                 0 0 30px #9b4dca88;
             border: 1px solid #b380d0;
             backdrop-filter: blur(2px);
-            transition: box-shadow 0.3s ease;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -94,7 +93,6 @@
             text-shadow: 0 0 15px #b77bdb, 0 0 30px #8a4ab0, 0 0 60px #4f1f66;
             margin-bottom: 0.3rem;
             font-weight: 300;
-            word-break: break-word;
         }
 
         .subtitulo {
@@ -109,151 +107,130 @@
             backdrop-filter: blur(4px);
             background: rgba(70, 30, 90, 0.3);
             border-radius: 40px;
-            margin-bottom: 2.2rem;
+            margin-bottom: 2rem;
             box-shadow: 0 0 20px #7d4b9e55;
         }
 
-        .lectura-container {
-            background: rgba(20, 8, 30, 0.7);
-            backdrop-filter: blur(8px);
-            border-radius: 3rem 1.5rem 3rem 1.5rem;
-            padding: 1.8rem 1.2rem;
-            margin: 1.8rem 0;
-            border: 1px solid #a36bc0;
-            box-shadow: inset 0 0 50px #552b6e55, 0 10px 30px #2e0f3b;
-            transition: all 0.3s ease;
-            min-height: 350px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Contenedor de la carta (dibujo realista + detalles) */
-        .carta-container {
+        .carta-tarot {
+            background: linear-gradient(145deg, #f5efe8, #e8ddd0);
+            border-radius: 18px 8px 18px 8px;
+            padding: 1.8rem 1.2rem 1.5rem;
+            margin: 1.5rem auto;
+            max-width: 340px;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Marco de la carta estilo tarjeta */
-        .carta-marco {
-            background: linear-gradient(145deg, #2d1638, #1a0b20);
-            border-radius: 25px 10px 25px 10px;
-            padding: 1.5rem 1.5rem 1.2rem;
-            border: 2px solid #b380d0;
-            box-shadow: 0 0 30px #7b3b9e55, inset 0 0 30px #3d1d4b;
-            max-width: 380px;
-            width: 100%;
-            transition: all 0.3s ease;
+            border: 3px solid #b380d0;
+            box-shadow: 0 0 20px rgba(130, 50, 180, 0.3), inset 0 0 20px rgba(200, 160, 220, 0.2);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        .carta-marco::before {
+        .carta-tarot.brillando {
+            animation: brilloMagico 0.8s ease 3;
+            box-shadow: 0 0 60px #b77bdb, 0 0 120px #9b4dca, 0 0 200px #7b3b9e88;
+        }
+
+        @keyframes brilloMagico {
+            0% { box-shadow: 0 0 20px rgba(130, 50, 180, 0.3); }
+            25% { box-shadow: 0 0 80px #b77bdb, 0 0 150px #9b4dca; transform: scale(1.02); }
+            50% { box-shadow: 0 0 40px #b77bdb, 0 0 80px #9b4dca; transform: scale(0.98); }
+            75% { box-shadow: 0 0 80px #b77bdb, 0 0 150px #9b4dca; transform: scale(1.02); }
+            100% { box-shadow: 0 0 20px rgba(130, 50, 180, 0.3); transform: scale(1); }
+        }
+
+        .carta-tarot::before {
             content: '✦';
             position: absolute;
-            top: 8px;
+            top: 10px;
             left: 15px;
-            color: #b380d0;
+            color: #6f3790;
             font-size: 1.2rem;
-            opacity: 0.5;
+            opacity: 0.4;
         }
 
-        .carta-marco::after {
+        .carta-tarot::after {
             content: '✦';
             position: absolute;
-            bottom: 8px;
+            bottom: 10px;
             right: 15px;
-            color: #b380d0;
+            color: #6f3790;
             font-size: 1.2rem;
-            opacity: 0.5;
+            opacity: 0.4;
         }
 
-        /* SVG del gato (dibujo realista/caricatura) */
         .gato-svg {
             width: 100%;
-            max-width: 280px;
+            max-width: 220px;
             height: auto;
             display: block;
             margin: 0 auto;
-            filter: drop-shadow(0 0 15px rgba(180, 90, 220, 0.3));
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
         }
 
         .nombre-carta {
-            font-size: 1.8rem;
-            font-weight: 500;
-            color: #f2e0ff;
-            text-shadow: 0 0 12px #b380d0, 0 0 25px #7b3b9e;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #2d1638;
+            text-shadow: 0 0 10px rgba(130, 50, 180, 0.2);
             margin: 0.8rem 0 0.2rem;
-            letter-spacing: 2px;
-            line-height: 1.2;
+            letter-spacing: 1px;
+            font-family: 'Georgia', serif;
         }
 
         .significado-carta {
-            font-size: 1.05rem;
-            color: #dcc0ec;
-            max-width: 500px;
-            margin: 0.3rem auto 0;
+            font-size: 0.95rem;
+            color: #3d2a4a;
+            max-width: 400px;
+            margin: 0.2rem auto 0;
             padding: 0 0.5rem;
-            line-height: 1.6;
-            text-shadow: 0 0 8px #4b1d5e;
-        }
-
-        .simbolo-mistico {
-            font-size: 2.8rem;
-            margin: 0.2rem 0;
-            opacity: 0.7;
-            filter: drop-shadow(0 0 10px #b77bdb);
-            letter-spacing: 8px;
+            line-height: 1.5;
+            font-style: italic;
         }
 
         .btn-tarot {
             background: linear-gradient(135deg, #6f3790, #451e5a);
             border: 1px solid #ac7ac9;
             color: #f3e6ff;
-            font-size: 1.6rem;
-            padding: 1.2rem 2.5rem;
-            border-radius: 60px 20px 60px 20px;
+            font-size: 1.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px 15px 50px 15px;
             cursor: pointer;
             font-weight: 400;
-            letter-spacing: 4px;
-            box-shadow: 0 0 30px #8a4ab088, 0 8px 0 #2a1233;
+            letter-spacing: 3px;
+            box-shadow: 0 0 30px #8a4ab088, 0 6px 0 #2a1233;
             transition: all 0.15s ease;
             backdrop-filter: blur(4px);
-            background: rgba(90, 40, 120, 0.8);
-            margin-top: 0.8rem;
+            background: rgba(90, 40, 120, 0.85);
+            margin-top: 0.5rem;
             width: 100%;
-            max-width: 340px;
+            max-width: 300px;
             text-transform: uppercase;
             font-family: 'Georgia', serif;
-            position: relative;
-            z-index: 3;
             border-bottom: 3px solid #c795e0;
         }
 
         .btn-tarot:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 50px #b77bdb, 0 10px 0 #2a1233;
+            box-shadow: 0 0 50px #b77bdb, 0 8px 0 #2a1233;
             background: rgba(120, 60, 160, 0.9);
-            border-color: #dbb0f0;
-            color: #fff;
         }
 
         .btn-tarot:active {
-            transform: translateY(6px);
+            transform: translateY(4px);
             box-shadow: 0 0 30px #9b4dca, 0 2px 0 #2a1233;
         }
 
         .pie {
-            margin-top: 2rem;
+            margin-top: 1.8rem;
             color: #785a8a;
             font-size: 0.8rem;
             letter-spacing: 2px;
             border-top: 1px solid #4f2b62;
-            padding-top: 1.5rem;
+            padding-top: 1.2rem;
             opacity: 0.8;
             text-shadow: 0 0 6px #3d1d4b;
         }
@@ -271,35 +248,33 @@
         @media (max-width: 500px) {
             .tarot-card {
                 padding: 1.5rem 1rem;
-                border-radius: 3rem 1.5rem 3rem 1.5rem;
+                border-radius: 2.5rem 1.2rem 2.5rem 1.2rem;
             }
             h1 {
                 font-size: 2.2rem;
             }
             .nombre-carta {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
             .significado-carta {
-                font-size: 0.95rem;
+                font-size: 0.85rem;
             }
             .btn-tarot {
-                font-size: 1.2rem;
-                padding: 1rem 1.5rem;
+                font-size: 1.1rem;
+                padding: 0.8rem 1.2rem;
                 max-width: 100%;
             }
-            .subtitulo {
-                font-size: 0.7rem;
-                padding: 0.3rem 1rem;
-            }
-            .carta-marco {
-                padding: 1rem;
+            .carta-tarot {
+                padding: 1.2rem 0.8rem 1rem;
+                max-width: 280px;
+                min-height: 320px;
             }
             .gato-svg {
-                max-width: 200px;
+                max-width: 170px;
             }
-            .lectura-container {
-                min-height: 300px;
-                padding: 1.2rem 0.8rem;
+            .subtitulo {
+                font-size: 0.65rem;
+                padding: 0.3rem 1rem;
             }
         }
     </style>
@@ -310,60 +285,10 @@
             <h1>🐱 Cleo vidente</h1>
             <div class="subtitulo">✦ tarot gatuno ✦</div>
 
-            <div class="lectura-container" id="lecturaContainer">
-                <div class="simbolo-mistico">✦ ✦ ✦</div>
-                <div class="carta-container">
-                    <div class="carta-marco">
-                        <!-- SVG del gato tuxedo con manchita café en la nariz -->
-                        <svg class="gato-svg" id="gatoSVG" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Cuerpo (blanco) -->
-                            <ellipse cx="140" cy="200" rx="75" ry="60" fill="#f5f0eb" stroke="#555" stroke-width="2"/>
-                            <!-- Cabeza (blanco/negro) -->
-                            <ellipse cx="140" cy="120" rx="70" ry="60" fill="#f5f0eb" stroke="#333" stroke-width="2"/>
-                            <!-- Oreja izquierda (negra) -->
-                            <path d="M80 85 L65 40 L105 70 Z" fill="#2d2d2d" stroke="#333" stroke-width="2"/>
-                            <path d="M85 80 L72 48 L103 72 Z" fill="#ffd1b3" opacity="0.4"/>
-                            <!-- Oreja derecha (negra) -->
-                            <path d="M200 85 L215 40 L175 70 Z" fill="#2d2d2d" stroke="#333" stroke-width="2"/>
-                            <path d="M195 80 L208 48 L177 72 Z" fill="#ffd1b3" opacity="0.4"/>
-                            <!-- Parche negro ojo izquierdo -->
-                            <ellipse cx="112" cy="115" rx="32" ry="28" fill="#2d2d2d"/>
-                            <!-- Parche negro ojo derecho -->
-                            <ellipse cx="168" cy="115" rx="32" ry="28" fill="#2d2d2d"/>
-                            <!-- Ojos (brillantes) -->
-                            <ellipse cx="112" cy="115" rx="16" ry="18" fill="#7ec850"/>
-                            <ellipse cx="112" cy="115" rx="10" ry="12" fill="#2d1f0a"/>
-                            <ellipse cx="108" cy="110" rx="4" ry="5" fill="white" opacity="0.8"/>
-                            <ellipse cx="168" cy="115" rx="16" ry="18" fill="#7ec850"/>
-                            <ellipse cx="168" cy="115" rx="10" ry="12" fill="#2d1f0a"/>
-                            <ellipse cx="164" cy="110" rx="4" ry="5" fill="white" opacity="0.8"/>
-                            <!-- Nariz (manchita café) -->
-                            <ellipse cx="140" cy="130" rx="9" ry="6" fill="#8b6b4d"/>
-                            <ellipse cx="140" cy="129" rx="7" ry="4" fill="#a88463"/>
-                            <!-- Bigotes -->
-                            <line x1="100" y1="130" x2="70" y2="125" stroke="#555" stroke-width="1.5" opacity="0.6"/>
-                            <line x1="100" y1="135" x2="68" y2="138" stroke="#555" stroke-width="1.5" opacity="0.6"/>
-                            <line x1="180" y1="130" x2="210" y2="125" stroke="#555" stroke-width="1.5" opacity="0.6"/>
-                            <line x1="180" y1="135" x2="212" y2="138" stroke="#555" stroke-width="1.5" opacity="0.6"/>
-                            <!-- Bigotes superiores -->
-                            <line x1="105" y1="125" x2="75" y2="115" stroke="#555" stroke-width="1.5" opacity="0.6"/>
-                            <line x1="175" y1="125" x2="205" y2="115" stroke="#555" stroke-width="1.5" opacity="0.6"/>
-                            <!-- Boquita -->
-                            <path d="M130 138 Q140 145 150 138" stroke="#6b4c3b" stroke-width="2" fill="none"/>
-                            <!-- Patas delanteras (blanco con detalles negros) -->
-                            <ellipse cx="110" cy="245" rx="20" ry="12" fill="#f5f0eb" stroke="#555" stroke-width="1.5"/>
-                            <ellipse cx="170" cy="245" rx="20" ry="12" fill="#f5f0eb" stroke="#555" stroke-width="1.5"/>
-                            <!-- Corbata o moño (tuxedo) -->
-                            <path d="M115 180 L100 165 L130 170 L140 180 L150 170 L180 165 L165 180 Z" fill="#2d2d2d"/>
-                            <ellipse cx="140" cy="180" rx="15" ry="10" fill="#3d3d3d"/>
-                            <!-- Pecho blanco -->
-                            <ellipse cx="140" cy="195" rx="25" ry="20" fill="#f5f0eb"/>
-                        </svg>
-                    </div>
-                    <div class="nombre-carta" id="cartaNombre">El Mago</div>
-                    <div class="significado-carta" id="cartaSignificado">Manifiesta tu poder interior, creatividad y voluntad.</div>
-                </div>
-                <div class="simbolo-mistico">✧ ✧ ✧</div>
+            <div class="carta-tarot" id="cartaTarot">
+                <svg class="gato-svg" id="gatoSVG" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg"></svg>
+                <div class="nombre-carta" id="cartaNombre">El Mago</div>
+                <div class="significado-carta" id="cartaSignificado">Manifiesta tu poder interior</div>
             </div>
 
             <button class="btn-tarot" id="btnLectura">♢ Tirar las cartas ♢</button>
@@ -375,103 +300,285 @@
 
     <script>
         (function() {
-            // ——— Mazo de cartas con gatitos tuxedo (manchita café en la nariz) ———
+            // ——— Base del gato tuxedo (cuerpo, cabeza, manchas) ———
+            const baseGato = (poseExtra = '') => `
+                <!-- Cuerpo -->
+                <ellipse cx="140" cy="200" rx="75" ry="60" fill="#f5f0eb" stroke="#555" stroke-width="2"/>
+                <!-- Cabeza -->
+                <ellipse cx="140" cy="120" rx="70" ry="60" fill="#f5f0eb" stroke="#333" stroke-width="2"/>
+                <!-- Oreja izquierda -->
+                <path d="M80 85 L65 40 L105 70 Z" fill="#2d2d2d" stroke="#333" stroke-width="2"/>
+                <path d="M85 80 L72 48 L103 72 Z" fill="#ffd1b3" opacity="0.4"/>
+                <!-- Oreja derecha -->
+                <path d="M200 85 L215 40 L175 70 Z" fill="#2d2d2d" stroke="#333" stroke-width="2"/>
+                <path d="M195 80 L208 48 L177 72 Z" fill="#ffd1b3" opacity="0.4"/>
+                <!-- Parche negro ojo izquierdo -->
+                <ellipse cx="112" cy="115" rx="32" ry="28" fill="#2d2d2d"/>
+                <!-- Parche negro ojo derecho -->
+                <ellipse cx="168" cy="115" rx="32" ry="28" fill="#2d2d2d"/>
+                <!-- Ojos -->
+                <ellipse cx="112" cy="115" rx="16" ry="18" fill="#7ec850"/>
+                <ellipse cx="112" cy="115" rx="10" ry="12" fill="#2d1f0a"/>
+                <ellipse cx="108" cy="110" rx="4" ry="5" fill="white" opacity="0.8"/>
+                <ellipse cx="168" cy="115" rx="16" ry="18" fill="#7ec850"/>
+                <ellipse cx="168" cy="115" rx="10" ry="12" fill="#2d1f0a"/>
+                <ellipse cx="164" cy="110" rx="4" ry="5" fill="white" opacity="0.8"/>
+                <!-- Nariz (manchita café) -->
+                <ellipse cx="140" cy="130" rx="9" ry="6" fill="#8b6b4d"/>
+                <ellipse cx="140" cy="129" rx="7" ry="4" fill="#a88463"/>
+                <!-- Bigotes -->
+                <line x1="100" y1="130" x2="70" y2="125" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                <line x1="100" y1="135" x2="68" y2="138" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                <line x1="180" y1="130" x2="210" y2="125" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                <line x1="180" y1="135" x2="212" y2="138" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                <line x1="105" y1="125" x2="75" y2="115" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                <line x1="175" y1="125" x2="205" y2="115" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                <!-- Boquita -->
+                <path d="M130 138 Q140 145 150 138" stroke="#6b4c3b" stroke-width="2" fill="none"/>
+                <!-- Patas traseras -->
+                <ellipse cx="110" cy="245" rx="20" ry="12" fill="#f5f0eb" stroke="#555" stroke-width="1.5"/>
+                <ellipse cx="170" cy="245" rx="20" ry="12" fill="#f5f0eb" stroke="#555" stroke-width="1.5"/>
+                <!-- Corbata/moño tuxedo -->
+                <path d="M115 180 L100 165 L130 170 L140 180 L150 170 L180 165 L165 180 Z" fill="#2d2d2d"/>
+                <ellipse cx="140" cy="180" rx="15" ry="10" fill="#3d3d3d"/>
+                <!-- Pecho blanco -->
+                <ellipse cx="140" cy="195" rx="25" ry="20" fill="#f5f0eb"/>
+                ${poseExtra}
+            `;
+
+            // ——— Cada carta con su pose única ———
             const cartas = [
                 { 
                     nombre: "El Mago", 
-                    significado: "Manifiesta tu poder interior, creatividad y voluntad. Tienes todas las herramientas a tu disposición."
+                    significado: "Manifiesta tu poder interior, creatividad y voluntad. Tienes todas las herramientas a tu disposición.",
+                    svg: baseGato(`
+                        <!-- Pata levantada como mago -->
+                        <ellipse cx="80" cy="210" rx="15" ry="22" fill="#f5f0eb" stroke="#555" stroke-width="1.5" transform="rotate(-30 80 210)"/>
+                        <ellipse cx="75" cy="195" rx="10" ry="8" fill="#ffd1b3" opacity="0.6"/>
+                        <!-- Estrella mágica -->
+                        <polygon points="180,80 185,95 200,95 188,105 192,120 180,110 168,120 172,105 160,95 175,95" fill="#ffd700" opacity="0.6"/>
+                    `)
                 },
                 { 
                     nombre: "La Sacerdotisa", 
-                    significado: "Intuición, misterio y sabiduría oculta. Confía en tu voz interior y en los sueños."
+                    significado: "Intuición, misterio y sabiduría oculta. Confía en tu voz interior y en los sueños.",
+                    svg: baseGato(`
+                        <!-- Ojos cerrados meditando -->
+                        <path d="M100 113 Q112 105 124 113" stroke="#2d1f0a" stroke-width="2" fill="none"/>
+                        <path d="M156 113 Q168 105 180 113" stroke="#2d1f0a" stroke-width="2" fill="none"/>
+                        <!-- Luna creciente -->
+                        <circle cx="70" cy="70" r="15" fill="#f5f0eb" stroke="#555" stroke-width="1.5"/>
+                        <circle cx="63" cy="70" r="13" fill="#2d2d2d"/>
+                    `)
                 },
                 { 
                     nombre: "La Emperatriz", 
-                    significado: "Abundancia, fertilidad y conexión con la naturaleza. El amor y la belleza te rodean."
+                    significado: "Abundancia, fertilidad y conexión con la naturaleza. El amor y la belleza te rodean.",
+                    svg: baseGato(`
+                        <!-- Corona de flores -->
+                        <circle cx="110" cy="80" r="8" fill="#ff6b9d" opacity="0.7"/>
+                        <circle cx="140" cy="72" r="8" fill="#ff6b9d" opacity="0.7"/>
+                        <circle cx="170" cy="80" r="8" fill="#ff6b9d" opacity="0.7"/>
+                        <circle cx="95" cy="95" r="6" fill="#ffb3c6" opacity="0.6"/>
+                        <circle cx="185" cy="95" r="6" fill="#ffb3c6" opacity="0.6"/>
+                    `)
                 },
                 { 
                     nombre: "El Emperador", 
-                    significado: "Estructura, estabilidad y autoridad. Es momento de tomar el control con firmeza."
+                    significado: "Estructura, estabilidad y autoridad. Es momento de tomar el control con firmeza.",
+                    svg: baseGato(`
+                        <!-- Corona imperial -->
+                        <path d="M100 80 L110 65 L125 75 L140 60 L155 75 L170 65 L180 80 Z" fill="#ffd700" stroke="#b8860b" stroke-width="2"/>
+                        <rect x="105" y="80" width="70" height="8" fill="#ffd700" stroke="#b8860b" stroke-width="1"/>
+                    `)
                 },
                 { 
                     nombre: "El Sumo Sacerdote", 
-                    significado: "Tradición, guía espiritual y enseñanzas. Busca consejo en la sabiduría ancestral."
+                    significado: "Tradición, guía espiritual y enseñanzas. Busca consejo en la sabiduría ancestral.",
+                    svg: baseGato(`
+                        <!-- Collar sacerdotal -->
+                        <circle cx="120" cy="160" r="6" fill="#ffd700"/>
+                        <circle cx="140" cy="155" r="6" fill="#ffd700"/>
+                        <circle cx="160" cy="160" r="6" fill="#ffd700"/>
+                    `)
                 },
                 { 
                     nombre: "Los Enamorados", 
-                    significado: "Decisiones importantes, uniones y dualidad. El amor te llama a elegir con el corazón."
+                    significado: "Decisiones importantes, uniones y dualidad. El amor te llama a elegir con el corazón.",
+                    svg: baseGato(`
+                        <!-- Corazón entre los ojos -->
+                        <path d="M130 100 Q135 90 140 100 Q145 90 150 100 Q145 110 140 115 Q135 110 130 100 Z" fill="#ff6b6b" opacity="0.8"/>
+                    `)
                 },
                 { 
                     nombre: "El Carro", 
-                    significado: "Victoria, determinación y control. Avanza con confianza hacia tus metas."
+                    significado: "Victoria, determinación y control. Avanza con confianza hacia tus metas.",
+                    svg: baseGato(`
+                        <!-- Pose de ataque/listo -->
+                        <ellipse cx="90" cy="220" rx="12" ry="18" fill="#f5f0eb" stroke="#555" stroke-width="1.5" transform="rotate(-20 90 220)"/>
+                        <ellipse cx="190" cy="220" rx="12" ry="18" fill="#f5f0eb" stroke="#555" stroke-width="1.5" transform="rotate(20 190 220)"/>
+                    `)
                 },
                 { 
                     nombre: "La Fuerza", 
-                    significado: "Coraje, paciencia y dominio de los impulsos. La verdadera fuerza viene del interior."
+                    significado: "Coraje, paciencia y dominio de los impulsos. La verdadera fuerza viene del interior.",
+                    svg: baseGato(`
+                        <!-- Músculos (patas levantadas mostrando fuerza) -->
+                        <ellipse cx="85" cy="230" rx="15" ry="10" fill="#f5f0eb" stroke="#555" stroke-width="1.5" transform="rotate(-40 85 230)"/>
+                        <ellipse cx="195" cy="230" rx="15" ry="10" fill="#f5f0eb" stroke="#555" stroke-width="1.5" transform="rotate(40 195 230)"/>
+                    `)
                 },
                 { 
                     nombre: "El Ermitaño", 
-                    significado: "Introspección, búsqueda de la verdad y soledad iluminadora. Una pausa para encontrar tu luz."
+                    significado: "Introspección, búsqueda de la verdad y soledad iluminadora. Una pausa para encontrar tu luz.",
+                    svg: baseGato(`
+                        <!-- Linterna/faro -->
+                        <circle cx="140" cy="90" r="12" fill="#ffd700" opacity="0.6"/>
+                        <circle cx="140" cy="90" r="6" fill="#fff" opacity="0.8"/>
+                    `)
                 },
                 { 
                     nombre: "La Rueda de la Fortuna", 
-                    significado: "Cambio, ciclos y destino. Lo que sube, baja; abre tu mente a las vueltas de la vida."
+                    significado: "Cambio, ciclos y destino. Lo que sube, baja; abre tu mente a las vueltas de la vida.",
+                    svg: baseGato(`
+                        <!-- Rueda -->
+                        <circle cx="140" cy="150" r="15" fill="none" stroke="#ffd700" stroke-width="3"/>
+                        <circle cx="140" cy="150" r="5" fill="#ffd700"/>
+                        <line x1="140" y1="135" x2="140" y2="165" stroke="#ffd700" stroke-width="2"/>
+                        <line x1="125" y1="150" x2="155" y2="150" stroke="#ffd700" stroke-width="2"/>
+                    `)
                 },
                 { 
                     nombre: "La Justicia", 
-                    significado: "Equilibrio, karma y verdad. Actúa con integridad y recibirás lo justo."
+                    significado: "Equilibrio, karma y verdad. Actúa con integridad y recibirás lo justo.",
+                    svg: baseGato(`
+                        <!-- Balanza -->
+                        <line x1="140" y1="80" x2="140" y2="100" stroke="#ffd700" stroke-width="2"/>
+                        <line x1="120" y1="95" x2="160" y2="95" stroke="#ffd700" stroke-width="2"/>
+                        <path d="M110 95 L120 95 L115 105 Z" fill="#ffd700"/>
+                        <path d="M150 95 L160 95 L155 105 Z" fill="#ffd700"/>
+                    `)
                 },
                 { 
                     nombre: "El Colgado", 
-                    significado: "Sacrificio, perspectiva y dejar ir. A veces, la rendición es la clave para avanzar."
+                    significado: "Sacrificio, perspectiva y dejar ir. A veces, la rendición es la clave para avanzar.",
+                    svg: baseGato(`
+                        <!-- Cuerpo invertido (patas arriba) -->
+                        <ellipse cx="140" cy="250" rx="40" ry="15" fill="#f5f0eb" stroke="#555" stroke-width="1.5"/>
+                        <ellipse cx="120" cy="248" rx="12" ry="8" fill="#f5f0eb" stroke="#555" stroke-width="1.5"/>
+                        <ellipse cx="160" cy="248" rx="12" ry="8" fill="#f5f0eb" stroke="#555" stroke-width="1.5"/>
+                    `)
                 },
                 { 
                     nombre: "La Muerte", 
-                    significado: "Transformación, finales y nuevos comienzos. Deja atrás lo viejo para renacer."
+                    significado: "Transformación, finales y nuevos comienzos. Deja atrás lo viejo para renacer.",
+                    svg: baseGato(`
+                        <!-- Calavera/fantasma -->
+                        <circle cx="140" cy="155" r="12" fill="#f5f0eb" stroke="#555" stroke-width="1.5"/>
+                        <circle cx="135" cy="153" r="3" fill="#333"/>
+                        <circle cx="145" cy="153" r="3" fill="#333"/>
+                        <path d="M135 158 Q140 163 145 158" stroke="#333" stroke-width="1.5" fill="none"/>
+                    `)
                 },
                 { 
                     nombre: "La Templanza", 
-                    significado: "Armonía, paciencia y equilibrio. Mezcla con sabiduría las fuerzas opuestas."
+                    significado: "Armonía, paciencia y equilibrio. Mezcla con sabiduría las fuerzas opuestas.",
+                    svg: baseGato(`
+                        <!-- Posición equilibrada (patas cruzadas) -->
+                        <ellipse cx="115" cy="230" rx="10" ry="15" fill="#f5f0eb" stroke="#555" stroke-width="1.5" transform="rotate(30 115 230)"/>
+                        <ellipse cx="165" cy="230" rx="10" ry="15" fill="#f5f0eb" stroke="#555" stroke-width="1.5" transform="rotate(-30 165 230)"/>
+                    `)
                 },
                 { 
                     nombre: "El Diablo", 
-                    significado: "Apegos, ilusiones y liberación. Reconoce tus cadenas para romperlas."
+                    significado: "Apegos, ilusiones y liberación. Reconoce tus cadenas para romperlas.",
+                    svg: baseGato(`
+                        <!-- Ojos rojos -->
+                        <ellipse cx="112" cy="115" rx="16" ry="18" fill="#ff4444"/>
+                        <ellipse cx="168" cy="115" rx="16" ry="18" fill="#ff4444"/>
+                        <!-- Cuernos -->
+                        <path d="M105 75 L115 55 L125 70" fill="#2d2d2d" stroke="#333" stroke-width="2"/>
+                        <path d="M155 75 L165 55 L175 70" fill="#2d2d2d" stroke="#333" stroke-width="2"/>
+                    `)
                 },
                 { 
                     nombre: "La Torre", 
-                    significado: "Cambio abrupto, revelación y caída de estructuras. A veces el caos trae claridad."
+                    significado: "Cambio abrupto, revelación y caída de estructuras. A veces el caos trae claridad.",
+                    svg: baseGato(`
+                        <!-- Rayos -->
+                        <line x1="120" y1="70" x2="100" y2="50" stroke="#ffd700" stroke-width="3"/>
+                        <line x1="160" y1="70" x2="180" y2="50" stroke="#ffd700" stroke-width="3"/>
+                        <line x1="140" y1="60" x2="140" y2="40" stroke="#ffd700" stroke-width="3"/>
+                    `)
                 },
                 { 
                     nombre: "La Estrella", 
-                    significado: "Esperanza, inspiración y sanación. Una luz brillante guía tu camino."
+                    significado: "Esperanza, inspiración y sanación. Una luz brillante guía tu camino.",
+                    svg: baseGato(`
+                        <!-- Estrella -->
+                        <polygon points="140,60 146,80 168,80 150,93 157,113 140,100 123,113 130,93 112,80 134,80" fill="#ffd700" opacity="0.8"/>
+                    `)
                 },
                 { 
                     nombre: "La Luna", 
-                    significado: "Inconsciente, ilusiones y sueños. Navega entre sombras con intuición."
+                    significado: "Inconsciente, ilusiones y sueños. Navega entre sombras con intuición.",
+                    svg: baseGato(`
+                        <!-- Luna creciente -->
+                        <circle cx="160" cy="75" r="20" fill="#f5f0eb" stroke="#555" stroke-width="1.5"/>
+                        <circle cx="150" cy="75" r="18" fill="#2d2d2d"/>
+                    `)
                 },
                 { 
                     nombre: "El Sol", 
-                    significado: "Éxito, alegría y claridad. La luz dorada ilumina tu día."
+                    significado: "Éxito, alegría y claridad. La luz dorada ilumina tu día.",
+                    svg: baseGato(`
+                        <!-- Ojos amarillos -->
+                        <ellipse cx="112" cy="115" rx="16" ry="18" fill="#ffd700"/>
+                        <ellipse cx="168" cy="115" rx="16" ry="18" fill="#ffd700"/>
+                        <!-- Sonrisa grande -->
+                        <path d="M120 140 Q140 155 160 140" stroke="#6b4c3b" stroke-width="2" fill="none"/>
+                    `)
                 },
                 { 
                     nombre: "El Juicio", 
-                    significado: "Renacimiento, llamado interior y perdón. Escucha tu voz más profunda."
+                    significado: "Renacimiento, llamado interior y perdón. Escucha tu voz más profunda.",
+                    svg: baseGato(`
+                        <!-- Trompeta -->
+                        <ellipse cx="90" cy="100" rx="8" ry="5" fill="#ffd700" transform="rotate(-30 90 100)"/>
+                        <rect x="80" y="98" width="15" height="4" fill="#ffd700" transform="rotate(-30 85 100)"/>
+                        <circle cx="82" cy="100" r="3" fill="#ffd700"/>
+                    `)
                 },
                 { 
                     nombre: "El Mundo", 
-                    significado: "Plenitud, logro y culminación. Has completado un ciclo, celebra tu viaje."
+                    significado: "Plenitud, logro y culminación. Has completado un ciclo, celebra tu viaje.",
+                    svg: baseGato(`
+                        <!-- Globo terráqueo -->
+                        <circle cx="140" cy="155" r="15" fill="#4a90d9" stroke="#333" stroke-width="1.5"/>
+                        <path d="M130 145 Q140 155 150 145" stroke="#2dcc70" stroke-width="2" fill="none"/>
+                        <path d="M130 165 Q140 155 150 165" stroke="#2dcc70" stroke-width="2" fill="none"/>
+                        <line x1="140" y1="140" x2="140" y2="170" stroke="#333" stroke-width="1"/>
+                        <line x1="125" y1="155" x2="155" y2="155" stroke="#333" stroke-width="1"/>
+                    `)
                 },
                 { 
                     nombre: "El Loco", 
-                    significado: "Nuevos comienzos, espontaneidad y fe. Da el salto al vacío con confianza."
+                    significado: "Nuevos comienzos, espontaneidad y fe. Da el salto al vacío con confianza.",
+                    svg: baseGato(`
+                        <!-- Mochila -->
+                        <rect x="115" y="190" width="20" height="25" rx="3" fill="#8b4513" stroke="#555" stroke-width="1.5"/>
+                        <line x1="120" y1="190" x2="120" y2="180" stroke="#555" stroke-width="1.5"/>
+                        <line x1="130" y1="190" x2="130" y2="180" stroke="#555" stroke-width="1.5"/>
+                    `)
                 }
             ];
 
             // ——— Elementos DOM ———
             const nombreEl = document.getElementById('cartaNombre');
             const significadoEl = document.getElementById('cartaSignificado');
+            const gatoSVG = document.getElementById('gatoSVG');
             const btn = document.getElementById('btnLectura');
-            const container = document.getElementById('lecturaContainer');
+            const cartaTarot = document.getElementById('cartaTarot');
 
             // ——— Función para obtener carta aleatoria ———
             function obtenerCartaAleatoria() {
@@ -481,27 +588,29 @@
 
             // ——— Función que actualiza la UI con efecto sutil ———
             function actualizarLectura() {
-                // Efecto de "destello" en el contenedor
-                container.style.transition = 'box-shadow 0.2s ease, transform 0.2s ease';
-                container.style.boxShadow = 'inset 0 0 70px #9b4dca, 0 0 40px #7b3b9e';
-                container.style.transform = 'scale(0.97)';
+                // Efecto de brillo en la carta
+                cartaTarot.classList.remove('brillando');
+                void cartaTarot.offsetWidth; // Forzar reflow
+                cartaTarot.classList.add('brillando');
 
                 const carta = obtenerCartaAleatoria();
 
                 setTimeout(() => {
                     nombreEl.textContent = carta.nombre;
                     significadoEl.textContent = carta.significado;
-
-                    // Restauramos el estilo
-                    container.style.boxShadow = 'inset 0 0 50px #552b6e55, 0 10px 30px #2e0f3b';
-                    container.style.transform = 'scale(1)';
-                }, 250);
+                    gatoSVG.innerHTML = carta.svg;
+                }, 150);
 
                 // Efecto en el botón
                 btn.style.boxShadow = '0 0 60px #b77bdb, 0 8px 0 #2a1233';
                 setTimeout(() => {
-                    btn.style.boxShadow = '0 0 30px #8a4ab088, 0 8px 0 #2a1233';
-                }, 350);
+                    btn.style.boxShadow = '0 0 30px #8a4ab088, 0 6px 0 #2a1233';
+                }, 400);
+
+                // Quitar clase de brillo después de la animación
+                setTimeout(() => {
+                    cartaTarot.classList.remove('brillando');
+                }, 2500);
             }
 
             // ——— Evento del botón ———
@@ -512,8 +621,7 @@
                 const cartaInicial = obtenerCartaAleatoria();
                 nombreEl.textContent = cartaInicial.nombre;
                 significadoEl.textContent = cartaInicial.significado;
-                container.style.boxShadow = 'inset 0 0 50px #552b6e55, 0 10px 30px #2e0f3b';
-                container.style.transform = 'scale(1)';
+                gatoSVG.innerHTML = cartaInicial.svg;
             });
 
         })();
