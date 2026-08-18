@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🐱 Tarot Gatuno Tuxedo ✨</title>
+    <title>🐱 Cleo vidente ✨</title>
     <style>
         * {
             margin: 0;
@@ -22,7 +22,7 @@
         }
 
         .tarot-card {
-            max-width: 820px;
+            max-width: 900px;
             width: 100%;
             background: linear-gradient(145deg, #3b1f4a, #241530);
             padding: 2.8rem 2rem;
@@ -88,11 +88,11 @@
         }
 
         h1 {
-            font-size: 2.6rem;
+            font-size: 3rem;
             letter-spacing: 4px;
             color: #f0d6ff;
             text-shadow: 0 0 15px #b77bdb, 0 0 30px #8a4ab0, 0 0 60px #4f1f66;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             font-weight: 300;
             word-break: break-word;
         }
@@ -122,53 +122,78 @@
             border: 1px solid #a36bc0;
             box-shadow: inset 0 0 50px #552b6e55, 0 10px 30px #2e0f3b;
             transition: all 0.3s ease;
-            min-height: 280px;
+            min-height: 350px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
-        /* Contenedor del dibujo ASCII del gato */
-        .gato-container {
+        /* Contenedor de la carta (dibujo realista + detalles) */
+        .carta-container {
             width: 100%;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 0.8rem;
-            min-height: 120px;
+            justify-content: center;
+            margin-bottom: 0.5rem;
         }
 
-        .gato-ascii {
-            font-family: 'Courier New', monospace;
-            font-size: 0.95rem;
-            line-height: 1.3;
-            color: #dcc0ec;
-            text-shadow: 0 0 10px #7b3b9e, 0 0 20px #4f1f66;
-            white-space: pre;
-            text-align: center;
-            letter-spacing: 1px;
-            background: rgba(30, 12, 40, 0.4);
-            padding: 0.8rem 1.2rem;
-            border-radius: 20px;
-            border: 1px solid #7d4b9e55;
+        /* Marco de la carta estilo tarjeta */
+        .carta-marco {
+            background: linear-gradient(145deg, #2d1638, #1a0b20);
+            border-radius: 25px 10px 25px 10px;
+            padding: 1.5rem 1.5rem 1.2rem;
+            border: 2px solid #b380d0;
+            box-shadow: 0 0 30px #7b3b9e55, inset 0 0 30px #3d1d4b;
+            max-width: 380px;
             width: 100%;
-            max-width: 500px;
             transition: all 0.3s ease;
+            position: relative;
         }
 
-        #cartaNombre {
-            font-size: 2.2rem;
+        .carta-marco::before {
+            content: '✦';
+            position: absolute;
+            top: 8px;
+            left: 15px;
+            color: #b380d0;
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+
+        .carta-marco::after {
+            content: '✦';
+            position: absolute;
+            bottom: 8px;
+            right: 15px;
+            color: #b380d0;
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+
+        /* SVG del gato (dibujo realista/caricatura) */
+        .gato-svg {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            filter: drop-shadow(0 0 15px rgba(180, 90, 220, 0.3));
+        }
+
+        .nombre-carta {
+            font-size: 1.8rem;
             font-weight: 500;
             color: #f2e0ff;
             text-shadow: 0 0 12px #b380d0, 0 0 25px #7b3b9e;
-            margin-bottom: 0.3rem;
+            margin: 0.8rem 0 0.2rem;
             letter-spacing: 2px;
             line-height: 1.2;
         }
 
-        #cartaSignificado {
-            font-size: 1.1rem;
+        .significado-carta {
+            font-size: 1.05rem;
             color: #dcc0ec;
             max-width: 500px;
             margin: 0.3rem auto 0;
@@ -245,17 +270,17 @@
 
         @media (max-width: 500px) {
             .tarot-card {
-                padding: 2rem 1.2rem;
+                padding: 1.5rem 1rem;
                 border-radius: 3rem 1.5rem 3rem 1.5rem;
             }
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
-            #cartaNombre {
-                font-size: 1.8rem;
+            .nombre-carta {
+                font-size: 1.5rem;
             }
-            #cartaSignificado {
-                font-size: 1rem;
+            .significado-carta {
+                font-size: 0.95rem;
             }
             .btn-tarot {
                 font-size: 1.2rem;
@@ -266,12 +291,15 @@
                 font-size: 0.7rem;
                 padding: 0.3rem 1rem;
             }
-            .gato-ascii {
-                font-size: 0.7rem;
-                padding: 0.5rem;
+            .carta-marco {
+                padding: 1rem;
+            }
+            .gato-svg {
+                max-width: 200px;
             }
             .lectura-container {
-                min-height: 240px;
+                min-height: 300px;
+                padding: 1.2rem 0.8rem;
             }
         }
     </style>
@@ -279,20 +307,62 @@
 <body>
     <div class="tarot-card">
         <div class="tarot-content">
-            <h1>🐱 ARCANA FELINO</h1>
-            <div class="subtitulo">✦ tuxedo cats ✦</div>
+            <h1>🐱 Cleo vidente</h1>
+            <div class="subtitulo">✦ tarot gatuno ✦</div>
 
             <div class="lectura-container" id="lecturaContainer">
                 <div class="simbolo-mistico">✦ ✦ ✦</div>
-                <div class="gato-container">
-                    <div class="gato-ascii" id="gatoAscii">
-                        /\_/\  
-                        ( o.o ) 
-                        > ^ <  
+                <div class="carta-container">
+                    <div class="carta-marco">
+                        <!-- SVG del gato tuxedo con manchita café en la nariz -->
+                        <svg class="gato-svg" id="gatoSVG" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Cuerpo (blanco) -->
+                            <ellipse cx="140" cy="200" rx="75" ry="60" fill="#f5f0eb" stroke="#555" stroke-width="2"/>
+                            <!-- Cabeza (blanco/negro) -->
+                            <ellipse cx="140" cy="120" rx="70" ry="60" fill="#f5f0eb" stroke="#333" stroke-width="2"/>
+                            <!-- Oreja izquierda (negra) -->
+                            <path d="M80 85 L65 40 L105 70 Z" fill="#2d2d2d" stroke="#333" stroke-width="2"/>
+                            <path d="M85 80 L72 48 L103 72 Z" fill="#ffd1b3" opacity="0.4"/>
+                            <!-- Oreja derecha (negra) -->
+                            <path d="M200 85 L215 40 L175 70 Z" fill="#2d2d2d" stroke="#333" stroke-width="2"/>
+                            <path d="M195 80 L208 48 L177 72 Z" fill="#ffd1b3" opacity="0.4"/>
+                            <!-- Parche negro ojo izquierdo -->
+                            <ellipse cx="112" cy="115" rx="32" ry="28" fill="#2d2d2d"/>
+                            <!-- Parche negro ojo derecho -->
+                            <ellipse cx="168" cy="115" rx="32" ry="28" fill="#2d2d2d"/>
+                            <!-- Ojos (brillantes) -->
+                            <ellipse cx="112" cy="115" rx="16" ry="18" fill="#7ec850"/>
+                            <ellipse cx="112" cy="115" rx="10" ry="12" fill="#2d1f0a"/>
+                            <ellipse cx="108" cy="110" rx="4" ry="5" fill="white" opacity="0.8"/>
+                            <ellipse cx="168" cy="115" rx="16" ry="18" fill="#7ec850"/>
+                            <ellipse cx="168" cy="115" rx="10" ry="12" fill="#2d1f0a"/>
+                            <ellipse cx="164" cy="110" rx="4" ry="5" fill="white" opacity="0.8"/>
+                            <!-- Nariz (manchita café) -->
+                            <ellipse cx="140" cy="130" rx="9" ry="6" fill="#8b6b4d"/>
+                            <ellipse cx="140" cy="129" rx="7" ry="4" fill="#a88463"/>
+                            <!-- Bigotes -->
+                            <line x1="100" y1="130" x2="70" y2="125" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="100" y1="135" x2="68" y2="138" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="180" y1="130" x2="210" y2="125" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="180" y1="135" x2="212" y2="138" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                            <!-- Bigotes superiores -->
+                            <line x1="105" y1="125" x2="75" y2="115" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="175" y1="125" x2="205" y2="115" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                            <!-- Boquita -->
+                            <path d="M130 138 Q140 145 150 138" stroke="#6b4c3b" stroke-width="2" fill="none"/>
+                            <!-- Patas delanteras (blanco con detalles negros) -->
+                            <ellipse cx="110" cy="245" rx="20" ry="12" fill="#f5f0eb" stroke="#555" stroke-width="1.5"/>
+                            <ellipse cx="170" cy="245" rx="20" ry="12" fill="#f5f0eb" stroke="#555" stroke-width="1.5"/>
+                            <!-- Corbata o moño (tuxedo) -->
+                            <path d="M115 180 L100 165 L130 170 L140 180 L150 170 L180 165 L165 180 Z" fill="#2d2d2d"/>
+                            <ellipse cx="140" cy="180" rx="15" ry="10" fill="#3d3d3d"/>
+                            <!-- Pecho blanco -->
+                            <ellipse cx="140" cy="195" rx="25" ry="20" fill="#f5f0eb"/>
+                        </svg>
                     </div>
+                    <div class="nombre-carta" id="cartaNombre">El Mago</div>
+                    <div class="significado-carta" id="cartaSignificado">Manifiesta tu poder interior, creatividad y voluntad.</div>
                 </div>
-                <div id="cartaNombre">El Mago</div>
-                <div id="cartaSignificado">Manifiesta tu poder interior, creatividad y voluntad.</div>
                 <div class="simbolo-mistico">✧ ✧ ✧</div>
             </div>
 
@@ -305,124 +375,101 @@
 
     <script>
         (function() {
-            // ——— Mazo de cartas con gatos tuxedo (manchita café en la nariz) ———
+            // ——— Mazo de cartas con gatitos tuxedo (manchita café en la nariz) ———
             const cartas = [
                 { 
                     nombre: "El Mago", 
-                    significado: "Manifiesta tu poder interior, creatividad y voluntad. Tienes todas las herramientas a tu disposición.",
-                    gato: "  /\\_/\\  \n ( o.o ) \n ( >☕< ) \n  \" \" \" "
+                    significado: "Manifiesta tu poder interior, creatividad y voluntad. Tienes todas las herramientas a tu disposición."
                 },
                 { 
                     nombre: "La Sacerdotisa", 
-                    significado: "Intuición, misterio y sabiduría oculta. Confía en tu voz interior y en los sueños.",
-                    gato: "  /\\_/\\  \n ( -.- ) \n ( >🌙< ) \n  \" \" \" "
+                    significado: "Intuición, misterio y sabiduría oculta. Confía en tu voz interior y en los sueños."
                 },
                 { 
                     nombre: "La Emperatriz", 
-                    significado: "Abundancia, fertilidad y conexión con la naturaleza. El amor y la belleza te rodean.",
-                    gato: "  /\\_/\\  \n ( ^.^ ) \n ( >🌸< ) \n  \" \" \" "
+                    significado: "Abundancia, fertilidad y conexión con la naturaleza. El amor y la belleza te rodean."
                 },
                 { 
                     nombre: "El Emperador", 
-                    significado: "Estructura, estabilidad y autoridad. Es momento de tomar el control con firmeza.",
-                    gato: "  /\\_/\\  \n ( O.O ) \n ( >👑< ) \n  \" \" \" "
+                    significado: "Estructura, estabilidad y autoridad. Es momento de tomar el control con firmeza."
                 },
                 { 
                     nombre: "El Sumo Sacerdote", 
-                    significado: "Tradición, guía espiritual y enseñanzas. Busca consejo en la sabiduría ancestral.",
-                    gato: "  /\\_/\\  \n ( -.- ) \n ( >📜< ) \n  \" \" \" "
+                    significado: "Tradición, guía espiritual y enseñanzas. Busca consejo en la sabiduría ancestral."
                 },
                 { 
                     nombre: "Los Enamorados", 
-                    significado: "Decisiones importantes, uniones y dualidad. El amor te llama a elegir con el corazón.",
-                    gato: "  /\\_/\\  \n ( ♥.♥ ) \n ( >❤️< ) \n  \" \" \" "
+                    significado: "Decisiones importantes, uniones y dualidad. El amor te llama a elegir con el corazón."
                 },
                 { 
                     nombre: "El Carro", 
-                    significado: "Victoria, determinación y control. Avanza con confianza hacia tus metas.",
-                    gato: "  /\\_/\\  \n ( o.o ) \n ( >🚀< ) \n  \" \" \" "
+                    significado: "Victoria, determinación y control. Avanza con confianza hacia tus metas."
                 },
                 { 
                     nombre: "La Fuerza", 
-                    significado: "Coraje, paciencia y dominio de los impulsos. La verdadera fuerza viene del interior.",
-                    gato: "  /\\_/\\  \n ( O.O ) \n ( >💪< ) \n  \" \" \" "
+                    significado: "Coraje, paciencia y dominio de los impulsos. La verdadera fuerza viene del interior."
                 },
                 { 
                     nombre: "El Ermitaño", 
-                    significado: "Introspección, búsqueda de la verdad y soledad iluminadora. Una pausa para encontrar tu luz.",
-                    gato: "  /\\_/\\  \n ( -.- ) \n ( >🔦< ) \n  \" \" \" "
+                    significado: "Introspección, búsqueda de la verdad y soledad iluminadora. Una pausa para encontrar tu luz."
                 },
                 { 
                     nombre: "La Rueda de la Fortuna", 
-                    significado: "Cambio, ciclos y destino. Lo que sube, baja; abre tu mente a las vueltas de la vida.",
-                    gato: "  /\\_/\\  \n ( o.o ) \n ( >🎡< ) \n  \" \" \" "
+                    significado: "Cambio, ciclos y destino. Lo que sube, baja; abre tu mente a las vueltas de la vida."
                 },
                 { 
                     nombre: "La Justicia", 
-                    significado: "Equilibrio, karma y verdad. Actúa con integridad y recibirás lo justo.",
-                    gato: "  /\\_/\\  \n ( -.- ) \n ( >⚖️< ) \n  \" \" \" "
+                    significado: "Equilibrio, karma y verdad. Actúa con integridad y recibirás lo justo."
                 },
                 { 
                     nombre: "El Colgado", 
-                    significado: "Sacrificio, perspectiva y dejar ir. A veces, la rendición es la clave para avanzar.",
-                    gato: "  /\\_/\\  \n ( o.o ) \n ( >🔄< ) \n  \" \" \" "
+                    significado: "Sacrificio, perspectiva y dejar ir. A veces, la rendición es la clave para avanzar."
                 },
                 { 
                     nombre: "La Muerte", 
-                    significado: "Transformación, finales y nuevos comienzos. Deja atrás lo viejo para renacer.",
-                    gato: "  /\\_/\\  \n ( O.O ) \n ( >♻️< ) \n  \" \" \" "
+                    significado: "Transformación, finales y nuevos comienzos. Deja atrás lo viejo para renacer."
                 },
                 { 
                     nombre: "La Templanza", 
-                    significado: "Armonía, paciencia y equilibrio. Mezcla con sabiduría las fuerzas opuestas.",
-                    gato: "  /\\_/\\  \n ( -.- ) \n ( >⚗️< ) \n  \" \" \" "
+                    significado: "Armonía, paciencia y equilibrio. Mezcla con sabiduría las fuerzas opuestas."
                 },
                 { 
                     nombre: "El Diablo", 
-                    significado: "Apegos, ilusiones y liberación. Reconoce tus cadenas para romperlas.",
-                    gato: "  /\\_/\\  \n ( >.< ) \n ( >😈< ) \n  \" \" \" "
+                    significado: "Apegos, ilusiones y liberación. Reconoce tus cadenas para romperlas."
                 },
                 { 
                     nombre: "La Torre", 
-                    significado: "Cambio abrupto, revelación y caída de estructuras. A veces el caos trae claridad.",
-                    gato: "  /\\_/\\  \n ( O.O ) \n ( >⚡< ) \n  \" \" \" "
+                    significado: "Cambio abrupto, revelación y caída de estructuras. A veces el caos trae claridad."
                 },
                 { 
                     nombre: "La Estrella", 
-                    significado: "Esperanza, inspiración y sanación. Una luz brillante guía tu camino.",
-                    gato: "  /\\_/\\  \n ( ✨.✨ ) \n ( >⭐< ) \n  \" \" \" "
+                    significado: "Esperanza, inspiración y sanación. Una luz brillante guía tu camino."
                 },
                 { 
                     nombre: "La Luna", 
-                    significado: "Inconsciente, ilusiones y sueños. Navega entre sombras con intuición.",
-                    gato: "  /\\_/\\  \n ( -.- ) \n ( >🌙< ) \n  \" \" \" "
+                    significado: "Inconsciente, ilusiones y sueños. Navega entre sombras con intuición."
                 },
                 { 
                     nombre: "El Sol", 
-                    significado: "Éxito, alegría y claridad. La luz dorada ilumina tu día.",
-                    gato: "  /\\_/\\  \n ( ^.^ ) \n ( >☀️< ) \n  \" \" \" "
+                    significado: "Éxito, alegría y claridad. La luz dorada ilumina tu día."
                 },
                 { 
                     nombre: "El Juicio", 
-                    significado: "Renacimiento, llamado interior y perdón. Escucha tu voz más profunda.",
-                    gato: "  /\\_/\\  \n ( O.O ) \n ( >📯< ) \n  \" \" \" "
+                    significado: "Renacimiento, llamado interior y perdón. Escucha tu voz más profunda."
                 },
                 { 
                     nombre: "El Mundo", 
-                    significado: "Plenitud, logro y culminación. Has completado un ciclo, celebra tu viaje.",
-                    gato: "  /\\_/\\  \n ( ^.^ ) \n ( >🌍< ) \n  \" \" \" "
+                    significado: "Plenitud, logro y culminación. Has completado un ciclo, celebra tu viaje."
                 },
                 { 
                     nombre: "El Loco", 
-                    significado: "Nuevos comienzos, espontaneidad y fe. Da el salto al vacío con confianza.",
-                    gato: "  /\\_/\\  \n ( o.o ) \n ( >🎒< ) \n  \" \" \" "
+                    significado: "Nuevos comienzos, espontaneidad y fe. Da el salto al vacío con confianza."
                 }
             ];
 
             // ——— Elementos DOM ———
             const nombreEl = document.getElementById('cartaNombre');
             const significadoEl = document.getElementById('cartaSignificado');
-            const gatoEl = document.getElementById('gatoAscii');
             const btn = document.getElementById('btnLectura');
             const container = document.getElementById('lecturaContainer');
 
@@ -437,25 +484,24 @@
                 // Efecto de "destello" en el contenedor
                 container.style.transition = 'box-shadow 0.2s ease, transform 0.2s ease';
                 container.style.boxShadow = 'inset 0 0 70px #9b4dca, 0 0 40px #7b3b9e';
-                container.style.transform = 'scale(0.98)';
+                container.style.transform = 'scale(0.97)';
 
                 const carta = obtenerCartaAleatoria();
 
                 setTimeout(() => {
                     nombreEl.textContent = carta.nombre;
                     significadoEl.textContent = carta.significado;
-                    gatoEl.textContent = carta.gato;
 
                     // Restauramos el estilo
                     container.style.boxShadow = 'inset 0 0 50px #552b6e55, 0 10px 30px #2e0f3b';
                     container.style.transform = 'scale(1)';
-                }, 200);
+                }, 250);
 
                 // Efecto en el botón
                 btn.style.boxShadow = '0 0 60px #b77bdb, 0 8px 0 #2a1233';
                 setTimeout(() => {
                     btn.style.boxShadow = '0 0 30px #8a4ab088, 0 8px 0 #2a1233';
-                }, 300);
+                }, 350);
             }
 
             // ——— Evento del botón ———
@@ -466,7 +512,6 @@
                 const cartaInicial = obtenerCartaAleatoria();
                 nombreEl.textContent = cartaInicial.nombre;
                 significadoEl.textContent = cartaInicial.significado;
-                gatoEl.textContent = cartaInicial.gato;
                 container.style.boxShadow = 'inset 0 0 50px #552b6e55, 0 10px 30px #2e0f3b';
                 container.style.transform = 'scale(1)';
             });
