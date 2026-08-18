@@ -1,1 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Tarot Místico ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #1a0b1f 0%, #0d0510 100%);
+            font-family: 'Segoe UI', 'Georgia', serif;
+            padding: 1.5rem;
+        }
+
+        /* Carta principal */
+        .tarot-card {
+            max-width: 720px;
+            width: 100%;
+            background: linear-gradient(145deg, #3b1f4a, #241530);
+            padding: 2.8rem 2rem;
+            border-radius: 4rem 2rem 4rem 2rem;
+            box-shadow: 
+                0 20px 60px rgba(106, 13, 173, 0.7),
+                inset 0 0 40px rgba(180, 90, 220, 0.3),
+                0 0 30px #9b4dca88;
+            border: 1px solid #b380d0;
+            backdrop-filter: blur(2px);
+            transition: box-shadow 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efectos mágicos (brillos flotantes) */
+        .tarot-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(200, 120, 255, 0.08), transparent 60%),
+                        radial-gradient(circle at 70% 80%, rgba(160, 70, 220, 0.08), transparent 50%);
+            pointer-events: none;
+            animation: girarBrillo 30s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes girarBrillo {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Partículas diminutas (estrellas) */
+        .tarot-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, #d9b0ff, transparent),
+                radial-gradient(2px 2px at 40% 70%, #c58af0, transparent),
+                radial-gradient(2px 2px at 60% 20%, #e5c3ff, transparent),
+                radial-gradient(3px 3px at 80% 80%, #b77bdb, transparent),
+                radial-gradient(2px 2px at 10% 90%, #d4a0f5, transparent),
+                radial-gradient(3px 3px at 90% 10%, #ca8bf0, transparent);
+            background-size: 200% 200%;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+            pointer-events: none;
+            animation: centelleo 8s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes centelleo {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        /* Contenido por encima de los efectos */
+        .tarot-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            letter-spacing: 4px;
+            color: #f0d6ff;
+            text-shadow: 0 0 15px #b77bdb, 0 0 30px #8a4ab0, 0 0 60px #4f1f66;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+            word-break: break-word;
+        }
+
+        .subtitulo {
+            color: #c9a3dc;
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            border-top: 1px solid #7d4b9e;
+            border-bottom: 1px solid #7d4b9e;
+            display: inline-block;
+            padding: 0.4rem 1.8rem;
+            backdrop-filter: blur(4px);
+            background: rgba(70, 30, 90, 0.3);
+            border-radius: 40px;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 0 20px #7d4b9e55;
+        }
+
+        /* Zona de la carta extraída */
+        .lectura-container {
+            background: rgba(20, 8, 30, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 3rem 1.5rem 3rem 1.5rem;
+            padding: 1.8rem 1.2rem;
+            margin: 1.8rem 0;
+            border: 1px solid #a36bc0;
+            box-shadow: inset 0 0 50px #552b6e55, 0 10px 30px #2e0f3b;
+            transition: all 0.3s ease;
+            min-height: 190px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #cartaNombre {
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: #f2e0ff;
+            text-shadow: 0 0 12px #b380d0, 0 0 25px #7b3b9e;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        #cartaSignificado {
+            font-size: 1.1rem;
+            color: #dcc0ec;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0 0.5rem;
+            line-height: 1.6;
+            text-shadow: 0 0 8px #4b1d5e;
+        }
+
+        .simbolo-mistico {
+            font-size: 2.8rem;
+            margin: 0.2rem 0;
+            opacity: 0.7;
+            filter: drop-shadow(0 0 10px #b77bdb);
+            letter-spacing: 8px;
+        }
+
+        /* Botón mágico */
+        .btn-tarot {
+            background: linear-gradient(135deg, #6f3790, #451e5a);
+            border: 1px solid #ac7ac9;
+            color: #f3e6ff;
+            font-size: 1.6rem;
+            padding: 1.2rem 2.5rem;
+            border-radius: 60px 20px 60px 20px;
+            cursor: pointer;
+            font-weight: 400;
+            letter-spacing: 4px;
+            box-shadow: 0 0 30px #8a4ab088, 0 8px 0 #2a1233;
+            transition: all 0.15s ease;
+            backdrop-filter: blur(4px);
+            background: rgba(90, 40, 120, 0.8);
+            margin-top: 0.8rem;
+            width: 100%;
+            max-width: 340px;
+            text-transform: uppercase;
+            font-family: 'Georgia', serif;
+            position: relative;
+            z-index: 3;
+            border-bottom: 3px solid #c795e0;
+        }
+
+        .btn-tarot:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 50px #b77bdb, 0 10px 0 #2a1233;
+            background: rgba(120, 60, 160, 0.9);
+            border-color: #dbb0f0;
+            color: #fff;
+        }
+
+        .btn-tarot:active {
+            transform: translateY(6px);
+            box-shadow: 0 0 30px #9b4dca, 0 2px 0 #2a1233;
+        }
+
+        /* Pie de página */
+        .pie {
+            margin-top: 2rem;
+            color: #785a8a;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            border-top: 1px solid #4f2b62;
+            padding-top: 1.5rem;
+            opacity: 0.8;
+            text-shadow: 0 0 6px #3d1d4b;
+        }
+
+        .pie span {
+            display: inline-block;
+            animation: parpadeo 3s infinite alternate;
+        }
+
+        @keyframes parpadeo {
+            0% { opacity: 0.4; text-shadow: 0 0 2px #a06bbd; }
+            100% { opacity: 1; text-shadow: 0 0 20px #c38ce0; }
+        }
+
+        /* Responsive */
+        @media (max-width: 500px) {
+            .tarot-card {
+                padding: 2rem 1.2rem;
+                border-radius: 3rem 1.5rem 3rem 1.5rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            #cartaNombre {
+                font-size: 1.8rem;
+            }
+            #cartaSignificado {
+                font-size: 1rem;
+            }
+            .btn-tarot {
+                font-size: 1.2rem;
+                padding: 1rem 1.5rem;
+                max-width: 100%;
+            }
+            .subtitulo {
+                font-size: 0.7rem;
+                padding: 0.3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tarot-card">
+        <div class="tarot-content">
+            <h1>🔮 ARCANA</h1>
+            <div class="subtitulo">✦ lectura mística ✦</div>
+
+            <div class="lectura-container" id="lecturaContainer">
+                <div class="simbolo-mistico">✦ ✦ ✦</div>
+                <div id="cartaNombre">El Mago</div>
+                <div id="cartaSignificado">Manifiesta tu poder interior, creatividad y voluntad.</div>
+                <div class="simbolo-mistico">✧ ✧ ✧</div>
+            </div>
+
+            <button class="btn-tarot" id="btnLectura">♢ Tirar las cartas ♢</button>
+            <div class="pie">
+                <span>☆ conéctate con tu destino ☆</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ——— Base de datos esotérica ———
+            const cartas = [
+                { 
+                    nombre: "El Mago", 
+                    significado: "Manifiesta tu poder interior, creatividad y voluntad. Tienes todas las herramientas a tu disposición."
+                },
+                { 
+                    nombre: "La Sacerdotisa", 
+                    significado: "Intuición, misterio y sabiduría oculta. Confía en tu voz interior y en los sueños."
+                },
+                { 
+                    nombre: "La Emperatriz", 
+                    significado: "Abundancia, fertilidad y conexión con la naturaleza. El amor y la belleza te rodean."
+                },
+                { 
+                    nombre: "El Emperador", 
+                    significado: "Estructura, estabilidad y autoridad. Es momento de tomar el control con firmeza."
+                },
+                { 
+                    nombre: "El Sumo Sacerdote", 
+                    significado: "Tradición, guía espiritual y enseñanzas. Busca consejo en la sabiduría ancestral."
+                },
+                { 
+                    nombre: "Los Enamorados", 
+                    significado: "Decisiones importantes, uniones y dualidad. El amor te llama a elegir con el corazón."
+                },
+                { 
+                    nombre: "El Carro", 
+                    significado: "Victoria, determinación y control. Avanza con confianza hacia tus metas."
+                },
+                { 
+                    nombre: "La Fuerza", 
+                    significado: "Coraje, paciencia y dominio de los impulsos. La verdadera fuerza viene del interior."
+                },
+                { 
+                    nombre: "El Ermitaño", 
+                    significado: "Introspección, búsqueda de la verdad y soledad iluminadora. Una pausa para encontrar tu luz."
+                },
+                { 
+                    nombre: "La Rueda de la Fortuna", 
+                    significado: "Cambio, ciclos y destino. Lo que sube, baja; abre tu mente a las vueltas de la vida."
+                },
+                { 
+                    nombre: "La Justicia", 
+                    significado: "Equilibrio, karma y verdad. Actúa con integridad y recibirás lo justo."
+                },
+                { 
+                    nombre: "El Colgado", 
+                    significado: "Sacrificio, perspectiva y dejar ir. A veces, la rendición es la clave para avanzar."
+                },
+                { 
+                    nombre: "La Muerte", 
+                    significado: "Transformación, finales y nuevos comienzos. Deja atrás lo viejo para renacer."
+                },
+                { 
+                    nombre: "La Templanza", 
+                    significado: "Armonía, paciencia y equilibrio. Mezcla con sabiduría las fuerzas opuestas."
+                },
+                { 
+                    nombre: "El Diablo", 
+                    significado: "Apegos, ilusiones y liberación. Reconoce tus cadenas para romperlas."
+                },
+                { 
+                    nombre: "La Torre", 
+                    significado: "Cambio abrupto, revelación y caída de estructuras. A veces el caos trae claridad."
+                },
+                { 
+                    nombre: "La Estrella", 
+                    significado: "Esperanza, inspiración y sanación. Una luz brillante guía tu camino."
+                },
+                { 
+                    nombre: "La Luna", 
+                    significado: "Inconsciente, ilusiones y sueños. Navega entre sombras con intuición."
+                },
+                { 
+                    nombre: "El Sol", 
+                    significado: "Éxito, alegría y claridad. La luz dorada ilumina tu día."
+                },
+                { 
+                    nombre: "El Juicio", 
+                    significado: "Renacimiento, llamado interior y perdón. Escucha tu voz más profunda."
+                },
+                { 
+                    nombre: "El Mundo", 
+                    significado: "Plenitud, logro y culminación. Has completado un ciclo, celebra tu viaje."
+                },
+                { 
+                    nombre: "El Loco", 
+                    significado: "Nuevos comienzos, espontaneidad y fe. Da el salto al vacío con confianza."
+                }
+            ];
+
+            // ——— Elementos DOM ———
+            const nombreEl = document.getElementById('cartaNombre');
+            const significadoEl = document.getElementById('cartaSignificado');
+            const btn = document.getElementById('btnLectura');
+            const container = document.getElementById('lecturaContainer');
+
+            // ——— Función para obtener carta aleatoria ———
+            function obtenerCartaAleatoria() {
+                const indice = Math.floor(Math.random() * cartas.length);
+                return cartas[indice];
+            }
+
+            // ——— Función que actualiza la UI con efecto sutil ———
+            function actualizarLectura() {
+                // 1. Pequeño efecto de "destello" en el contenedor
+                container.style.transition = 'box-shadow 0.2s ease, transform 0.2s ease';
+                container.style.boxShadow = 'inset 0 0 70px #9b4dca, 0 0 40px #7b3b9e';
+                container.style.transform = 'scale(0.98)';
+
+                // 2. Obtenemos la carta
+                const carta = obtenerCartaAleatoria();
+
+                // 3. Actualizamos el contenido con un pequeño retraso para el efecto
+                setTimeout(() => {
+                    nombreEl.textContent = carta.nombre;
+                    significadoEl.textContent = carta.significado;
+
+                    // Restauramos el estilo
+                    container.style.boxShadow = 'inset 0 0 50px #552b6e55, 0 10px 30px #2e0f3b';
+                    container.style.transform = 'scale(1)';
+                }, 200);
+
+                // 4. Efecto extra: cambio breve en el brillo del botón
+                btn.style.boxShadow = '0 0 60px #b77bdb, 0 8px 0 #2a1233';
+                setTimeout(() => {
+                    btn.style.boxShadow = '0 0 30px #8a4ab088, 0 8px 0 #2a1233';
+                }, 300);
+            }
+
+            // ——— Evento del botón ———
+            btn.addEventListener('click', actualizarLectura);
+
+            // ——— Cargar una carta aleatoria al inicio ———
+            window.addEventListener('load', () => {
+                const cartaInicial = obtenerCartaAleatoria();
+                nombreEl.textContent = cartaInicial.nombre;
+                significadoEl.textContent = cartaInicial.significado;
+                // Aseguramos estilo inicial
+                container.style.boxShadow = 'inset 0 0 50px #552b6e55, 0 10px 30px #2e0f3b';
+                container.style.transform = 'scale(1)';
+            });
+
+        })();
+    </script>
+</body>
+</html>
