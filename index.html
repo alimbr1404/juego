@@ -71,14 +71,14 @@
       background: rgba(10, 5, 16, 0.92);
       backdrop-filter: blur(8px);
       padding: 1.5rem;
-      animation: fadeIn 0.6s ease;
+      animation: fadeIn 0.4s ease;
     }
     .menu-inicio.oculto {
       display: none;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
+      from { opacity: 0; transform: scale(0.97); }
       to { opacity: 1; transform: scale(1); }
     }
 
@@ -639,7 +639,7 @@
       background: rgba(10, 5, 16, 0.92);
       backdrop-filter: blur(8px);
       padding: 1.5rem;
-      animation: fadeIn 0.6s ease;
+      animation: fadeIn 0.4s ease;
     }
     .lectura-final.visible {
       display: flex;
@@ -890,13 +890,13 @@
 
   <script>
     (function() {
-      // ===== ESTRELLAS =====
+      // ===== ESTRELLAS (rápido) =====
       const campo = document.getElementById('estrellas');
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 40; i++) {
         const s = document.createElement('span');
         s.style.left = Math.random() * 100 + '%';
         s.style.top = Math.random() * 100 + '%';
-        s.style.animationDelay = (Math.random() * 3.5) + 's';
+        s.style.animationDelay = (Math.random() * 3) + 's';
         s.style.width = s.style.height = (Math.random() < 0.15 ? '3px' : '2px');
         campo.appendChild(s);
       }
@@ -1083,7 +1083,7 @@
         return grupo;
       }
 
-      // ===== POSES (versión simplificada, todas las funciones están) =====
+      // ===== POSES =====
       function poseSentado(pal) {
         return {
           cuerpo: cuerpo(pal),
@@ -1229,6 +1229,18 @@
         };
       }
 
+      // ===== CARTA DE PORTADA =====
+      const cartaPortada = {
+        num: '★',
+        romano: '✦ Portada ✦',
+        nombre: 'Cleo Vidente',
+        kws: ['Misterio', 'Magia', 'Destino'],
+        significado: 'El tarot gatuno te espera. Prepárate para descubrir tu destino.',
+        coat: 'calico',
+        pose: poseRegio,
+        extra: `<circle cx="140" cy="60" r="18" fill="#ffd700" opacity="0.3"/><circle cx="140" cy="60" r="8" fill="#ffd700" opacity="0.6"/><path d="M120 60 L130 60 L130 50 L140 60 L130 70 L130 60" stroke="#ffd700" stroke-width="2" fill="none" opacity="0.5"/><path d="M160 60 L150 60 L150 50 L140 60 L150 70 L150 60" stroke="#ffd700" stroke-width="2" fill="none" opacity="0.5"/>`
+      };
+
       // ===== CARTAS =====
       const cartas = [
         { num: '0', romano: 'Arcano 0', nombre: 'El Loco', kws: ['Inicio', 'Fe', 'Libertad'],
@@ -1337,35 +1349,33 @@
           extra: `<circle cx="140" cy="155" r="15" fill="#4a90d9" stroke="#333" stroke-width="1.5"/><path d="M130 145 Q140 155 150 145" stroke="#2dcc70" stroke-width="2" fill="none"/><path d="M130 165 Q140 155 150 165" stroke="#2dcc70" stroke-width="2" fill="none"/><line x1="140" y1="140" x2="140" y2="170" stroke="#333" stroke-width="1"/><line x1="125" y1="155" x2="155" y2="155" stroke="#333" stroke-width="1"/>` },
       ];
 
-      // ===== SISTEMA DE ALEATORIEDAD =====
-      let historialCartas = [];
-      const MAX_HISTORIAL = 4;
+      // ===== SISTEMA DE ALEATORIEDAD MEJORADO (barajado real) =====
+      let mazoBarajado = [];
+      let indiceMazo = 0;
+
+      function barajarMazo() {
+        // Copia todas las cartas
+        mazoBarajado = [...cartas];
+        // Barajado Fisher-Yates
+        for (let i = mazoBarajado.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [mazoBarajado[i], mazoBarajado[j]] = [mazoBarajado[j], mazoBarajado[i]];
+        }
+        indiceMazo = 0;
+      }
 
       function obtenerCartaAleatoriaMejorada() {
-        if (historialCartas.length === 0) {
-          const carta = cartas[Math.floor(Math.random() * cartas.length)];
-          historialCartas.push(carta);
-          return carta;
+        // Si el mazo está vacío o ya se usaron todas, volver a barajar
+        if (mazoBarajado.length === 0 || indiceMazo >= mazoBarajado.length) {
+          barajarMazo();
         }
-
-        let mazoFiltrado = cartas.filter(carta => {
-          return !historialCartas.some(hist => hist === carta);
-        });
-
-        if (mazoFiltrado.length === 0) {
-          historialCartas = [];
-          const carta = cartas[Math.floor(Math.random() * cartas.length)];
-          historialCartas.push(carta);
-          return carta;
-        }
-
-        const cartaElegida = mazoFiltrado[Math.floor(Math.random() * mazoFiltrado.length)];
-        historialCartas.push(cartaElegida);
-        if (historialCartas.length > MAX_HISTORIAL) {
-          historialCartas.shift();
-        }
-        return cartaElegida;
+        const carta = mazoBarajado[indiceMazo];
+        indiceMazo++;
+        return carta;
       }
+
+      // Barajar al inicio
+      barajarMazo();
 
       // ===== LÓGICA DEL JUEGO =====
       let nombreJugador = 'viajero';
@@ -1374,7 +1384,7 @@
       let turnoActual = 0;
       const TOTAL_CARTAS = 5;
       let juegoActivo = false;
-      let cartaActual = null;
+      let primeraCarta = true; // Para controlar la carta de portada
 
       const nombreEl = document.getElementById('cartaNombre');
       const numeroEl = document.getElementById('cartaNumero');
@@ -1401,9 +1411,8 @@
       const lecturaResumen = document.getElementById('lecturaResumen');
       const btnReiniciar = document.getElementById('btnReiniciar');
 
-      // Función para validar y convertir fecha
       function parsearFecha(fechaStr) {
-        // Intenta parsear DD/MM/AAAA
+        if (!fechaStr) return null;
         const partes = fechaStr.split('/');
         if (partes.length === 3) {
           const dia = parseInt(partes[0]);
@@ -1413,7 +1422,6 @@
             return new Date(anio, mes, dia);
           }
         }
-        // Intenta parsear AAAA-MM-DD
         const partes2 = fechaStr.split('-');
         if (partes2.length === 3) {
           const anio = parseInt(partes2[0]);
@@ -1437,7 +1445,6 @@
         return edad;
       }
 
-      // Pintar carta
       function pintarCarta(carta) {
         nombreEl.textContent = carta.nombre;
         numeroEl.textContent = carta.romano;
@@ -1445,22 +1452,22 @@
         numTL.textContent = carta.num;
         numBR.textContent = carta.num;
         keywordsEl.innerHTML = carta.kws.map(k => `<span>${k}</span>`).join('');
-        gatoSVG.innerHTML = dibujarGato(carta.coat, carta.pose, carta.extra, carta.mirror);
+        gatoSVG.innerHTML = dibujarGato(carta.coat, carta.pose, carta.extra, carta.mirror || false);
         cartaTarot.style.setProperty('--accent', P[carta.coat].accent);
       }
 
       function lanzarChispas() {
         chispasCont.innerHTML = '';
-        const n = 14;
+        const n = 12;
         for (let i = 0; i < n; i++) {
           const c = document.createElement('div');
           c.className = 'chispa';
           c.style.left = (10 + Math.random() * 80) + '%';
           c.style.top = (15 + Math.random() * 70) + '%';
-          c.style.animationDelay = (Math.random() * 0.35) + 's';
+          c.style.animationDelay = (Math.random() * 0.3) + 's';
           chispasCont.appendChild(c);
         }
-        setTimeout(() => { chispasCont.innerHTML = ''; }, 1400);
+        setTimeout(() => { chispasCont.innerHTML = ''; }, 1300);
       }
 
       function actualizarUI() {
@@ -1484,7 +1491,7 @@
         if (turnoActual >= TOTAL_CARTAS) {
           btn.disabled = true;
           btn.textContent = '✦ Lectura Completa ✦';
-          mostrarLecturaFinal();
+          setTimeout(mostrarLecturaFinal, 500);
         } else {
           btn.disabled = false;
           btn.textContent = `♢ Tirar Carta ${turnoActual+1}/${TOTAL_CARTAS} ♢`;
@@ -1520,7 +1527,9 @@
 
           `Las estrellas te guían, <span class="highlight">${nombre}</span>. ${nombres[0]} te invita a dar el primer paso con fe. ${nombres[1]} te recuerda que la magia está en tus manos. ${nombres[2]} te susurra que escuches tu voz interior. ${nombres[3]} te enseña que la transformación es parte de la vida. ${nombres[4]} te asegura que todo esfuerzo tiene su recompensa. Confía en tu viaje, ${nombre}. 🐱`,
 
-          `Querido <span class="highlight">${nombre}</span>, el tarot gatuno te revela: ${nombres[0]} es el inicio de tu nueva historia. ${nombres[1]} te da el poder de manifestar tus sueños. ${nombres[2]} te conecta con los misterios del alma. ${nombres[3]} te invita a renacer. ${nombres[4]} te muestra que el mundo es tuyo. ¡Atrévete a vivir tu destino, ${nombre}! 🌟`
+          `Querido <span class="highlight">${nombre}</span>, el tarot gatuno te revela: ${nombres[0]} es el inicio de tu nueva historia. ${nombres[1]} te da el poder de manifestar tus sueños. ${nombres[2]} te conecta con los misterios del alma. ${nombres[3]} te invita a renacer. ${nombres[4]} te muestra que el mundo es tuyo. ¡Atrévete a vivir tu destino, ${nombre}! 🌟`,
+
+          `<span class="highlight">${nombre}</span>, el destino tiene un plan para ti. ${nombres[0]} te pide que confíes en el viaje. ${nombres[1]} te otorga la sabiduría para tomar decisiones. ${nombres[2]} te conecta con tu ser más profundo. ${nombres[3]} te libera de lo que ya no sirve. ${nombres[4]} te muestra que el éxito está a tu alcance. El universo te respalda, ${nombre}. 🌈`
         ];
 
         return mensajes[Math.floor(Math.random() * mensajes.length)];
@@ -1529,8 +1538,15 @@
       function tirarCarta() {
         if (turnoActual >= TOTAL_CARTAS || !juegoActivo) return;
 
-        const carta = obtenerCartaAleatoriaMejorada();
-        cartaActual = carta;
+        let carta;
+        if (primeraCarta) {
+          // Primera tirada: mostrar carta de portada
+          carta = cartaPortada;
+          primeraCarta = false;
+        } else {
+          carta = obtenerCartaAleatoriaMejorada();
+        }
+
         cartasTiradas.push(carta);
         turnoActual++;
 
@@ -1560,16 +1576,20 @@
         cartasTiradas = [];
         turnoActual = 0;
         juegoActivo = true;
-        historialCartas = [];
+        primeraCarta = true;
+
+        // Reiniciar el mazo
+        barajarMazo();
 
         infoJugador.innerHTML = `Bienvenido, <span>${nombreJugador}</span> ✦`;
         menuInicio.classList.add('oculto');
         lecturaFinal.classList.remove('visible');
 
-        const cartaInicial = cartas[Math.floor(Math.random() * cartas.length)];
-        pintarCarta(cartaInicial);
+        // Mostrar la carta de portada
+        pintarCarta(cartaPortada);
         actualizarUI();
         btn.disabled = false;
+        btn.textContent = `♢ Tirar Carta 1/${TOTAL_CARTAS} ♢`;
       }
 
       function reiniciarJuego() {
@@ -1578,7 +1598,7 @@
         juegoActivo = false;
         cartasTiradas = [];
         turnoActual = 0;
-        historialCartas = [];
+        primeraCarta = true;
         btn.disabled = true;
         progresoFill.style.width = '0%';
         progresoTexto.textContent = '0 / 5';
@@ -1591,6 +1611,9 @@
         }
         nombreInput.value = '';
         fechaInput.value = '';
+        // Volver a mostrar la portada
+        pintarCarta(cartaPortada);
+        barajarMazo();
       }
 
       // ===== EVENTOS =====
@@ -1627,8 +1650,8 @@
           div.innerHTML = `<span class="num">?</span>`;
           historialEl.appendChild(div);
         }
-        const cartaInicial = cartas[Math.floor(Math.random() * cartas.length)];
-        pintarCarta(cartaInicial);
+        pintarCarta(cartaPortada);
+        barajarMazo();
       });
     })();
   </script>
