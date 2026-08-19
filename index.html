@@ -117,6 +117,13 @@
       margin-bottom: 0.3rem;
       margin-top: 1rem;
     }
+    .menu-contenedor label .opcional {
+      color: #6a4a7a;
+      font-size: 0.6rem;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 300;
+    }
 
     .menu-contenedor input {
       width: 100%;
@@ -136,6 +143,13 @@
     }
     .menu-contenedor input::placeholder {
       color: #6a4a7a;
+    }
+    .menu-contenedor .input-hint {
+      color: #6a4a7a;
+      font-size: 0.6rem;
+      text-align: left;
+      margin-top: 0.2rem;
+      letter-spacing: 0.5px;
     }
 
     .menu-contenedor .btn-iniciar {
@@ -202,7 +216,6 @@
       white-space: nowrap;
     }
 
-    /* Info del jugador */
     .info-jugador {
       color: #c9a3dc;
       font-size: clamp(0.65rem, 1.8vw, 0.8rem);
@@ -799,8 +812,9 @@
       <label for="nombreInput">📛 Tu nombre</label>
       <input type="text" id="nombreInput" placeholder="Ej: Luna" maxlength="20" autocomplete="given-name">
       
-      <label for="fechaInput">📅 Tu fecha de nacimiento</label>
-      <input type="date" id="fechaInput" max="2010-12-31">
+      <label for="fechaInput">📅 Tu fecha de nacimiento <span class="opcional">(opcional)</span></label>
+      <input type="text" id="fechaInput" placeholder="Ej: 15/03/1995" maxlength="10" autocomplete="bday">
+      <div class="input-hint">Escribe tu fecha en formato DD/MM/AAAA</div>
       
       <button class="btn-iniciar" id="btnIniciar">✦ Comenzar Lectura ✦</button>
       <div style="margin-top:0.8rem;color:#6a4a7a;font-size:0.6rem;letter-spacing:1px;">5 cartas revelarán tu destino gatuno</div>
@@ -901,7 +915,7 @@
         crema: { ear: '#d9b98a', earIn: '#ffe6c2', mask: null, head: '#f0d9b5', body: '#f0d9b5', belly: '#fbeed7', leg: '#f0d9b5', tail: '#d9b98a', tailTip: '#fbeed7', nose: '#c98a6b', eye: '#d99a3d', accent: '#e0b878' },
       };
 
-      // ===== PIEZAS DE DIBUJO (MISMO CÓDIGO QUE ANTES) =====
+      // ===== PIEZAS DE DIBUJO =====
       function orejas(pal) {
         return `
           <path d="M80 85 L65 40 L105 70 Z" fill="${pal.ear}" stroke="#1a1a1a33" stroke-width="1.5"/>
@@ -1069,7 +1083,7 @@
         return grupo;
       }
 
-      // ===== POSES =====
+      // ===== POSES (versión simplificada, todas las funciones están) =====
       function poseSentado(pal) {
         return {
           cuerpo: cuerpo(pal),
@@ -1323,7 +1337,7 @@
           extra: `<circle cx="140" cy="155" r="15" fill="#4a90d9" stroke="#333" stroke-width="1.5"/><path d="M130 145 Q140 155 150 145" stroke="#2dcc70" stroke-width="2" fill="none"/><path d="M130 165 Q140 155 150 165" stroke="#2dcc70" stroke-width="2" fill="none"/><line x1="140" y1="140" x2="140" y2="170" stroke="#333" stroke-width="1"/><line x1="125" y1="155" x2="155" y2="155" stroke="#333" stroke-width="1"/>` },
       ];
 
-      // ===== SISTEMA DE ALEATORIEDAD MEJORADO =====
+      // ===== SISTEMA DE ALEATORIEDAD =====
       let historialCartas = [];
       const MAX_HISTORIAL = 4;
 
@@ -1387,7 +1401,43 @@
       const lecturaResumen = document.getElementById('lecturaResumen');
       const btnReiniciar = document.getElementById('btnReiniciar');
 
-      // Función para pintar carta
+      // Función para validar y convertir fecha
+      function parsearFecha(fechaStr) {
+        // Intenta parsear DD/MM/AAAA
+        const partes = fechaStr.split('/');
+        if (partes.length === 3) {
+          const dia = parseInt(partes[0]);
+          const mes = parseInt(partes[1]) - 1;
+          const anio = parseInt(partes[2]);
+          if (!isNaN(dia) && !isNaN(mes) && !isNaN(anio) && dia >= 1 && dia <= 31 && mes >= 0 && mes <= 11 && anio >= 1900 && anio <= 2020) {
+            return new Date(anio, mes, dia);
+          }
+        }
+        // Intenta parsear AAAA-MM-DD
+        const partes2 = fechaStr.split('-');
+        if (partes2.length === 3) {
+          const anio = parseInt(partes2[0]);
+          const mes = parseInt(partes2[1]) - 1;
+          const dia = parseInt(partes2[2]);
+          if (!isNaN(dia) && !isNaN(mes) && !isNaN(anio) && dia >= 1 && dia <= 31 && mes >= 0 && mes <= 11 && anio >= 1900 && anio <= 2020) {
+            return new Date(anio, mes, dia);
+          }
+        }
+        return null;
+      }
+
+      function calcularEdad(fechaStr) {
+        if (!fechaStr) return null;
+        const fecha = parsearFecha(fechaStr);
+        if (!fecha) return null;
+        const hoy = new Date();
+        let edad = hoy.getFullYear() - fecha.getFullYear();
+        const m = hoy.getMonth() - fecha.getMonth();
+        if (m < 0 || (m === 0 && hoy.getDate() < fecha.getDate())) edad--;
+        return edad;
+      }
+
+      // Pintar carta
       function pintarCarta(carta) {
         nombreEl.textContent = carta.nombre;
         numeroEl.textContent = carta.romano;
@@ -1399,7 +1449,6 @@
         cartaTarot.style.setProperty('--accent', P[carta.coat].accent);
       }
 
-      // Lanzar chispas
       function lanzarChispas() {
         chispasCont.innerHTML = '';
         const n = 14;
@@ -1414,13 +1463,11 @@
         setTimeout(() => { chispasCont.innerHTML = ''; }, 1400);
       }
 
-      // Actualizar progreso e historial
       function actualizarUI() {
         const progreso = (turnoActual / TOTAL_CARTAS) * 100;
         progresoFill.style.width = progreso + '%';
         progresoTexto.textContent = `${turnoActual} / ${TOTAL_CARTAS}`;
 
-        // Historial
         historialEl.innerHTML = '';
         for (let i = 0; i < TOTAL_CARTAS; i++) {
           const div = document.createElement('div');
@@ -1434,7 +1481,6 @@
           historialEl.appendChild(div);
         }
 
-        // Botón
         if (turnoActual >= TOTAL_CARTAS) {
           btn.disabled = true;
           btn.textContent = '✦ Lectura Completa ✦';
@@ -1445,9 +1491,7 @@
         }
       }
 
-      // Mostrar lectura final
       function mostrarLecturaFinal() {
-        // Generar resumen de cartas
         lecturaResumen.innerHTML = '';
         cartasTiradas.forEach(c => {
           const div = document.createElement('div');
@@ -1456,31 +1500,18 @@
           lecturaResumen.appendChild(div);
         });
 
-        // Generar mensaje personalizado
         const nombres = cartasTiradas.map(c => c.nombre);
         const mensaje = generarLectura(nombres, nombreJugador);
         lecturaTexto.innerHTML = mensaje;
 
         const edad = calcularEdad(fechaJugador);
         let saludo = `para <span class="highlight">${nombreJugador}</span>`;
-        if (edad) saludo += ` ✦ ${edad} años`;
+        if (edad !== null && !isNaN(edad)) saludo += ` ✦ ${edad} años`;
         lecturaSaludo.innerHTML = saludo;
 
         lecturaFinal.classList.add('visible');
       }
 
-      // Calcular edad
-      function calcularEdad(fecha) {
-        if (!fecha) return null;
-        const hoy = new Date();
-        const nac = new Date(fecha);
-        let edad = hoy.getFullYear() - nac.getFullYear();
-        const m = hoy.getMonth() - nac.getMonth();
-        if (m < 0 || (m === 0 && hoy.getDate() < nac.getDate())) edad--;
-        return edad;
-      }
-
-      // Generar lectura personalizada
       function generarLectura(nombres, nombre) {
         const mensajes = [
           `Querido(a) <span class="highlight">${nombre}</span>, las cartas han hablado. Tu camino comienza con <span class="highlight">${nombres[0]}</span>, una invitación a la aventura. <span class="highlight">${nombres[1]}</span> te recuerda que tienes el poder de crear tu realidad. Con <span class="highlight">${nombres[2]}</span>, la intuición se vuelve tu guía. <span class="highlight">${nombres[3]}</span> trae un mensaje de transformación profunda. Y finalmente, <span class="highlight">${nombres[4]}</span> corona tu viaje con la certeza de que todo está en su lugar. Confía en el proceso, <span class="highlight">${nombre}</span>. El universo conspira a tu favor. 🌙`,
@@ -1495,7 +1526,6 @@
         return mensajes[Math.floor(Math.random() * mensajes.length)];
       }
 
-      // Tirar una carta
       function tirarCarta() {
         if (turnoActual >= TOTAL_CARTAS || !juegoActivo) return;
 
@@ -1504,7 +1534,6 @@
         cartasTiradas.push(carta);
         turnoActual++;
 
-        // Animación
         flipContainer.classList.add('girando');
         cartaTarot.classList.remove('brillo-burst');
         void cartaTarot.offsetWidth;
@@ -1519,14 +1548,12 @@
         setTimeout(() => { flipContainer.classList.remove('girando'); }, 950);
         setTimeout(() => { cartaTarot.classList.remove('brillo-burst'); }, 1300);
 
-        // Actualizar UI después de la animación
         setTimeout(() => { actualizarUI(); }, 1400);
       }
 
-      // Iniciar juego
       function iniciarJuego() {
         const nombre = nombreInput.value.trim() || 'viajero';
-        const fecha = fechaInput.value || '';
+        const fecha = fechaInput.value.trim() || '';
 
         nombreJugador = nombre;
         fechaJugador = fecha;
@@ -1539,14 +1566,12 @@
         menuInicio.classList.add('oculto');
         lecturaFinal.classList.remove('visible');
 
-        // Carta inicial aleatoria
         const cartaInicial = cartas[Math.floor(Math.random() * cartas.length)];
         pintarCarta(cartaInicial);
         actualizarUI();
         btn.disabled = false;
       }
 
-      // Reiniciar
       function reiniciarJuego() {
         lecturaFinal.classList.remove('visible');
         menuInicio.classList.remove('oculto');
@@ -1564,7 +1589,6 @@
           div.innerHTML = `<span class="num">?</span>`;
           historialEl.appendChild(div);
         }
-        // Resetear nombre y fecha
         nombreInput.value = '';
         fechaInput.value = '';
       }
@@ -1588,7 +1612,6 @@
 
       btnReiniciar.addEventListener('click', reiniciarJuego);
 
-      // Enter en inputs del menú
       nombreInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') btnIniciar.click();
       });
@@ -1596,7 +1619,7 @@
         if (e.key === 'Enter') btnIniciar.click();
       });
 
-      // Inicializar el historial visual
+      // Inicializar
       window.addEventListener('load', () => {
         for (let i = 0; i < TOTAL_CARTAS; i++) {
           const div = document.createElement('div');
