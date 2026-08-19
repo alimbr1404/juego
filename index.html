@@ -798,6 +798,53 @@
       font-weight: 600;
     }
 
+    .datos-misticos {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0.2rem 0 0.7rem;
+    }
+    .dato-mistico {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(232, 200, 116, 0.06);
+      border: 1px solid rgba(232, 200, 116, 0.3);
+      border-radius: 14px;
+      padding: 0.5rem 1rem;
+      min-width: 92px;
+    }
+    .dato-mistico .simbolo {
+      font-size: 1.3rem;
+      line-height: 1.2;
+    }
+    .dato-mistico .valor {
+      font-size: 0.8rem;
+      color: var(--gold-light);
+      font-weight: 600;
+      margin-top: 0.15rem;
+      letter-spacing: 0.5px;
+    }
+    .dato-mistico .etiqueta {
+      font-size: 0.48rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #c9a3dc;
+      margin-top: 0.15rem;
+      opacity: 0.85;
+    }
+
+    .mensaje-mistico {
+      color: #c9a3dc;
+      font-size: 0.72rem;
+      font-style: italic;
+      text-align: center;
+      line-height: 1.5;
+      margin: 0 0 0.7rem;
+      opacity: 0.9;
+    }
+
     .btn-reiniciar {
       background: linear-gradient(160deg, #7b46a0, #4a2260);
       border: 1px solid #c795e0;
@@ -909,6 +956,8 @@
     <div class="lectura-contenedor">
       <h2>🔮 Tu Lectura</h2>
       <div class="lectura-sub" id="lecturaSaludo">para ti, viajero</div>
+      <div class="datos-misticos" id="datosMisticos"></div>
+      <div class="mensaje-mistico" id="mensajeMistico"></div>
       <div class="lectura-cartas-resumen" id="lecturaResumen"></div>
       <div class="lectura-texto" id="lecturaTexto">Las cartas han hablado...</div>
       <button class="btn-reiniciar" id="btnReiniciar">♢ Nueva Lectura ♢</button>
@@ -1638,6 +1687,8 @@
       const lecturaTexto = document.getElementById('lecturaTexto');
       const lecturaResumen = document.getElementById('lecturaResumen');
       const btnReiniciar = document.getElementById('btnReiniciar');
+      const datosMisticos = document.getElementById('datosMisticos');
+      const mensajeMistico = document.getElementById('mensajeMistico');
 
       const cartaPortada = {
         num: '★',
@@ -1679,6 +1730,66 @@
         const m = hoy.getMonth() - fecha.getMonth();
         if (m < 0 || (m === 0 && hoy.getDate() < fecha.getDate())) edad--;
         return edad;
+      }
+
+      // ===== SIGNO ZODIACAL =====
+      const SIGNOS = [
+        { nombre: 'Capricornio', simbolo: '♑', rasgo: 'disciplina y ambición' },
+        { nombre: 'Acuario',     simbolo: '♒', rasgo: 'originalidad e independencia' },
+        { nombre: 'Piscis',      simbolo: '♓', rasgo: 'imaginación y empatía' },
+        { nombre: 'Aries',       simbolo: '♈', rasgo: 'valentía y espíritu pionero' },
+        { nombre: 'Tauro',       simbolo: '♉', rasgo: 'paciencia y determinación' },
+        { nombre: 'Géminis',     simbolo: '♊', rasgo: 'curiosidad y versatilidad' },
+        { nombre: 'Cáncer',      simbolo: '♋', rasgo: 'intuición y sensibilidad' },
+        { nombre: 'Leo',         simbolo: '♌', rasgo: 'brillo y generosidad' },
+        { nombre: 'Virgo',       simbolo: '♍', rasgo: 'precisión y sabiduría' },
+        { nombre: 'Libra',       simbolo: '♎', rasgo: 'equilibrio y armonía' },
+        { nombre: 'Escorpio',    simbolo: '♏', rasgo: 'pasión y misterio' },
+        { nombre: 'Sagitario',   simbolo: '♐', rasgo: 'aventura y optimismo' }
+      ];
+
+      function obtenerSignoZodiacal(fechaStr) {
+        const fecha = parsearFecha(fechaStr);
+        if (!fecha) return null;
+        const dia = fecha.getDate();
+        const mes = fecha.getMonth() + 1;
+        if ((mes === 12 && dia >= 22) || (mes === 1 && dia <= 19)) return SIGNOS[0];
+        if ((mes === 1 && dia >= 20) || (mes === 2 && dia <= 18)) return SIGNOS[1];
+        if ((mes === 2 && dia >= 19) || (mes === 3 && dia <= 20)) return SIGNOS[2];
+        if ((mes === 3 && dia >= 21) || (mes === 4 && dia <= 19)) return SIGNOS[3];
+        if ((mes === 4 && dia >= 20) || (mes === 5 && dia <= 20)) return SIGNOS[4];
+        if ((mes === 5 && dia >= 21) || (mes === 6 && dia <= 20)) return SIGNOS[5];
+        if ((mes === 6 && dia >= 21) || (mes === 7 && dia <= 22)) return SIGNOS[6];
+        if ((mes === 7 && dia >= 23) || (mes === 8 && dia <= 22)) return SIGNOS[7];
+        if ((mes === 8 && dia >= 23) || (mes === 9 && dia <= 22)) return SIGNOS[8];
+        if ((mes === 9 && dia >= 23) || (mes === 10 && dia <= 22)) return SIGNOS[9];
+        if ((mes === 10 && dia >= 23) || (mes === 11 && dia <= 21)) return SIGNOS[10];
+        if ((mes === 11 && dia >= 22) || (mes === 12 && dia <= 21)) return SIGNOS[11];
+        return null;
+      }
+
+      // ===== NÚMERO DE LA SUERTE =====
+      function generarNumeroSuerte() {
+        return Math.floor(Math.random() * 99) + 1;
+      }
+
+      function pintarDatosMisticos() {
+        const signo = obtenerSignoZodiacal(fechaJugador);
+        const numeroSuerte = generarNumeroSuerte();
+
+        let html = '';
+        if (signo) {
+          html += `<div class="dato-mistico"><span class="simbolo">${signo.simbolo}</span><span class="valor">${signo.nombre}</span><span class="etiqueta">Tu signo</span></div>`;
+        }
+        html += `<div class="dato-mistico"><span class="simbolo">🍀</span><span class="valor">${numeroSuerte}</span><span class="etiqueta">Número de la suerte</span></div>`;
+        datosMisticos.innerHTML = html;
+
+        let mensaje = '';
+        if (signo) {
+          mensaje += `Los astros susurran que tu ${signo.simbolo} ${signo.nombre} te regala ${signo.rasgo}. `;
+        }
+        mensaje += `Hoy, el número ${numeroSuerte} camina contigo ✦`;
+        mensajeMistico.textContent = mensaje;
       }
 
       function pintarCarta(carta, esPortada = false) {
@@ -1828,6 +1939,8 @@
         if (edad !== null && !isNaN(edad)) saludo += ` ✦ ${edad} años`;
         lecturaSaludo.innerHTML = saludo;
 
+        pintarDatosMisticos();
+
         lecturaFinal.classList.add('visible');
       }
 
@@ -1909,6 +2022,8 @@
         }
         nombreInput.value = '';
         fechaInput.value = '';
+        datosMisticos.innerHTML = '';
+        mensajeMistico.textContent = '';
         pintarCarta(cartaPortada, true);
         barajarMazo();
       }
