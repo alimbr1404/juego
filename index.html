@@ -114,6 +114,13 @@
       margin-bottom: 0.2rem;
       margin-top: 0.8rem;
     }
+    .menu-contenedor label .obligatorio {
+      color: #ff6b6b;
+      font-size: 0.5rem;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 300;
+    }
     .menu-contenedor label .opcional {
       color: #6a4a7a;
       font-size: 0.5rem;
@@ -147,6 +154,17 @@
       text-align: left;
       margin-top: 0.1rem;
       letter-spacing: 0.5px;
+    }
+    .menu-contenedor .input-error {
+      color: #ff6b6b;
+      font-size: 0.5rem;
+      text-align: left;
+      margin-top: 0.1rem;
+      display: none;
+      letter-spacing: 0.5px;
+    }
+    .menu-contenedor .input-error.visible {
+      display: block;
     }
 
     .menu-contenedor .btn-iniciar {
@@ -881,7 +899,7 @@
       100% { opacity: 1; text-shadow: 0 0 8px #c38ce0; }
     }
 
-    /* ===== RESPONSIVE FINAL ===== */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 480px) {
       body { padding: 0.3rem 0.2rem; }
       .escenario { --card-w: 65vw; max-width: 220px; }
@@ -939,12 +957,14 @@
       <h2>🐱 Cleo Vidente</h2>
       <div class="sub">✦ Tarot Gatuno ✦</div>
       
-      <label for="nombreInput">📛 Tu nombre</label>
+      <label for="nombreInput">📛 Tu nombre <span class="obligatorio">(obligatorio)</span></label>
       <input type="text" id="nombreInput" placeholder="Ej: Luna" maxlength="20" autocomplete="given-name">
+      <div class="input-error" id="nombreError">Por favor, ingresa tu nombre</div>
       
-      <label for="fechaInput">📅 Tu fecha de nacimiento <span class="opcional">(opcional)</span></label>
+      <label for="fechaInput">📅 Tu fecha de nacimiento <span class="obligatorio">(obligatorio)</span></label>
       <input type="text" id="fechaInput" placeholder="Ej: 15/03/1995" maxlength="10" autocomplete="bday">
       <div class="input-hint">Escribe tu fecha en formato DD/MM/AAAA</div>
+      <div class="input-error" id="fechaError">Por favor, ingresa una fecha válida (DD/MM/AAAA)</div>
       
       <button class="btn-iniciar" id="btnIniciar">✦ Comenzar Lectura ✦</button>
       <div style="margin-top:0.5rem;color:#6a4a7a;font-size:0.5rem;letter-spacing:1px;">5 cartas revelarán tu destino gatuno</div>
@@ -1327,42 +1347,43 @@
           extra: `<circle cx="140" cy="155" r="14" fill="#4a90d9" stroke="#333" stroke-width="1.5"/><path d="M130 145 Q140 155 150 145" stroke="#2dcc70" stroke-width="2" fill="none"/><path d="M130 165 Q140 155 150 165" stroke="#2dcc70" stroke-width="2" fill="none"/><line x1="140" y1="141" x2="140" y2="169" stroke="#333" stroke-width="1"/><line x1="126" y1="155" x2="154" y2="155" stroke="#333" stroke-width="1"/>` },
       ];
 
-      // ===== BARAJADO MEJORADO: sin repetición en la misma tirada =====
-      let mazoActual = [];
-      let cartasUsadasEnTirada = [];
+      // ===== BARAJADO DEFINITIVO =====
+      let mazoBarajado = [];
+      let cartasUsadasEnTirada = new Set();
 
       function barajarMazo() {
-        // Copia profunda y barajado Fisher-Yates
-        mazoActual = [...cartas];
-        for (let i = mazoActual.length - 1; i > 0; i--) {
+        // Copia y baraja con Fisher-Yates
+        mazoBarajado = [...cartas];
+        for (let i = mazoBarajado.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
-          [mazoActual[i], mazoActual[j]] = [mazoActual[j], mazoActual[i]];
+          [mazoBarajado[i], mazoBarajado[j]] = [mazoBarajado[j], mazoBarajado[i]];
         }
-        // Reiniciamos el control de cartas usadas en esta tirada
-        cartasUsadasEnTirada = [];
+        // Reiniciamos el registro de cartas usadas en esta tirada
+        cartasUsadasEnTirada = new Set();
       }
 
       function obtenerCartaDelMazo() {
-        // Si el mazo está vacío o ya usamos todas, barajamos de nuevo
-        if (mazoActual.length === 0 || cartasUsadasEnTirada.length >= mazoActual.length) {
+        // Si ya usamos 22 cartas, reiniciamos
+        if (cartasUsadasEnTirada.size >= cartas.length) {
           barajarMazo();
         }
 
-        // Filtramos las cartas no usadas
-        const disponibles = mazoActual.filter(c => !cartasUsadasEnTirada.includes(c));
-        
-        if (disponibles.length === 0) {
-          // Esto no debería pasar, pero por seguridad reiniciamos
-          barajarMazo();
-          const nueva = mazoActual[0];
-          cartasUsadasEnTirada.push(nueva);
-          return nueva;
+        // Buscar una carta no usada
+        let cartaElegida = null;
+        for (const carta of mazoBarajado) {
+          if (!cartasUsadasEnTirada.has(carta)) {
+            cartaElegida = carta;
+            break;
+          }
         }
 
-        // Elegimos una carta aleatoria de las disponibles
-        const idx = Math.floor(Math.random() * disponibles.length);
-        const cartaElegida = disponibles[idx];
-        cartasUsadasEnTirada.push(cartaElegida);
+        // Si no encontramos (por seguridad), reiniciamos
+        if (!cartaElegida) {
+          barajarMazo();
+          cartaElegida = mazoBarajado[0];
+        }
+
+        cartasUsadasEnTirada.add(cartaElegida);
         return cartaElegida;
       }
 
@@ -1409,6 +1430,8 @@
       const menuInicio = document.getElementById('menuInicio');
       const nombreInput = document.getElementById('nombreInput');
       const fechaInput = document.getElementById('fechaInput');
+      const nombreError = document.getElementById('nombreError');
+      const fechaError = document.getElementById('fechaError');
       const lecturaFinal = document.getElementById('lecturaFinal');
       const lecturaSaludo = document.getElementById('lecturaSaludo');
       const lecturaTexto = document.getElementById('lecturaTexto');
@@ -1424,6 +1447,18 @@
         kws: ['★ Misterio', '✦ Magia', '☆ Destino'],
         significado: 'El tarot gatuno te espera. Prepárate para descubrir tu destino.'
       };
+
+      function validarFecha(fechaStr) {
+        if (!fechaStr) return false;
+        const partes = fechaStr.split('/');
+        if (partes.length !== 3) return false;
+        const dia = parseInt(partes[0]);
+        const mes = parseInt(partes[1]);
+        const anio = parseInt(partes[2]);
+        if (isNaN(dia) || isNaN(mes) || isNaN(anio)) return false;
+        if (dia < 1 || dia > 31 || mes < 1 || mes > 12 || anio < 1900 || anio > 2020) return false;
+        return true;
+      }
 
       function parsearFecha(fechaStr) {
         if (!fechaStr) return null;
@@ -1634,10 +1669,31 @@
         setTimeout(() => { actualizarUI(); }, 800);
       }
 
-      function iniciarJuego() {
-        const nombre = nombreInput.value.trim() || 'viajero';
-        const fecha = fechaInput.value.trim() || '';
+      function validarYIniciar() {
+        const nombre = nombreInput.value.trim();
+        const fecha = fechaInput.value.trim();
 
+        let valido = true;
+
+        // Validar nombre
+        if (!nombre) {
+          nombreError.classList.add('visible');
+          valido = false;
+        } else {
+          nombreError.classList.remove('visible');
+        }
+
+        // Validar fecha
+        if (!validarFecha(fecha)) {
+          fechaError.classList.add('visible');
+          valido = false;
+        } else {
+          fechaError.classList.remove('visible');
+        }
+
+        if (!valido) return;
+
+        // Todo válido, iniciar
         nombreJugador = nombre;
         fechaJugador = fecha;
         cartasTiradas = [];
@@ -1646,7 +1702,7 @@
         portadaVisible = true;
         prediccionesUsadas = [];
 
-        // REINICIAMOS EL MAZO Y EL CONTROL DE CARTAS USADAS
+        // Barajar el mazo al iniciar la partida
         barajarMazo();
 
         infoJugador.innerHTML = `Bienvenido, <span>${nombreJugador}</span> ✦`;
@@ -1680,17 +1736,21 @@
         }
         nombreInput.value = '';
         fechaInput.value = '';
+        nombreError.classList.remove('visible');
+        fechaError.classList.remove('visible');
         datosMisticos.innerHTML = '';
         mensajeMistico.textContent = '';
         pintarCarta(cartaPortada, true);
-        // Barajamos al reiniciar también
-        barajarMazo();
       }
 
       // ===== EVENTOS =====
       btn.addEventListener('click', tirarCarta);
-      btnIniciar.addEventListener('click', iniciarJuego);
+      btnIniciar.addEventListener('click', validarYIniciar);
       btnReiniciar.addEventListener('click', reiniciarJuego);
+
+      // Limpiar errores al escribir
+      nombreInput.addEventListener('input', () => nombreError.classList.remove('visible'));
+      fechaInput.addEventListener('input', () => fechaError.classList.remove('visible'));
 
       window.addEventListener('load', () => {
         for (let i = 0; i < TOTAL_CARTAS; i++) {
