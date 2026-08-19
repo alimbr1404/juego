@@ -10,11 +10,10 @@
       --gold: #e8c874;
       --gold-light: #f7e6b4;
       --gold-dark: #a67c2e;
-      --ink: #241533;
       --accent: #b77bdb;
-      --card-w: min(300px, 78vw);
+      --card-w: min(280px, 72vw);
       --card-h: calc(var(--card-w) * 1.7);
-      --btn-fs: clamp(0.85rem, 3.2vw, 1.2rem);
+      --btn-fs: clamp(0.9rem, 3vw, 1.2rem);
     }
 
     * {
@@ -198,7 +197,7 @@
       display: inline-block;
       margin-top: 0.1rem;
       color: #d8bce8;
-      font-size: clamp(0.4rem, 1.2vw, 0.6rem);
+      font-size: clamp(0.45rem, 1.4vw, 0.65rem);
       letter-spacing: 3px;
       text-transform: uppercase;
       padding: 0.15rem 0.8rem;
@@ -211,7 +210,7 @@
 
     .info-jugador {
       color: #c9a3dc;
-      font-size: clamp(0.55rem, 1.4vw, 0.7rem);
+      font-size: clamp(0.6rem, 1.4vw, 0.75rem);
       letter-spacing: 1px;
       margin-top: 0.15rem;
       opacity: 0.9;
@@ -247,7 +246,7 @@
     }
     .progreso-texto {
       color: #c9a3dc;
-      font-size: clamp(0.5rem, 1vw, 0.6rem);
+      font-size: clamp(0.55rem, 1vw, 0.65rem);
       letter-spacing: 1px;
       white-space: nowrap;
       min-width: 45px;
@@ -456,14 +455,14 @@
       z-index: 7;
       font-family: 'Georgia', serif;
       color: var(--gold-light);
-      font-size: clamp(0.45rem, 1.2vw, 0.65rem);
+      font-size: clamp(0.5rem, 1.2vw, 0.7rem);
       letter-spacing: 1px;
       text-align: center;
       line-height: 1.1;
       text-shadow: 0 0 3px rgba(232, 200, 116, .3);
     }
     .indice .glifo {
-      font-size: clamp(0.5rem, 1.4vw, 0.75rem);
+      font-size: clamp(0.55rem, 1.4vw, 0.75rem);
       display: block;
     }
     .indice.tl {
@@ -478,7 +477,7 @@
 
     .banner-nombre {
       margin-top: 0.05rem;
-      font-size: clamp(0.7rem, 3.2vw, 1.1rem);
+      font-size: clamp(0.75rem, 3.2vw, 1.1rem);
       letter-spacing: 1.5px;
       font-weight: 600;
       text-align: center;
@@ -492,7 +491,7 @@
     }
 
     .romanos {
-      font-size: clamp(0.4rem, 1vw, 0.55rem);
+      font-size: clamp(0.45rem, 1vw, 0.6rem);
       letter-spacing: 2px;
       color: #c9a3dc;
       text-transform: uppercase;
@@ -642,7 +641,7 @@
       background: linear-gradient(180deg, #fff6da, #ffd700 45%, #e8c874 70%, #b8860b);
       -webkit-background-clip: text;
       background-clip: text;
-      font-size: clamp(0.85rem, 3.8vw, 1.25rem);
+      font-size: clamp(0.9rem, 3.8vw, 1.3rem);
       letter-spacing: 5px;
       text-shadow: 0 0 24px rgba(255, 215, 0, 0.3);
     }
@@ -667,7 +666,7 @@
     .portada .romanos {
       color: #dbb8ef;
       letter-spacing: 4px;
-      font-size: clamp(0.45rem, 1.3vw, 0.65rem);
+      font-size: clamp(0.5rem, 1.3vw, 0.7rem);
       text-shadow: 0 0 8px rgba(199, 149, 224, .35);
     }
     .portada .keywords span {
@@ -678,7 +677,7 @@
     }
     .portada .significado {
       color: #e8d3f5;
-      font-size: clamp(0.55rem, 1.6vw, 0.7rem);
+      font-size: clamp(0.6rem, 1.6vw, 0.75rem);
       letter-spacing: 1px;
     }
     .portada .indice {
@@ -870,7 +869,7 @@
       margin-top: 0.5rem;
       text-align: center;
       color: #8a6a9c;
-      font-size: clamp(0.4rem, 1vw, 0.55rem);
+      font-size: clamp(0.45rem, 1vw, 0.6rem);
       letter-spacing: 2px;
     }
     .pie span {
@@ -882,34 +881,34 @@
       100% { opacity: 1; text-shadow: 0 0 8px #c38ce0; }
     }
 
-    /* ===== RESPONSIVE MEJORADO ===== */
+    /* ===== RESPONSIVE FINAL ===== */
     @media (max-width: 480px) {
-      body { padding: 0.4rem 0.2rem; }
-      .escenario { --card-w: 68vw; max-width: 240px; }
+      body { padding: 0.3rem 0.2rem; }
+      .escenario { --card-w: 65vw; max-width: 220px; }
       .tarot-card::before { inset: 4px; border-radius: 6px; }
       .indice.tl { top: 3px; left: 4px; }
       .indice.br { bottom: 3px; right: 4px; }
-      .banner-nombre { font-size: clamp(0.65rem, 3vw, 0.85rem); }
-      .romanos { font-size: clamp(0.35rem, 0.9vw, 0.45rem); letter-spacing: 1px; }
-      .significado { font-size: clamp(0.4rem, 1.2vw, 0.55rem); min-height: 1.8em; }
-      .keywords span { font-size: clamp(0.3rem, 0.9vw, 0.4rem); padding: 0.06rem 0.25rem; }
-      .btn-tarot { padding: 0.4rem 0.7rem; font-size: clamp(0.65rem, 2.2vw, 0.8rem); }
+      .banner-nombre { font-size: clamp(0.7rem, 3vw, 0.9rem); }
+      .romanos { font-size: clamp(0.4rem, 0.9vw, 0.5rem); letter-spacing: 1px; }
+      .significado { font-size: clamp(0.45rem, 1.2vw, 0.6rem); min-height: 1.8em; }
+      .keywords span { font-size: clamp(0.35rem, 0.9vw, 0.45rem); padding: 0.06rem 0.25rem; }
+      .btn-tarot { padding: 0.45rem 0.7rem; font-size: clamp(0.7rem, 2.2vw, 0.85rem); }
       .menu-contenedor { padding: 1.2rem 0.8rem; }
       .lectura-contenedor { padding: 1rem 0.7rem; }
       .historial-item { width: 20px; height: 28px; }
       .historial-item .nom { display: none; }
       .lectura-carta-mini { width: 24px; height: 34px; }
       .lectura-carta-mini .nom { display: none; }
-      .portada .banner-nombre { font-size: clamp(0.75rem, 3.4vw, 0.95rem); letter-spacing: 3px; }
+      .portada .banner-nombre { font-size: clamp(0.8rem, 3.4vw, 1rem); letter-spacing: 3px; }
       .chispa { width: 3px; height: 3px; }
       .card-flip-container { transition: transform .5s cubic-bezier(.4, .1, .2, 1); }
       .lectura-texto { font-size: clamp(0.7rem, 1.6vw, 0.85rem); max-height: 300px; }
     }
 
     @media (max-width: 360px) {
-      .escenario { --card-w: 62vw; max-width: 200px; }
-      h1 { font-size: clamp(0.9rem, 3.8vw, 1.3rem); letter-spacing: 2px; }
-      .subtitulo { font-size: clamp(0.35rem, 1vw, 0.45rem); padding: 0.1rem 0.5rem; letter-spacing: 2px; }
+      .escenario { --card-w: 60vw; max-width: 180px; }
+      h1 { font-size: clamp(0.9rem, 3.8vw, 1.2rem); letter-spacing: 2px; }
+      .subtitulo { font-size: clamp(0.4rem, 1vw, 0.5rem); padding: 0.1rem 0.5rem; letter-spacing: 2px; }
     }
 
     @media (min-width: 1024px) {
@@ -927,18 +926,6 @@
       .tarot-card.brillo-burst { animation-duration: .4s; }
       .tarot-card.brillo-burst .sweep { animation-duration: .4s; }
       .chispa { animation-duration: .4s; }
-    }
-
-    /* Texto más legible en pantallas pequeñas */
-    @media (max-width: 480px) {
-      .menu-contenedor h2 { font-size: clamp(1.1rem, 4vw, 1.4rem); }
-      .menu-contenedor .sub { font-size: 0.6rem; }
-      .menu-contenedor label { font-size: 0.55rem; }
-      .menu-contenedor input { font-size: 0.8rem; padding: 0.4rem 0.7rem; }
-      .menu-contenedor .btn-iniciar { font-size: 0.8rem; padding: 0.5rem 1rem; }
-      .info-jugador { font-size: clamp(0.5rem, 1.2vw, 0.6rem); }
-      .progreso-container { max-width: 220px; }
-      .controles { max-width: 220px; }
     }
   </style>
 </head>
@@ -1031,18 +1018,12 @@
                   <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
                 </filter>
               </defs>
-
-              <!-- Resplandor de fondo -->
               <circle cx="140" cy="120" r="98" fill="url(#pGlowBg)"/>
               <circle cx="140" cy="120" r="80" fill="none" stroke="#e8c874" stroke-width="0.6" opacity="0.25"/>
               <circle cx="140" cy="120" r="70" fill="none" stroke="#c795e0" stroke-width="0.5" stroke-dasharray="1,4" opacity="0.25"/>
-
-              <!-- Luna creciente -->
               <g filter="url(#pSoft)">
                 <path d="M196 62 Q182 58 187 44 Q200 37 208 51 Q204 61 196 62 Z" fill="url(#pGold)" opacity="0.85"/>
               </g>
-
-              <!-- Estrellas -->
               <g fill="#ffd700">
                 <polygon points="72,70 74,76 80,76 75,80 77,86 72,82 67,86 69,80 64,76 70,76" opacity="0.55"/>
                 <polygon points="205,165 207,171 213,171 208,175 210,181 205,177 200,181 202,175 197,171 203,171" opacity="0.5"/>
@@ -1050,38 +1031,26 @@
                 <circle cx="222" cy="100" r="1.6" opacity="0.6"/>
                 <circle cx="140" cy="46" r="1.6" opacity="0.6"/>
               </g>
-
-              <!-- Orejas -->
               <g>
                 <polygon points="98,96 116,56 130,100" fill="url(#pGold)" opacity="0.95"/>
                 <polygon points="182,96 164,56 150,100" fill="url(#pGold)" opacity="0.95"/>
                 <polygon points="104,90 116,66 124,92" fill="#5c2f78" opacity="0.85"/>
                 <polygon points="176,90 164,66 156,92" fill="#5c2f78" opacity="0.85"/>
               </g>
-
-              <!-- Cabeza -->
               <path d="M97,102 C88,128 88,158 106,176 C118,188 162,188 174,176 C192,158 192,128 183,102 C171,90 109,90 97,102 Z"
                     fill="#2c1640" stroke="url(#pGold)" stroke-width="1.6" opacity="0.97"/>
-
-              <!-- Gema mística en la frente -->
               <g filter="url(#pSoft)">
                 <polygon points="140,96 146,104 140,112 134,104" fill="url(#pGold)"/>
               </g>
-
-              <!-- Ojos brillantes -->
               <g filter="url(#pSoft)">
                 <path d="M112,132 Q124,120 138,131 Q124,140 112,132 Z" fill="url(#pEye)"/>
                 <path d="M168,132 Q156,120 142,131 Q156,140 168,132 Z" fill="url(#pEye)"/>
                 <line x1="125" y1="124" x2="125" y2="138" stroke="#3a1e4d" stroke-width="1.4"/>
                 <line x1="155" y1="124" x2="155" y2="138" stroke="#3a1e4d" stroke-width="1.4"/>
               </g>
-
-              <!-- Nariz y boca -->
               <polygon points="140,146 145,152 135,152" fill="url(#pGold)"/>
               <path d="M140,152 Q133,159 124,155" fill="none" stroke="#e8c874" stroke-width="1" opacity="0.7"/>
               <path d="M140,152 Q147,159 156,155" fill="none" stroke="#e8c874" stroke-width="1" opacity="0.7"/>
-
-              <!-- Bigotes -->
               <g stroke="#e8c874" stroke-width="0.7" opacity="0.5" fill="none">
                 <path d="M96,142 Q75,138 60,140"/>
                 <path d="M96,150 Q74,150 58,155"/>
@@ -1090,8 +1059,6 @@
                 <path d="M184,150 Q206,150 222,155"/>
                 <path d="M184,158 Q204,163 218,170"/>
               </g>
-
-              <!-- Destellos -->
               <circle cx="140" cy="70" r="1.8" fill="#ffd700" opacity="0.5"/>
               <circle cx="90" cy="118" r="1.4" fill="#ffd700" opacity="0.4"/>
               <circle cx="190" cy="118" r="1.4" fill="#ffd700" opacity="0.4"/>
@@ -1144,149 +1111,7 @@
         crema: { ear: '#d9b98a', earIn: '#ffe6c2', mask: null, head: '#f0d9b5', body: '#f0d9b5', belly: '#fbeed7', leg: '#f0d9b5', tail: '#d9b98a', tailTip: '#fbeed7', nose: '#c98a6b', eye: '#d99a3d', accent: '#e0b878' },
       };
 
-      // ===== PIEZAS DE DIBUJO =====
-      function orejas(pal) {
-        return `
-          <path d="M80 85 L65 40 L105 70 Z" fill="${pal.ear}" stroke="#1a1a1a33" stroke-width="1.5"/>
-          <path d="M85 80 L72 48 L103 72 Z" fill="${pal.earIn}" opacity="0.5"/>
-          <path d="M200 85 L215 40 L175 70 Z" fill="${pal.ear}" stroke="#1a1a1a33" stroke-width="1.5"/>
-          <path d="M195 80 L208 48 L177 72 Z" fill="${pal.earIn}" opacity="0.5"/>
-        `;
-      }
-
-      function cabeza(pal) {
-        let mask = '';
-        if (pal.mask) {
-          mask = `
-            <ellipse cx="112" cy="115" rx="30" ry="26" fill="${pal.mask}"/>
-            <ellipse cx="168" cy="115" rx="30" ry="26" fill="${pal.mask}"/>
-          `;
-        }
-        let puntosSiames = '';
-        if (pal.points) {
-          puntosSiames = `
-            <ellipse cx="140" cy="132" rx="24" ry="18" fill="${pal.points}" opacity="0.8"/>
-          `;
-        }
-        return `
-          <ellipse cx="140" cy="120" rx="68" ry="58" fill="${pal.head}" stroke="#00000030" stroke-width="2"/>
-          ${mask}${puntosSiames}
-        `;
-      }
-
-      function ojos(pal, estado) {
-        const c1 = 112, c2 = 168, cy = 115;
-        const iris = pal.eye;
-        const iris2 = pal.eye2 || pal.eye;
-        if (estado === 'cerrado') {
-          return `
-            <path d="M100 115 Q112 107 124 115" stroke="#2d1f0a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-            <path d="M156 115 Q168 107 180 115" stroke="#2d1f0a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-          `;
-        }
-        if (estado === 'feliz') {
-          return `
-            <path d="M100 118 Q112 105 124 118" stroke="#2d1f0a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-            <path d="M156 118 Q168 105 180 118" stroke="#2d1f0a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-          `;
-        }
-        if (estado === 'enojado') {
-          return `
-            <ellipse cx="${c1}" cy="${cy}" rx="13" ry="14" fill="#ff3b3b"/>
-            <ellipse cx="${c1}" cy="${cy}" rx="5" ry="10" fill="#1a0000"/>
-            <ellipse cx="${c2}" cy="${cy}" rx="13" ry="14" fill="#ff3b3b"/>
-            <ellipse cx="${c2}" cy="${cy}" rx="5" ry="10" fill="#1a0000"/>
-            <path d="M97 98 L123 106" stroke="#2d1f0a" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M183 98 L157 106" stroke="#2d1f0a" stroke-width="2.5" stroke-linecap="round"/>
-          `;
-        }
-        return `
-          <ellipse cx="${c1}" cy="${cy}" rx="14" ry="16" fill="${iris}"/>
-          <ellipse cx="${c1}" cy="${cy}" rx="8" ry="10" fill="#1e1a12"/>
-          <ellipse cx="108" cy="109" rx="3.5" ry="4.5" fill="white" opacity="0.9"/>
-          <ellipse cx="114" cy="120" rx="1.5" ry="1.8" fill="white" opacity="0.6"/>
-          <ellipse cx="${c2}" cy="${cy}" rx="14" ry="16" fill="${iris2}"/>
-          <ellipse cx="${c2}" cy="${cy}" rx="8" ry="10" fill="#1e1a12"/>
-          <ellipse cx="164" cy="109" rx="3.5" ry="4.5" fill="white" opacity="0.9"/>
-          <ellipse cx="170" cy="120" rx="1.5" ry="1.8" fill="white" opacity="0.6"/>
-        `;
-      }
-
-      function rubor() {
-        return `
-          <ellipse cx="92" cy="132" rx="9" ry="5" fill="#ff9eb0" opacity="0.3"/>
-          <ellipse cx="188" cy="132" rx="9" ry="5" fill="#ff9eb0" opacity="0.3"/>
-        `;
-      }
-
-      function narizBoca(pal, estado) {
-        let boca = `<path d="M130 138 Q140 144 150 138" stroke="#6b4c3b" stroke-width="1.8" fill="none" stroke-linecap="round"/>`;
-        if (estado === 'feliz') boca = `<path d="M123 137 Q140 153 157 137" stroke="#6b4c3b" stroke-width="2" fill="none" stroke-linecap="round"/>`;
-        if (estado === 'pequena') boca = `<path d="M134 139 Q140 142 146 139" stroke="#6b4c3b" stroke-width="1.8" fill="none" stroke-linecap="round"/>`;
-        if (estado === 'seria') boca = `<line x1="132" y1="140" x2="148" y2="140" stroke="#6b4c3b" stroke-width="1.8" stroke-linecap="round"/>`;
-        return `
-          <ellipse cx="140" cy="130" rx="8" ry="5" fill="${pal.nose}"/>
-          <ellipse cx="140" cy="129" rx="6" ry="3.5" fill="${pal.nose}" opacity="0.6"/>
-          ${boca}
-        `;
-      }
-
-      function bigotes() {
-        return `
-          <line x1="102" y1="130" x2="72" y2="125" stroke="#5559" stroke-width="1.5" opacity="0.5"/>
-          <line x1="102" y1="135" x2="70" y2="138" stroke="#5559" stroke-width="1.5" opacity="0.5"/>
-          <line x1="178" y1="130" x2="208" y2="125" stroke="#5559" stroke-width="1.5" opacity="0.5"/>
-          <line x1="178" y1="135" x2="210" y2="138" stroke="#5559" stroke-width="1.5" opacity="0.5"/>
-          <line x1="107" y1="125" x2="77" y2="115" stroke="#5559" stroke-width="1.5" opacity="0.5"/>
-          <line x1="173" y1="125" x2="203" y2="115" stroke="#5559" stroke-width="1.5" opacity="0.5"/>
-        `;
-      }
-
-      function pecho(pal) {
-        if (pal.mask || pal.points || pal.patch1) {
-          return `<ellipse cx="140" cy="195" rx="23" ry="18" fill="${pal.belly}"/>`;
-        }
-        return `<ellipse cx="140" cy="197" rx="20" ry="15" fill="${pal.belly}" opacity="0.6"/>`;
-      }
-
-      function estampado(pal) {
-        let out = '';
-        if (pal.stripe) {
-          out += `
-            <path d="M118 78 Q122 92 118 104" stroke="${pal.stripe}" stroke-width="2.5" fill="none" opacity="0.5" stroke-linecap="round"/>
-            <path d="M162 78 Q158 92 162 104" stroke="${pal.stripe}" stroke-width="2.5" fill="none" opacity="0.5" stroke-linecap="round"/>
-            <path d="M105 165 Q140 172 175 165" stroke="${pal.stripe}" stroke-width="3.5" fill="none" opacity="0.35" stroke-linecap="round"/>
-            <path d="M110 185 Q140 191 170 185" stroke="${pal.stripe}" stroke-width="3.5" fill="none" opacity="0.3" stroke-linecap="round"/>
-          `;
-        }
-        if (pal.patch1) {
-          out += `
-            <path d="M95 90 Q75 75 90 55 Q112 62 108 90 Z" fill="${pal.patch1}" opacity="0.85"/>
-            <path d="M170 170 Q205 165 200 200 Q175 210 165 195 Z" fill="${pal.patch2}" opacity="0.85"/>
-            <ellipse cx="118" cy="215" rx="16" ry="12" fill="${pal.patch1}" opacity="0.8"/>
-          `;
-        }
-        return out;
-      }
-
-      function patasTraseras(pal, cx1, cx2, cy, rx = 18, ry = 10, rot1 = 0, rot2 = 0) {
-        return `
-          <ellipse cx="${cx1}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${pal.leg}" stroke="#00000025" stroke-width="1.5" transform="rotate(${rot1} ${cx1} ${cy})"/>
-          <ellipse cx="${cx2}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${pal.leg}" stroke="#00000025" stroke-width="1.5" transform="rotate(${rot2} ${cx2} ${cy})"/>
-        `;
-      }
-
-      function cuerpo(pal, cx = 140, cy = 200, rx = 72, ry = 55) {
-        return `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${pal.body}" stroke="#00000030" stroke-width="2"/>`;
-      }
-
-      function moño() {
-        return `
-          <path d="M115 180 L100 165 L130 170 L140 180 L150 170 L180 165 L165 180 Z" fill="#2d2d2d"/>
-          <ellipse cx="140" cy="180" rx="14" ry="9" fill="#3d3d3d"/>
-        `;
-      }
-
+      // ===== PIEZAS DE DIBUJO (resumidas para ahorrar espacio) =====
       function dibujarGato(coat, poseFn, extra, mirror) {
         const pal = P[coat];
         const p = poseFn(pal);
@@ -1294,43 +1119,53 @@
           ${p.cuerpo}
           ${p.patas}
           ${p.cola}
-          ${cabeza(pal)}
-          ${orejas(pal)}
-          ${ojos(pal, p.ojos || 'abierto')}
-          ${p.rubor ? rubor() : ''}
-          ${narizBoca(pal, p.boca || '')}
-          ${bigotes()}
-          ${p.pecho !== false ? pecho(pal) : ''}
-          ${p.accesorio || ''}
-          ${p.corbata ? moño() : ''}
-          ${estampado(pal)}
+          <ellipse cx="140" cy="120" rx="68" ry="58" fill="${pal.head}" stroke="#00000030" stroke-width="2"/>
+          ${pal.mask ? `<ellipse cx="112" cy="115" rx="30" ry="26" fill="${pal.mask}"/><ellipse cx="168" cy="115" rx="30" ry="26" fill="${pal.mask}"/>` : ''}
+          ${pal.points ? `<ellipse cx="140" cy="132" rx="24" ry="18" fill="${pal.points}" opacity="0.8"/>` : ''}
+          <path d="M80 85 L65 40 L105 70 Z" fill="${pal.ear}" stroke="#1a1a1a33" stroke-width="1.5"/>
+          <path d="M85 80 L72 48 L103 72 Z" fill="${pal.earIn}" opacity="0.5"/>
+          <path d="M200 85 L215 40 L175 70 Z" fill="${pal.ear}" stroke="#1a1a1a33" stroke-width="1.5"/>
+          <path d="M195 80 L208 48 L177 72 Z" fill="${pal.earIn}" opacity="0.5"/>
+          ${p.ojos === 'cerrado' ? `<path d="M100 115 Q112 107 124 115" stroke="#2d1f0a" stroke-width="2.2" fill="none"/><path d="M156 115 Q168 107 180 115" stroke="#2d1f0a" stroke-width="2.2" fill="none"/>` :
+            p.ojos === 'feliz' ? `<path d="M100 118 Q112 105 124 118" stroke="#2d1f0a" stroke-width="2.4" fill="none"/><path d="M156 118 Q168 105 180 118" stroke="#2d1f0a" stroke-width="2.4" fill="none"/>` :
+            p.ojos === 'enojado' ? `<ellipse cx="112" cy="115" rx="13" ry="14" fill="#ff3b3b"/><ellipse cx="112" cy="115" rx="5" ry="10" fill="#1a0000"/><ellipse cx="168" cy="115" rx="13" ry="14" fill="#ff3b3b"/><ellipse cx="168" cy="115" rx="5" ry="10" fill="#1a0000"/><path d="M97 98 L123 106" stroke="#2d1f0a" stroke-width="2.5"/><path d="M183 98 L157 106" stroke="#2d1f0a" stroke-width="2.5"/>` :
+            `<ellipse cx="112" cy="115" rx="14" ry="16" fill="${pal.eye}"/><ellipse cx="112" cy="115" rx="8" ry="10" fill="#1e1a12"/><ellipse cx="108" cy="109" rx="3.5" ry="4.5" fill="white" opacity="0.9"/><ellipse cx="168" cy="115" rx="14" ry="16" fill="${pal.eye2 || pal.eye}"/><ellipse cx="168" cy="115" rx="8" ry="10" fill="#1e1a12"/><ellipse cx="164" cy="109" rx="3.5" ry="4.5" fill="white" opacity="0.9"/>`}
+          ${p.rubor ? `<ellipse cx="92" cy="132" rx="9" ry="5" fill="#ff9eb0" opacity="0.3"/><ellipse cx="188" cy="132" rx="9" ry="5" fill="#ff9eb0" opacity="0.3"/>` : ''}
+          <ellipse cx="140" cy="130" rx="8" ry="5" fill="${pal.nose}"/>
+          <ellipse cx="140" cy="129" rx="6" ry="3.5" fill="${pal.nose}" opacity="0.6"/>
+          ${p.boca === 'feliz' ? `<path d="M123 137 Q140 153 157 137" stroke="#6b4c3b" stroke-width="2" fill="none"/>` :
+            p.boca === 'pequena' ? `<path d="M134 139 Q140 142 146 139" stroke="#6b4c3b" stroke-width="1.8" fill="none"/>` :
+            p.boca === 'seria' ? `<line x1="132" y1="140" x2="148" y2="140" stroke="#6b4c3b" stroke-width="1.8"/>` :
+            `<path d="M130 138 Q140 144 150 138" stroke="#6b4c3b" stroke-width="1.8" fill="none"/>`}
+          <line x1="102" y1="130" x2="72" y2="125" stroke="#5559" stroke-width="1.5" opacity="0.5"/>
+          <line x1="102" y1="135" x2="70" y2="138" stroke="#5559" stroke-width="1.5" opacity="0.5"/>
+          <line x1="178" y1="130" x2="208" y2="125" stroke="#5559" stroke-width="1.5" opacity="0.5"/>
+          <line x1="178" y1="135" x2="210" y2="138" stroke="#5559" stroke-width="1.5" opacity="0.5"/>
+          ${p.pecho !== false ? `<ellipse cx="140" cy="197" rx="20" ry="15" fill="${pal.belly}" opacity="0.6"/>` : ''}
+          ${p.corbata ? `<path d="M115 180 L100 165 L130 170 L140 180 L150 170 L180 165 L165 180 Z" fill="#2d2d2d"/><ellipse cx="140" cy="180" rx="14" ry="9" fill="#3d3d3d"/>` : ''}
+          ${pal.stripe ? `<path d="M118 78 Q122 92 118 104" stroke="${pal.stripe}" stroke-width="2.5" fill="none" opacity="0.5"/><path d="M162 78 Q158 92 162 104" stroke="${pal.stripe}" stroke-width="2.5" fill="none" opacity="0.5"/><path d="M105 165 Q140 172 175 165" stroke="${pal.stripe}" stroke-width="3.5" fill="none" opacity="0.35"/><path d="M110 185 Q140 191 170 185" stroke="${pal.stripe}" stroke-width="3.5" fill="none" opacity="0.3"/>` : ''}
+          ${pal.patch1 ? `<path d="M95 90 Q75 75 90 55 Q112 62 108 90 Z" fill="${pal.patch1}" opacity="0.85"/><path d="M170 170 Q205 165 200 200 Q175 210 165 195 Z" fill="${pal.patch2}" opacity="0.85"/><ellipse cx="118" cy="215" rx="16" ry="12" fill="${pal.patch1}" opacity="0.8"/>` : ''}
           ${extra || ''}
         `;
-        if (mirror) {
-          return `<g transform="translate(280,0) scale(-1,1)">${grupo}</g>`;
-        }
-        return grupo;
+        return mirror ? `<g transform="translate(280,0) scale(-1,1)">${grupo}</g>` : grupo;
       }
 
       // ===== POSES =====
       function poseSentado(pal) {
         return {
-          cuerpo: cuerpo(pal),
-          patas: patasTraseras(pal, 110, 170, 245) + `
-            <ellipse cx="125" cy="235" rx="10" ry="8" fill="${pal.leg}" stroke="#00000025" stroke-width="1.3"/>
-            <ellipse cx="155" cy="235" rx="10" ry="8" fill="${pal.leg}" stroke="#00000025" stroke-width="1.3"/>`,
+          cuerpo: `<ellipse cx="140" cy="200" rx="72" ry="55" fill="${pal.body}" stroke="#00000030" stroke-width="2"/>`,
+          patas: `<ellipse cx="110" cy="245" rx="18" ry="10" fill="${pal.leg}" stroke="#00000025" stroke-width="1.5"/><ellipse cx="170" cy="245" rx="18" ry="10" fill="${pal.leg}" stroke="#00000025" stroke-width="1.5"/><ellipse cx="125" cy="235" rx="10" ry="8" fill="${pal.leg}"/><ellipse cx="155" cy="235" rx="10" ry="8" fill="${pal.leg}"/>`,
           cola: `<path d="M205 210 Q235 195 225 155 Q220 140 205 145" stroke="${pal.tail}" stroke-width="14" fill="none" stroke-linecap="round"/>`,
           corbata: true,
-          rubor: true
+          rubor: true,
+          ojos: 'abierto'
         };
       }
 
       function poseRegio(pal) {
         return {
           cuerpo: `<ellipse cx="140" cy="205" rx="68" ry="65" fill="${pal.body}" stroke="#00000030" stroke-width="2"/>`,
-          patas: `
-            <ellipse cx="128" cy="248" rx="9" ry="14" fill="${pal.leg}" stroke="#00000025" stroke-width="1.3"/>
-            <ellipse cx="152" cy="248" rx="9" ry="14" fill="${pal.leg}" stroke="#00000025" stroke-width="1.3"/>`,
+          patas: `<ellipse cx="128" cy="248" rx="9" ry="14" fill="${pal.leg}"/><ellipse cx="152" cy="248" rx="9" ry="14" fill="${pal.leg}"/>`,
           cola: `<path d="M198 225 Q230 235 222 190 Q218 165 198 168" stroke="${pal.tail}" stroke-width="14" fill="none" stroke-linecap="round"/>`,
           boca: 'pequena',
           ojos: 'abierto'
@@ -1339,23 +1174,18 @@
 
       function poseMeditar(pal) {
         return {
-          cuerpo: cuerpo(pal),
-          patas: patasTraseras(pal, 112, 168, 244, 17, 10) + `
-            <ellipse cx="126" cy="234" rx="13" ry="8" fill="${pal.leg}" transform="rotate(-18 126 234)"/>
-            <ellipse cx="154" cy="234" rx="13" ry="8" fill="${pal.leg}" transform="rotate(18 154 234)"/>`,
+          cuerpo: `<ellipse cx="140" cy="200" rx="72" ry="55" fill="${pal.body}" stroke="#00000030" stroke-width="2"/>`,
+          patas: `<ellipse cx="112" cy="244" rx="17" ry="10" fill="${pal.leg}"/><ellipse cx="168" cy="244" rx="17" ry="10" fill="${pal.leg}"/><ellipse cx="126" cy="234" rx="13" ry="8" fill="${pal.leg}" transform="rotate(-18 126 234)"/><ellipse cx="154" cy="234" rx="13" ry="8" fill="${pal.leg}" transform="rotate(18 154 234)"/>`,
           cola: `<path d="M140 250 Q140 262 158 258 Q170 254 165 240" stroke="${pal.tail}" stroke-width="13" fill="none" stroke-linecap="round"/>`,
           ojos: 'cerrado',
-          boca: 'pequena',
-          corbata: false
+          boca: 'pequena'
         };
       }
 
       function poseRecostado(pal) {
         return {
           cuerpo: `<ellipse cx="150" cy="215" rx="90" ry="42" fill="${pal.body}" stroke="#00000030" stroke-width="2"/>`,
-          patas: `
-            <ellipse cx="205" cy="230" rx="20" ry="9" fill="${pal.leg}" transform="rotate(8 205 230)"/>
-            <ellipse cx="95" cy="235" rx="16" ry="8" fill="${pal.leg}" transform="rotate(-4 95 235)"/>`,
+          patas: `<ellipse cx="205" cy="230" rx="20" ry="9" fill="${pal.leg}" transform="rotate(8 205 230)"/><ellipse cx="95" cy="235" rx="16" ry="8" fill="${pal.leg}" transform="rotate(-4 95 235)"/>`,
           cola: `<path d="M235 220 Q265 200 250 165" stroke="${pal.tail}" stroke-width="13" fill="none" stroke-linecap="round"/>`,
           ojos: 'feliz',
           boca: 'pequena',
@@ -1367,11 +1197,7 @@
       function poseFeliz(pal) {
         return {
           cuerpo: `<ellipse cx="140" cy="215" rx="76" ry="48" fill="${pal.body}" stroke="#00000030" stroke-width="2"/>`,
-          patas: `
-            <ellipse cx="95" cy="185" rx="10" ry="18" fill="${pal.leg}" transform="rotate(-25 95 185)"/>
-            <ellipse cx="185" cy="185" rx="10" ry="18" fill="${pal.leg}" transform="rotate(25 185 185)"/>
-            <ellipse cx="115" cy="255" rx="11" ry="16" fill="${pal.leg}" transform="rotate(-15 115 255)"/>
-            <ellipse cx="165" cy="255" rx="11" ry="16" fill="${pal.leg}" transform="rotate(15 165 255)"/>`,
+          patas: `<ellipse cx="95" cy="185" rx="10" ry="18" fill="${pal.leg}" transform="rotate(-25 95 185)"/><ellipse cx="185" cy="185" rx="10" ry="18" fill="${pal.leg}" transform="rotate(25 185 185)"/><ellipse cx="115" cy="255" rx="11" ry="16" fill="${pal.leg}" transform="rotate(-15 115 255)"/><ellipse cx="165" cy="255" rx="11" ry="16" fill="${pal.leg}" transform="rotate(15 165 255)"/>`,
           cola: `<path d="M210 220 Q230 200 215 175" stroke="${pal.tail}" stroke-width="12" fill="none" stroke-linecap="round"/>`,
           ojos: 'feliz',
           boca: 'feliz',
@@ -1383,11 +1209,7 @@
       function poseColgado(pal) {
         return {
           cuerpo: `<ellipse cx="140" cy="150" rx="68" ry="58" fill="${pal.body}" stroke="#00000030" stroke-width="2" transform="rotate(180 140 150)"/>`,
-          patas: `
-            <ellipse cx="112" cy="90" rx="10" ry="20" fill="${pal.leg}" transform="rotate(12 112 90)"/>
-            <ellipse cx="168" cy="90" rx="10" ry="20" fill="${pal.leg}" transform="rotate(-12 168 90)"/>
-            <ellipse cx="118" cy="238" rx="10" ry="16" fill="${pal.leg}" transform="rotate(-8 118 238)"/>
-            <ellipse cx="162" cy="238" rx="10" ry="16" fill="${pal.leg}" transform="rotate(8 162 238)"/>`,
+          patas: `<ellipse cx="112" cy="90" rx="10" ry="20" fill="${pal.leg}" transform="rotate(12 112 90)"/><ellipse cx="168" cy="90" rx="10" ry="20" fill="${pal.leg}" transform="rotate(-12 168 90)"/><ellipse cx="118" cy="238" rx="10" ry="16" fill="${pal.leg}" transform="rotate(-8 118 238)"/><ellipse cx="162" cy="238" rx="10" ry="16" fill="${pal.leg}" transform="rotate(8 162 238)"/>`,
           cola: `<path d="M140 255 Q160 265 150 245" stroke="${pal.tail}" stroke-width="11" fill="none" stroke-linecap="round"/>`,
           ojos: 'feliz',
           boca: 'pequena',
@@ -1398,9 +1220,7 @@
       function poseSalto(pal) {
         return {
           cuerpo: `<ellipse cx="140" cy="195" rx="75" ry="48" fill="${pal.body}" stroke="#00000030" stroke-width="2" transform="rotate(-12 140 195)"/>`,
-          patas: `
-            <ellipse cx="90" cy="230" rx="11" ry="18" fill="${pal.leg}" transform="rotate(-35 90 230)"/>
-            <ellipse cx="195" cy="215" rx="11" ry="18" fill="${pal.leg}" transform="rotate(30 195 215)"/>`,
+          patas: `<ellipse cx="90" cy="230" rx="11" ry="18" fill="${pal.leg}" transform="rotate(-35 90 230)"/><ellipse cx="195" cy="215" rx="11" ry="18" fill="${pal.leg}" transform="rotate(30 195 215)"/>`,
           cola: `<path d="M205 220 Q245 225 240 190 Q236 168 215 172" stroke="${pal.tail}" stroke-width="13" fill="none" stroke-linecap="round"/>`,
           ojos: 'abierto',
           boca: 'feliz',
@@ -1411,9 +1231,7 @@
       function poseAgazapado(pal) {
         return {
           cuerpo: `<ellipse cx="140" cy="220" rx="84" ry="42" fill="${pal.body}" stroke="#00000030" stroke-width="2"/>`,
-          patas: `
-            <ellipse cx="90" cy="248" rx="13" ry="9" fill="${pal.leg}" transform="rotate(-10 90 248)"/>
-            <ellipse cx="190" cy="248" rx="13" ry="9" fill="${pal.leg}" transform="rotate(10 190 248)"/>`,
+          patas: `<ellipse cx="90" cy="248" rx="13" ry="9" fill="${pal.leg}" transform="rotate(-10 90 248)"/><ellipse cx="190" cy="248" rx="13" ry="9" fill="${pal.leg}" transform="rotate(10 190 248)"/>`,
           cola: `<path d="M215 230 Q245 210 230 175" stroke="${pal.tail}" stroke-width="13" fill="none" stroke-linecap="round"/>`,
           ojos: 'enojado',
           boca: 'seria',
@@ -1435,8 +1253,7 @@
       function poseErguido(pal) {
         return {
           cuerpo: `<ellipse cx="140" cy="205" rx="60" ry="62" fill="${pal.body}" stroke="#00000030" stroke-width="2"/>`,
-          patas: patasTraseras(pal, 118, 162, 252, 14, 9) + `
-            <ellipse cx="80" cy="200" rx="12" ry="18" fill="${pal.leg}" transform="rotate(-35 80 200)"/>`,
+          patas: `<ellipse cx="118" cy="252" rx="14" ry="9" fill="${pal.leg}"/><ellipse cx="162" cy="252" rx="14" ry="9" fill="${pal.leg}"/><ellipse cx="80" cy="200" rx="12" ry="18" fill="${pal.leg}" transform="rotate(-35 80 200)"/>`,
           cola: `<path d="M195 220 Q225 210 215 175" stroke="${pal.tail}" stroke-width="12" fill="none" stroke-linecap="round"/>`,
           ojos: 'abierto',
           boca: '',
@@ -1448,9 +1265,7 @@
       function poseAlerta(pal) {
         return {
           cuerpo: `<ellipse cx="140" cy="205" rx="76" ry="50" fill="${pal.body}" stroke="#00000030" stroke-width="2"/>`,
-          patas: `
-            <ellipse cx="102" cy="248" rx="10" ry="14" fill="${pal.leg}"/>
-            <ellipse cx="178" cy="248" rx="10" ry="14" fill="${pal.leg}"/>`,
+          patas: `<ellipse cx="102" cy="248" rx="10" ry="14" fill="${pal.leg}"/><ellipse cx="178" cy="248" rx="10" ry="14" fill="${pal.leg}"/>`,
           cola: `<path d="M212 218 Q248 210 240 170 Q236 150 216 156" stroke="${pal.tail}" stroke-width="12" fill="none" stroke-linecap="round"/>`,
           ojos: 'abierto',
           boca: 'seria',
@@ -1464,157 +1279,125 @@
           significado: 'Nuevos comienzos, espontaneidad y fe. Da el salto al vacío con confianza.',
           coat: 'naranja', pose: poseSalto,
           extra: `<rect x="115" y="188" width="18" height="22" rx="3" fill="#8b4513" stroke="#4a2a0a" stroke-width="1.5"/><line x1="120" y1="188" x2="120" y2="178" stroke="#4a2a0a" stroke-width="1.5"/><line x1="128" y1="188" x2="128" y2="178" stroke="#4a2a0a" stroke-width="1.5"/>` },
-
         { num: 'I', romano: 'Arcano I', nombre: 'El Mago', kws: ['Poder', 'Voluntad', 'Creación'],
           significado: 'Manifiesta tu poder interior, creatividad y voluntad. Tienes todas las herramientas.',
           coat: 'tuxedo', pose: poseErguido,
           extra: `<polygon points="185,75 190,90 205,90 193,100 197,115 185,105 173,115 177,100 165,90 180,90" fill="#ffd700" opacity="0.7"/>` },
-
         { num: 'II', romano: 'Arcano II', nombre: 'La Sacerdotisa', kws: ['Intuición', 'Misterio'],
           significado: 'Intuición, misterio y sabiduría oculta. Confía en tu voz interior y en tus sueños.',
           coat: 'plateado', pose: poseMeditar,
           extra: `<circle cx="66" cy="68" r="14" fill="#f5f0eb" stroke="#555" stroke-width="1.5"/><circle cx="59" cy="68" r="12" fill="#241533"/>` },
-
         { num: 'III', romano: 'Arcano III', nombre: 'La Emperatriz', kws: ['Abundancia', 'Belleza'],
           significado: 'Abundancia, fertilidad y conexión con la naturaleza. El amor y la belleza te rodean.',
           coat: 'calico', pose: poseRecostado,
           extra: `<circle cx="118" cy="86" r="6" fill="#ff6b9d" opacity="0.85"/><circle cx="140" cy="78" r="6" fill="#ff6b9d" opacity="0.85"/><circle cx="162" cy="86" r="6" fill="#ff6b9d" opacity="0.85"/><circle cx="105" cy="98" r="4.5" fill="#ffb3c6" opacity="0.65"/>` },
-
         { num: 'IV', romano: 'Arcano IV', nombre: 'El Emperador', kws: ['Autoridad', 'Estructura'],
           significado: 'Estructura, estabilidad y autoridad. Es momento de tomar el control con firmeza.',
           coat: 'naranja', pose: poseRegio,
           extra: `<path d="M100 80 L110 65 L125 75 L140 60 L155 75 L170 65 L180 80 Z" fill="#ffd700" stroke="#b8860b" stroke-width="2"/><rect x="105" y="80" width="70" height="7" fill="#ffd700" stroke="#b8860b" stroke-width="1"/>` },
-
         { num: 'V', romano: 'Arcano V', nombre: 'El Sumo Sacerdote', kws: ['Tradición', 'Guía'],
           significado: 'Tradición, guía espiritual y enseñanzas. Busca consejo en la sabiduría ancestral.',
           coat: 'cafeTabby', pose: poseSentado,
           extra: `<circle cx="120" cy="163" r="5.5" fill="#ffd700"/><circle cx="140" cy="158" r="5.5" fill="#ffd700"/><circle cx="160" cy="163" r="5.5" fill="#ffd700"/>` },
-
         { num: 'VI', romano: 'Arcano VI', nombre: 'Los Enamorados', kws: ['Unión', 'Elección'],
           significado: 'Decisiones importantes, uniones y dualidad. El amor te llama a elegir con el corazón.',
           coat: 'siames', pose: poseSentado,
           extra: `<path d="M130 96 Q135 86 140 96 Q145 86 150 96 Q145 106 140 111 Q135 106 130 96 Z" fill="#ff6b6b" opacity="0.85"/>` },
-
         { num: 'VII', romano: 'Arcano VII', nombre: 'El Carro', kws: ['Victoria', 'Determinación'],
           significado: 'Victoria, determinación y control. Avanza con confianza hacia tus metas.',
           coat: 'negro', pose: poseSalto, extra: '' },
-
         { num: 'VIII', romano: 'Arcano VIII', nombre: 'La Fuerza', kws: ['Coraje', 'Dominio'],
           significado: 'Coraje, paciencia y dominio de los impulsos. La verdadera fuerza viene del interior.',
           coat: 'naranja', pose: poseErguido, extra: '' },
-
         { num: 'IX', romano: 'Arcano IX', nombre: 'El Ermitaño', kws: ['Introspección', 'Soledad'],
           significado: 'Introspección, búsqueda de la verdad y soledad iluminadora. Una pausa para encontrar tu luz.',
           coat: 'plateado', pose: poseOvillo,
           extra: `<circle cx="140" cy="82" r="11" fill="#ffd700" opacity="0.6"/><circle cx="140" cy="82" r="5" fill="#fff" opacity="0.85"/>` },
-
         { num: 'X', romano: 'Arcano X', nombre: 'La Rueda de la Fortuna', kws: ['Cambio', 'Ciclos'],
           significado: 'Cambio, ciclos y destino. Lo que sube, baja; abre tu mente a las vueltas de la vida.',
           coat: 'calico', pose: poseSalto,
           extra: `<circle cx="140" cy="150" r="14" fill="none" stroke="#ffd700" stroke-width="2.5"/><circle cx="140" cy="150" r="4.5" fill="#ffd700"/><line x1="140" y1="136" x2="140" y2="164" stroke="#ffd700" stroke-width="2"/><line x1="126" y1="150" x2="154" y2="150" stroke="#ffd700" stroke-width="2"/>` },
-
         { num: 'XI', romano: 'Arcano XI', nombre: 'La Justicia', kws: ['Equilibrio', 'Verdad'],
           significado: 'Equilibrio, karma y verdad. Actúa con integridad y recibirás lo justo.',
           coat: 'blanco', pose: poseAlerta,
           extra: `<line x1="140" y1="80" x2="140" y2="100" stroke="#ffd700" stroke-width="2"/><line x1="120" y1="95" x2="160" y2="95" stroke="#ffd700" stroke-width="2"/><path d="M110 95 L120 95 L115 105 Z" fill="#ffd700"/><path d="M150 95 L160 95 L155 105 Z" fill="#ffd700"/>` },
-
         { num: 'XII', romano: 'Arcano XII', nombre: 'El Colgado', kws: ['Rendición', 'Perspectiva'],
           significado: 'Sacrificio, perspectiva y dejar ir. A veces la rendición es la clave para avanzar.',
           coat: 'tuxedo', pose: poseColgado, mirror: true, extra: '' },
-
         { num: 'XIII', romano: 'Arcano XIII', nombre: 'La Muerte', kws: ['Transformación', 'Renacer'],
           significado: 'Transformación, finales y nuevos comienzos. Deja atrás lo viejo para renacer.',
           coat: 'negro', pose: poseOvillo, extra: '' },
-
         { num: 'XIV', romano: 'Arcano XIV', nombre: 'La Templanza', kws: ['Armonía', 'Paciencia'],
           significado: 'Armonía, paciencia y equilibrio. Mezcla con sabiduría las fuerzas opuestas.',
           coat: 'azulRuso', pose: poseMeditar, extra: '' },
-
         { num: 'XV', romano: 'Arcano XV', nombre: 'El Diablo', kws: ['Apego', 'Liberación'],
           significado: 'Apegos, ilusiones y liberación. Reconoce tus cadenas para romperlas.',
           coat: 'negro', pose: poseAgazapado,
           extra: `<path d="M105 75 L115 55 L125 70" fill="#2d2d2d" stroke="#333" stroke-width="2"/><path d="M155 75 L165 55 L175 70" fill="#2d2d2d" stroke="#333" stroke-width="2"/>` },
-
         { num: 'XVI', romano: 'Arcano XVI', nombre: 'La Torre', kws: ['Ruptura', 'Revelación'],
           significado: 'Cambio abrupto, revelación y caída de estructuras. A veces el caos trae claridad.',
           coat: 'naranja', pose: poseSalto, mirror: true,
           extra: `<line x1="115" y1="65" x2="95" y2="45" stroke="#ffd700" stroke-width="2.5"/><line x1="165" y1="65" x2="185" y2="45" stroke="#ffd700" stroke-width="2.5"/><line x1="140" y1="55" x2="140" y2="35" stroke="#ffd700" stroke-width="2.5"/>` },
-
         { num: 'XVII', romano: 'Arcano XVII', nombre: 'La Estrella', kws: ['Esperanza', 'Sanación'],
           significado: 'Esperanza, inspiración y sanación. Una luz brillante guía tu camino.',
           coat: 'blanco', pose: poseFeliz,
           extra: `<polygon points="140,55 146,75 168,75 150,88 157,108 140,95 123,108 130,88 112,75 134,75" fill="#ffd700" opacity="0.8"/>` },
-
         { num: 'XVIII', romano: 'Arcano XVIII', nombre: 'La Luna', kws: ['Intuición', 'Sombras'],
           significado: 'Inconsciente, ilusiones y sueños. Navega entre sombras con intuición.',
           coat: 'cafeTabby', pose: poseAlerta,
           extra: `<circle cx="180" cy="65" r="16" fill="#f5f0eb" stroke="#555" stroke-width="1.5"/><circle cx="172" cy="65" r="14" fill="#241533"/>` },
-
         { num: 'XIX', romano: 'Arcano XIX', nombre: 'El Sol', kws: ['Alegría', 'Éxito'],
           significado: 'Éxito, alegría y claridad. La luz dorada ilumina tu día.',
           coat: 'naranja', pose: poseFeliz,
           extra: `<circle cx="140" cy="35" r="13" fill="#ffd700" opacity="0.9"/><line x1="140" y1="10" x2="140" y2="2" stroke="#ffd700" stroke-width="2.5"/><line x1="115" y1="18" x2="108" y2="10" stroke="#ffd700" stroke-width="2.5"/><line x1="165" y1="18" x2="172" y2="10" stroke="#ffd700" stroke-width="2.5"/>` },
-
         { num: 'XX', romano: 'Arcano XX', nombre: 'El Juicio', kws: ['Renacer', 'Llamado'],
           significado: 'Renacimiento, llamado interior y perdón. Escucha tu voz más profunda.',
           coat: 'crema', pose: poseAlerta,
           extra: `<ellipse cx="86" cy="98" rx="8" ry="4.5" fill="#ffd700" transform="rotate(-30 86 98)"/><rect x="75" y="96" width="14" height="3.5" fill="#ffd700" transform="rotate(-30 80 98)"/><circle cx="76" cy="98" r="2.5" fill="#ffd700"/>` },
-
         { num: 'XXI', romano: 'Arcano XXI', nombre: 'El Mundo', kws: ['Plenitud', 'Logro'],
           significado: 'Plenitud, logro y culminación. Has completado un ciclo, celebra tu viaje.',
           coat: 'calico', pose: poseRegio,
           extra: `<circle cx="140" cy="155" r="14" fill="#4a90d9" stroke="#333" stroke-width="1.5"/><path d="M130 145 Q140 155 150 145" stroke="#2dcc70" stroke-width="2" fill="none"/><path d="M130 165 Q140 155 150 165" stroke="#2dcc70" stroke-width="2" fill="none"/><line x1="140" y1="141" x2="140" y2="169" stroke="#333" stroke-width="1"/><line x1="126" y1="155" x2="154" y2="155" stroke="#333" stroke-width="1"/>` },
       ];
 
-      // ===== SISTEMA DE BARAJADO MEJORADO (sin repetición en la misma tirada) =====
+      // ===== BARAJADO MEJORADO: sin repetición en la misma tirada =====
       let mazoBarajado = [];
       let indiceMazo = 0;
       let cartasUsadasEnTurno = [];
 
       function barajarMazo() {
         mazoBarajado = [...cartas];
-        // Fisher-Yates con más rotaciones para mejor distribución
         for (let i = mazoBarajado.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
           [mazoBarajado[i], mazoBarajado[j]] = [mazoBarajado[j], mazoBarajado[i]];
         }
-        // Rotación extra para mayor mezcla
-        const rot = Math.floor(Math.random() * mazoBarajado.length);
-        mazoBarajado = [...mazoBarajado.slice(rot), ...mazoBarajado.slice(0, rot)];
         indiceMazo = 0;
       }
 
       function obtenerCartaDelMazo() {
-        // Si hemos usado todas las cartas en esta tirada, reiniciamos el control
         if (cartasUsadasEnTurno.length >= cartas.length) {
           cartasUsadasEnTurno = [];
           barajarMazo();
         }
 
-        // Reconstruir mazo si está vacío o llegamos al final
         if (mazoBarajado.length === 0 || indiceMazo >= mazoBarajado.length) {
           barajarMazo();
         }
 
-        // Buscar una carta que no esté usada en esta tirada
         let cartaSeleccionada = null;
         let intentos = 0;
-        const maxIntentos = mazoBarajado.length * 2;
-
-        while (cartaSeleccionada === null && intentos < maxIntentos) {
+        while (cartaSeleccionada === null && intentos < mazoBarajado.length * 2) {
           intentos++;
           if (indiceMazo >= mazoBarajado.length) {
             barajarMazo();
           }
           const candidata = mazoBarajado[indiceMazo];
           indiceMazo++;
-
           if (!cartasUsadasEnTurno.includes(candidata)) {
             cartaSeleccionada = candidata;
           }
         }
 
-        // Si por alguna razón no encontramos (caso extremo), reiniciamos y tomamos la primera
         if (cartaSeleccionada === null) {
           cartasUsadasEnTurno = [];
           barajarMazo();
@@ -1626,55 +1409,19 @@
         return cartaSeleccionada;
       }
 
-      // ===== PREDICCIONES ÚNICAS =====
+      // ===== PREDICCIONES =====
       const predicciones = [
         (nombre, cartas) => `${nombre}, el universo te susurra al oído que estás a punto de vivir un cambio significativo. <span class="carta-nombre">${cartas[0]}</span> te anima a confiar en tu intuición, mientras <span class="carta-nombre">${cartas[1]}</span> te recuerda que tienes el poder para transformar tu realidad. <span class="carta-nombre">${cartas[2]}</span> habla de un encuentro importante que cambiará tu perspectiva. <span class="carta-nombre">${cartas[3]}</span> te pide que sueltes lo que ya no te sirve, y <span class="carta-nombre">${cartas[4]}</span> te asegura que la abundancia está en camino. Eres una persona especial, ${nombre}, y el mundo está empezando a darse cuenta de tu luz.`,
-        
         (nombre, cartas) => `Las estrellas se alinean para ti, ${nombre}. <span class="carta-nombre">${cartas[0]}</span> marca el inicio de una nueva etapa llena de posibilidades. <span class="carta-nombre">${cartas[1]}</span> te otorga la sabiduría para tomar decisiones acertadas. Con <span class="carta-nombre">${cartas[2]}</span>, la pasión y la creatividad fluirán a través de ti. <span class="carta-nombre">${cartas[3]}</span> te invita a mirar hacia adentro y encontrar respuestas, mientras <span class="carta-nombre">${cartas[4]}</span> te muestra que el éxito es inevitable si confías en tu camino. Tu esencia única, ${nombre}, está destinada a brillar.`,
-
         (nombre, cartas) => `${nombre}, tu viaje espiritual se intensifica. <span class="carta-nombre">${cartas[0]}</span> te pide que des el salto de fe que has estado posponiendo. <span class="carta-nombre">${cartas[1]}</span> te brinda la claridad mental que necesitas para ver las cosas como realmente son. <span class="carta-nombre">${cartas[2]}</span> anuncia un periodo de crecimiento personal y emocional. <span class="carta-nombre">${cartas[3]}</span> te enseña a soltar el control y fluir con la vida. <span class="carta-nombre">${cartas[4]}</span> te asegura que estás en el lugar correcto, en el momento correcto. Confía en el proceso, ${nombre}, porque algo maravilloso está por suceder.`,
-
         (nombre, cartas) => `El destino te sonríe, ${nombre}. <span class="carta-nombre">${cartas[0]}</span> habla de un nuevo amor o una amistad profunda que está por llegar. <span class="carta-nombre">${cartas[1]}</span> te da la fuerza para superar cualquier obstáculo que se presente. <span class="carta-nombre">${cartas[2]}</span> te conecta con tu propósito de vida. <span class="carta-nombre">${cartas[3]}</span> te invita a celebrar tus logros y reconocer tu valor. <span class="carta-nombre">${cartas[4]}</span> te muestra que la gratitud es la llave para atraer más bendiciones. Eres una persona especial, ${nombre}, y tu luz ilumina a quienes te rodean.`,
-
         (nombre, cartas) => `${nombre}, el universo te está guiando hacia tu mejor versión. <span class="carta-nombre">${cartas[0]}</span> te anima a explorar nuevos horizontes y salir de tu zona de confort. <span class="carta-nombre">${cartas[1]}</span> te otorga la paciencia para esperar el momento perfecto. <span class="carta-nombre">${cartas[2]}</span> te conecta con tu poder interior y tu creatividad. <span class="carta-nombre">${cartas[3]}</span> te pide que liberes viejas heridas y perdones. <span class="carta-nombre">${cartas[4]}</span> te asegura que la recompensa llegará cuando menos lo esperes. Sigue adelante, ${nombre}, porque lo mejor está por venir.`,
-
         (nombre, cartas) => `Las cartas revelan un destino brillante para ti, ${nombre}. <span class="carta-nombre">${cartas[0]}</span> anuncia un periodo de abundancia y prosperidad. <span class="carta-nombre">${cartas[1]}</span> te da la sabiduría para administrar tus recursos con inteligencia. <span class="carta-nombre">${cartas[2]}</span> te conecta con personas que te ayudarán a crecer. <span class="carta-nombre">${cartas[3]}</span> te invita a cuidar de tu bienestar físico y emocional. <span class="carta-nombre">${cartas[4]}</span> te muestra que la felicidad está en las pequeñas cosas. Eres único, ${nombre}, y tu camino está lleno de luz.`,
-
         (nombre, cartas) => `${nombre}, tu alma está lista para un despertar. <span class="carta-nombre">${cartas[0]}</span> te llama a explorar tu espiritualidad y conectar con tu ser interior. <span class="carta-nombre">${cartas[1]}</span> te da el valor para enfrentar tus miedos. <span class="carta-nombre">${cartas[2]}</span> te conecta con la magia del universo y te recuerda que eres parte de algo más grande. <span class="carta-nombre">${cartas[3]}</span> te invita a soltar el pasado y vivir el presente. <span class="carta-nombre">${cartas[4]}</span> te asegura que la paz interior llegará cuando aprendas a escuchar tu corazón. Confía en ti, ${nombre}, porque tienes un propósito especial.`,
-
         (nombre, cartas) => `El tarot te muestra un futuro lleno de posibilidades, ${nombre}. <span class="carta-nombre">${cartas[0]}</span> habla de un viaje o una aventura que cambiará tu vida. <span class="carta-nombre">${cartas[1]}</span> te da la determinación para alcanzar tus metas. <span class="carta-nombre">${cartas[2]}</span> te conecta con tu creatividad y te anima a expresarte. <span class="carta-nombre">${cartas[3]}</span> te pide que confíes en tus instintos. <span class="carta-nombre">${cartas[4]}</span> te muestra que el amor y la amistad están a la vuelta de la esquina. Eres una persona especial, ${nombre}, y el mundo te necesita tal como eres.`,
-
         (nombre, cartas) => `${nombre}, tu corazón está en el centro de esta lectura. <span class="carta-nombre">${cartas[0]}</span> te anima a seguir tus pasiones y sueños. <span class="carta-nombre">${cartas[1]}</span> te da la claridad para tomar decisiones importantes. <span class="carta-nombre">${cartas[2]}</span> te conecta con tu fuerza interior y tu resiliencia. <span class="carta-nombre">${cartas[3]}</span> te invita a ser más compasivo contigo mismo. <span class="carta-nombre">${cartas[4]}</span> te asegura que el universo está conspirando a tu favor. No tengas miedo de brillar, ${nombre}, porque tu luz es necesaria en este mundo.`,
-
         (nombre, cartas) => `Las estrellas te guían hacia tu propósito, ${nombre}. <span class="carta-nombre">${cartas[0]}</span> anuncia un nuevo comienzo en tu vida profesional o personal. <span class="carta-nombre">${cartas[1]}</span> te da la sabiduría para aprender de cada experiencia. <span class="carta-nombre">${cartas[2]}</span> te conecta con personas que compartirán tu camino. <span class="carta-nombre">${cartas[3]}</span> te pide que cultives la gratitud y la alegría. <span class="carta-nombre">${cartas[4]}</span> te muestra que el éxito llegará cuando menos lo esperes. Confía en el proceso, ${nombre}, porque el universo te respalda.`,
       ];
-
-      // ===== SISTEMA DE LECTURAS SIN REPETIR =====
-      let prediccionesUsadas = [];
-
-      function generarLectura(nombres, nombre) {
-        if (prediccionesUsadas.length >= predicciones.length) {
-          prediccionesUsadas = [];
-        }
-
-        let indiceDisponible = -1;
-        let intentos = 0;
-        while (indiceDisponible === -1 && intentos < 100) {
-          intentos++;
-          const idx = Math.floor(Math.random() * predicciones.length);
-          if (!prediccionesUsadas.includes(idx)) {
-            indiceDisponible = idx;
-          }
-        }
-
-        if (indiceDisponible === -1) {
-          prediccionesUsadas = [];
-          indiceDisponible = Math.floor(Math.random() * predicciones.length);
-        }
-
-        prediccionesUsadas.push(indiceDisponible);
-        return predicciones[indiceDisponible](nombre, nombres);
-      }
 
       // ===== LÓGICA DEL JUEGO =====
       let nombreJugador = 'viajero';
@@ -1684,6 +1431,7 @@
       const TOTAL_CARTAS = 5;
       let juegoActivo = false;
       let portadaVisible = true;
+      let prediccionesUsadas = [];
 
       const nombreEl = document.getElementById('cartaNombre');
       const numeroEl = document.getElementById('cartaNumero');
@@ -1727,15 +1475,6 @@
           const dia = parseInt(partes[0]);
           const mes = parseInt(partes[1]) - 1;
           const anio = parseInt(partes[2]);
-          if (!isNaN(dia) && !isNaN(mes) && !isNaN(anio) && dia >= 1 && dia <= 31 && mes >= 0 && mes <= 11 && anio >= 1900 && anio <= 2020) {
-            return new Date(anio, mes, dia);
-          }
-        }
-        const partes2 = fechaStr.split('-');
-        if (partes2.length === 3) {
-          const anio = parseInt(partes2[0]);
-          const mes = parseInt(partes2[1]) - 1;
-          const dia = parseInt(partes2[2]);
           if (!isNaN(dia) && !isNaN(mes) && !isNaN(anio) && dia >= 1 && dia <= 31 && mes >= 0 && mes <= 11 && anio >= 1900 && anio <= 2020) {
             return new Date(anio, mes, dia);
           }
@@ -1822,74 +1561,7 @@
         
         if (esPortada) {
           cartaTarot.classList.add('portada');
-          gatoSVG.innerHTML = `
-            <defs>
-              <radialGradient id="pGlowBg" cx="50%" cy="42%" r="55%">
-                <stop offset="0%" stop-color="#b77bdb" stop-opacity="0.32"/>
-                <stop offset="100%" stop-color="#b77bdb" stop-opacity="0"/>
-              </radialGradient>
-              <linearGradient id="pGold" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#f7e6b4"/>
-                <stop offset="55%" stop-color="#e8c874"/>
-                <stop offset="100%" stop-color="#a67c2e"/>
-              </linearGradient>
-              <radialGradient id="pEye" cx="50%" cy="45%" r="60%">
-                <stop offset="0%" stop-color="#fff6ff"/>
-                <stop offset="40%" stop-color="#e3b8f7"/>
-                <stop offset="100%" stop-color="#8a4ab0"/>
-              </radialGradient>
-              <filter id="pSoft" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="2.2" result="b"/>
-                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
-            <circle cx="140" cy="120" r="98" fill="url(#pGlowBg)"/>
-            <circle cx="140" cy="120" r="80" fill="none" stroke="#e8c874" stroke-width="0.6" opacity="0.25"/>
-            <circle cx="140" cy="120" r="70" fill="none" stroke="#c795e0" stroke-width="0.5" stroke-dasharray="1,4" opacity="0.25"/>
-            <g filter="url(#pSoft)">
-              <path d="M196 62 Q182 58 187 44 Q200 37 208 51 Q204 61 196 62 Z" fill="url(#pGold)" opacity="0.85"/>
-            </g>
-            <g fill="#ffd700">
-              <polygon points="72,70 74,76 80,76 75,80 77,86 72,82 67,86 69,80 64,76 70,76" opacity="0.55"/>
-              <polygon points="205,165 207,171 213,171 208,175 210,181 205,177 200,181 202,175 197,171 203,171" opacity="0.5"/>
-              <circle cx="60" cy="150" r="1.6" opacity="0.6"/>
-              <circle cx="222" cy="100" r="1.6" opacity="0.6"/>
-              <circle cx="140" cy="46" r="1.6" opacity="0.6"/>
-            </g>
-            <g>
-              <polygon points="98,96 116,56 130,100" fill="url(#pGold)" opacity="0.95"/>
-              <polygon points="182,96 164,56 150,100" fill="url(#pGold)" opacity="0.95"/>
-              <polygon points="104,90 116,66 124,92" fill="#5c2f78" opacity="0.85"/>
-              <polygon points="176,90 164,66 156,92" fill="#5c2f78" opacity="0.85"/>
-            </g>
-            <path d="M97,102 C88,128 88,158 106,176 C118,188 162,188 174,176 C192,158 192,128 183,102 C171,90 109,90 97,102 Z"
-                  fill="#2c1640" stroke="url(#pGold)" stroke-width="1.6" opacity="0.97"/>
-            <g filter="url(#pSoft)">
-              <polygon points="140,96 146,104 140,112 134,104" fill="url(#pGold)"/>
-            </g>
-            <g filter="url(#pSoft)">
-              <path d="M112,132 Q124,120 138,131 Q124,140 112,132 Z" fill="url(#pEye)"/>
-              <path d="M168,132 Q156,120 142,131 Q156,140 168,132 Z" fill="url(#pEye)"/>
-              <line x1="125" y1="124" x2="125" y2="138" stroke="#3a1e4d" stroke-width="1.4"/>
-              <line x1="155" y1="124" x2="155" y2="138" stroke="#3a1e4d" stroke-width="1.4"/>
-            </g>
-            <polygon points="140,146 145,152 135,152" fill="url(#pGold)"/>
-            <path d="M140,152 Q133,159 124,155" fill="none" stroke="#e8c874" stroke-width="1" opacity="0.7"/>
-            <path d="M140,152 Q147,159 156,155" fill="none" stroke="#e8c874" stroke-width="1" opacity="0.7"/>
-            <g stroke="#e8c874" stroke-width="0.7" opacity="0.5" fill="none">
-              <path d="M96,142 Q75,138 60,140"/>
-              <path d="M96,150 Q74,150 58,155"/>
-              <path d="M96,158 Q76,163 62,170"/>
-              <path d="M184,142 Q205,138 220,140"/>
-              <path d="M184,150 Q206,150 222,155"/>
-              <path d="M184,158 Q204,163 218,170"/>
-            </g>
-            <circle cx="140" cy="70" r="1.8" fill="#ffd700" opacity="0.5"/>
-            <circle cx="90" cy="118" r="1.4" fill="#ffd700" opacity="0.4"/>
-            <circle cx="190" cy="118" r="1.4" fill="#ffd700" opacity="0.4"/>
-          `;
-          gatoSVG.style.width = '92%';
-          gatoSVG.style.height = '92%';
+          // Mantener el SVG de la portada
         } else {
           cartaTarot.classList.remove('portada');
           gatoSVG.innerHTML = dibujarGato(carta.coat, carta.pose, carta.extra, carta.mirror || false);
@@ -1941,6 +1613,18 @@
         }
       }
 
+      function generarLectura(nombres, nombre) {
+        if (prediccionesUsadas.length >= predicciones.length) {
+          prediccionesUsadas = [];
+        }
+        let idx = Math.floor(Math.random() * predicciones.length);
+        while (prediccionesUsadas.includes(idx)) {
+          idx = Math.floor(Math.random() * predicciones.length);
+        }
+        prediccionesUsadas.push(idx);
+        return predicciones[idx](nombre, nombres);
+      }
+
       function mostrarLecturaFinal() {
         lecturaResumen.innerHTML = '';
         cartasTiradas.forEach(c => {
@@ -1981,20 +1665,17 @@
         cartaTarot.classList.add('brillo-burst');
         lanzarChispas();
 
-        const delay = esMovil ? 250 : 350;
+        const delay = esMovil ? 200 : 300;
         setTimeout(() => { 
           pintarCarta(carta, false); 
         }, delay);
 
-        btn.style.boxShadow = '0 0 25px rgba(183,123,219,.6), 0 4px 0 #2a1233';
-        setTimeout(() => { btn.style.boxShadow = ''; }, 400);
-
         setTimeout(() => { 
           flipContainer.classList.remove('girando'); 
           cartaTarot.classList.remove('brillo-burst');
-        }, 600);
+        }, 500);
 
-        setTimeout(() => { actualizarUI(); }, 900);
+        setTimeout(() => { actualizarUI(); }, 800);
       }
 
       function iniciarJuego() {
@@ -2014,6 +1695,7 @@
         menuInicio.classList.add('oculto');
         lecturaFinal.classList.remove('visible');
 
+        barajarMazo();
         pintarCarta(cartaPortada, true);
         
         actualizarUI();
@@ -2029,6 +1711,7 @@
         turnoActual = 0;
         portadaVisible = true;
         prediccionesUsadas = [];
+        cartasUsadasEnTurno = [];
         btn.disabled = true;
         progresoFill.style.width = '0%';
         progresoTexto.textContent = '0 / 5';
@@ -2048,35 +1731,8 @@
 
       // ===== EVENTOS =====
       btn.addEventListener('click', tirarCarta);
-      btn.addEventListener('keydown', (e) => {
-        if ((e.key === 'Enter' || e.key === ' ') && !btn.disabled) {
-          e.preventDefault();
-          tirarCarta();
-        }
-      });
-
       btnIniciar.addEventListener('click', iniciarJuego);
-      btnIniciar.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          iniciarJuego();
-        }
-      });
-
       btnReiniciar.addEventListener('click', reiniciarJuego);
-
-      nombreInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          btnIniciar.focus();
-        }
-      });
-      fechaInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          btnIniciar.focus();
-        }
-      });
 
       window.addEventListener('load', () => {
         for (let i = 0; i < TOTAL_CARTAS; i++) {
