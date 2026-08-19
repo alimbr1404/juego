@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>🐱 Cleo Vidente — Tarot Gatuno</title>
   <style>
     /* ===== RESET Y VARIABLES ===== */
@@ -882,6 +882,7 @@
       100% { opacity: 1; text-shadow: 0 0 8px #c38ce0; }
     }
 
+    /* ===== RESPONSIVE MEJORADO ===== */
     @media (max-width: 480px) {
       body { padding: 0.4rem 0.2rem; }
       .escenario { --card-w: 68vw; max-width: 240px; }
@@ -926,6 +927,18 @@
       .tarot-card.brillo-burst { animation-duration: .4s; }
       .tarot-card.brillo-burst .sweep { animation-duration: .4s; }
       .chispa { animation-duration: .4s; }
+    }
+
+    /* Texto más legible en pantallas pequeñas */
+    @media (max-width: 480px) {
+      .menu-contenedor h2 { font-size: clamp(1.1rem, 4vw, 1.4rem); }
+      .menu-contenedor .sub { font-size: 0.6rem; }
+      .menu-contenedor label { font-size: 0.55rem; }
+      .menu-contenedor input { font-size: 0.8rem; padding: 0.4rem 0.7rem; }
+      .menu-contenedor .btn-iniciar { font-size: 0.8rem; padding: 0.5rem 1rem; }
+      .info-jugador { font-size: clamp(0.5rem, 1.2vw, 0.6rem); }
+      .progreso-container { max-width: 220px; }
+      .controles { max-width: 220px; }
     }
   </style>
 </head>
@@ -1553,54 +1566,67 @@
           extra: `<circle cx="140" cy="155" r="14" fill="#4a90d9" stroke="#333" stroke-width="1.5"/><path d="M130 145 Q140 155 150 145" stroke="#2dcc70" stroke-width="2" fill="none"/><path d="M130 165 Q140 155 150 165" stroke="#2dcc70" stroke-width="2" fill="none"/><line x1="140" y1="141" x2="140" y2="169" stroke="#333" stroke-width="1"/><line x1="126" y1="155" x2="154" y2="155" stroke="#333" stroke-width="1"/>` },
       ];
 
-      // ===== SISTEMA DE BARAJADO =====
+      // ===== SISTEMA DE BARAJADO MEJORADO (sin repetición en la misma tirada) =====
       let mazoBarajado = [];
       let indiceMazo = 0;
       let cartasUsadasEnTurno = [];
 
       function barajarMazo() {
         mazoBarajado = [...cartas];
+        // Fisher-Yates con más rotaciones para mejor distribución
         for (let i = mazoBarajado.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
           [mazoBarajado[i], mazoBarajado[j]] = [mazoBarajado[j], mazoBarajado[i]];
         }
+        // Rotación extra para mayor mezcla
+        const rot = Math.floor(Math.random() * mazoBarajado.length);
+        mazoBarajado = [...mazoBarajado.slice(rot), ...mazoBarajado.slice(0, rot)];
         indiceMazo = 0;
       }
 
       function obtenerCartaDelMazo() {
+        // Si hemos usado todas las cartas en esta tirada, reiniciamos el control
         if (cartasUsadasEnTurno.length >= cartas.length) {
           cartasUsadasEnTurno = [];
+          barajarMazo();
         }
 
-        let cartaDisponible = null;
-        let intentos = 0;
-        const maxIntentos = 100;
+        // Reconstruir mazo si está vacío o llegamos al final
+        if (mazoBarajado.length === 0 || indiceMazo >= mazoBarajado.length) {
+          barajarMazo();
+        }
 
-        while (!cartaDisponible && intentos < maxIntentos) {
+        // Buscar una carta que no esté usada en esta tirada
+        let cartaSeleccionada = null;
+        let intentos = 0;
+        const maxIntentos = mazoBarajado.length * 2;
+
+        while (cartaSeleccionada === null && intentos < maxIntentos) {
           intentos++;
-          if (mazoBarajado.length === 0 || indiceMazo >= mazoBarajado.length) {
+          if (indiceMazo >= mazoBarajado.length) {
             barajarMazo();
           }
-          const carta = mazoBarajado[indiceMazo];
+          const candidata = mazoBarajado[indiceMazo];
           indiceMazo++;
-          
-          if (!cartasUsadasEnTurno.includes(carta)) {
-            cartaDisponible = carta;
+
+          if (!cartasUsadasEnTurno.includes(candidata)) {
+            cartaSeleccionada = candidata;
           }
         }
 
-        if (!cartaDisponible) {
+        // Si por alguna razón no encontramos (caso extremo), reiniciamos y tomamos la primera
+        if (cartaSeleccionada === null) {
           cartasUsadasEnTurno = [];
           barajarMazo();
-          cartaDisponible = mazoBarajado[0];
+          cartaSeleccionada = mazoBarajado[0];
           indiceMazo = 1;
         }
 
-        cartasUsadasEnTurno.push(cartaDisponible);
-        return cartaDisponible;
+        cartasUsadasEnTurno.push(cartaSeleccionada);
+        return cartaSeleccionada;
       }
 
-      // ===== 100 PREDICCIONES ÚNICAS =====
+      // ===== PREDICCIONES ÚNICAS =====
       const predicciones = [
         (nombre, cartas) => `${nombre}, el universo te susurra al oído que estás a punto de vivir un cambio significativo. <span class="carta-nombre">${cartas[0]}</span> te anima a confiar en tu intuición, mientras <span class="carta-nombre">${cartas[1]}</span> te recuerda que tienes el poder para transformar tu realidad. <span class="carta-nombre">${cartas[2]}</span> habla de un encuentro importante que cambiará tu perspectiva. <span class="carta-nombre">${cartas[3]}</span> te pide que sueltes lo que ya no te sirve, y <span class="carta-nombre">${cartas[4]}</span> te asegura que la abundancia está en camino. Eres una persona especial, ${nombre}, y el mundo está empezando a darse cuenta de tu luz.`,
         
@@ -1627,12 +1653,10 @@
       let prediccionesUsadas = [];
 
       function generarLectura(nombres, nombre) {
-        // Si ya se usaron todas las predicciones, reiniciamos
         if (prediccionesUsadas.length >= predicciones.length) {
           prediccionesUsadas = [];
         }
 
-        // Buscar una predicción no usada
         let indiceDisponible = -1;
         let intentos = 0;
         while (indiceDisponible === -1 && intentos < 100) {
@@ -1643,7 +1667,6 @@
           }
         }
 
-        // Si no encontramos disponible (caso extremo), reiniciamos
         if (indiceDisponible === -1) {
           prediccionesUsadas = [];
           indiceDisponible = Math.floor(Math.random() * predicciones.length);
@@ -1731,7 +1754,6 @@
         return edad;
       }
 
-      // ===== SIGNO ZODIACAL =====
       const SIGNOS = [
         { nombre: 'Capricornio', simbolo: '♑', rasgo: 'disciplina y ambición' },
         { nombre: 'Acuario',     simbolo: '♒', rasgo: 'originalidad e independencia' },
@@ -1767,7 +1789,6 @@
         return null;
       }
 
-      // ===== NÚMERO DE LA SUERTE =====
       function generarNumeroSuerte() {
         return Math.floor(Math.random() * 99) + 1;
       }
