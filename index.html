@@ -608,48 +608,82 @@
     }
 
     .tarot-card.portada {
-      border-color: #c795e0;
+      border-color: var(--gold);
       border-width: 3px;
       background:
-        radial-gradient(120% 90% at 50% 0%, rgba(199, 149, 224, 0.15), transparent 60%),
-        linear-gradient(160deg, #2a1638, #1a0b23 55%, #0a0510);
+        radial-gradient(130% 95% at 50% 0%, rgba(255, 215, 0, 0.10), transparent 55%),
+        radial-gradient(110% 80% at 50% 100%, rgba(199, 149, 224, 0.22), transparent 60%),
+        linear-gradient(160deg, #2f1740, #1a0b23 55%, #0a0510);
+      animation: auraPortada 4.5s ease-in-out infinite;
     }
     .tarot-card.portada::before {
-      border-color: rgba(199, 149, 224, 0.5);
+      border-color: rgba(232, 200, 116, 0.55);
       border-width: 2px;
       border-style: double;
+      box-shadow: 0 0 10px rgba(232, 200, 116, 0.15) inset;
+    }
+    @keyframes auraPortada {
+      0%, 100% {
+        box-shadow:
+          0 10px 30px rgba(0, 0, 0, .45),
+          0 0 18px rgba(232, 200, 116, .25),
+          0 0 34px rgba(183, 123, 219, .18),
+          0 0 0 1px rgba(255, 255, 255, .02) inset;
+      }
+      50% {
+        box-shadow:
+          0 10px 34px rgba(0, 0, 0, .5),
+          0 0 26px rgba(232, 200, 116, .4),
+          0 0 50px rgba(183, 123, 219, .3),
+          0 0 0 1px rgba(255, 255, 255, .03) inset;
+      }
     }
     .portada .banner-nombre {
-      background: linear-gradient(180deg, #ffd700, #e8c874 55%, #b8860b);
+      background: linear-gradient(180deg, #fff6da, #ffd700 45%, #e8c874 70%, #b8860b);
       -webkit-background-clip: text;
       background-clip: text;
       font-size: clamp(0.85rem, 3.8vw, 1.25rem);
       letter-spacing: 5px;
-      text-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+      text-shadow: 0 0 24px rgba(255, 215, 0, 0.3);
+    }
+    .portada .banner-nombre::after {
+      content: '─ ✦ ─';
+      display: block;
+      margin-top: 0.2rem;
+      font-size: 0.55rem;
+      letter-spacing: 3px;
+      color: var(--gold);
+      opacity: 0.55;
+      -webkit-text-fill-color: var(--gold);
     }
     .portada .ilustracion {
-      border-color: rgba(199, 149, 224, 0.3);
+      border-color: rgba(232, 200, 116, 0.4);
       background:
-        radial-gradient(circle at 50% 40%, rgba(183, 123, 219, 0.1), transparent 60%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.15));
+        radial-gradient(circle at 50% 30%, rgba(255, 215, 0, 0.10), transparent 55%),
+        radial-gradient(circle at 50% 75%, rgba(183, 123, 219, 0.16), transparent 60%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.18));
+      box-shadow: inset 0 0 22px rgba(183, 123, 219, .2), inset 0 0 2px rgba(232, 200, 116, .3);
     }
     .portada .romanos {
-      color: #c9a3dc;
+      color: #dbb8ef;
       letter-spacing: 4px;
       font-size: clamp(0.45rem, 1.3vw, 0.65rem);
+      text-shadow: 0 0 8px rgba(199, 149, 224, .35);
     }
     .portada .keywords span {
-      background: linear-gradient(180deg, #d4a0e8, #b77bdb);
-      color: #f7ecff;
-      box-shadow: 0 0 12px rgba(183, 123, 219, 0.2);
+      background: linear-gradient(180deg, #f0cdff, #b77bdb);
+      color: #2a1233;
+      font-weight: 600;
+      box-shadow: 0 0 14px rgba(183, 123, 219, 0.35), 0 1px 2px rgba(0,0,0,.25);
     }
     .portada .significado {
-      color: #d8bce8;
+      color: #e8d3f5;
       font-size: clamp(0.55rem, 1.6vw, 0.7rem);
       letter-spacing: 1px;
     }
     .portada .indice {
-      color: #c9a3dc;
+      color: var(--gold-light);
+      text-shadow: 0 0 6px rgba(232, 200, 116, .5);
     }
 
     .lectura-final {
@@ -915,69 +949,90 @@
 
           <div class="ilustracion" style="background: radial-gradient(circle at 50% 40%, rgba(183,123,219,0.08), transparent 70%), linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.15));">
             <svg class="gato-svg" id="gatoSVG" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" style="width:92%;height:92%;">
-              <!-- Círculos concéntricos decorativos -->
-              <circle cx="140" cy="120" r="72" fill="none" stroke="#c795e0" stroke-width="1.2" opacity="0.3"/>
-              <circle cx="140" cy="120" r="62" fill="none" stroke="#c795e0" stroke-width="0.8" opacity="0.2"/>
-              <circle cx="140" cy="120" r="52" fill="none" stroke="#c795e0" stroke-width="0.5" opacity="0.15"/>
-              
-              <!-- Estrella central grande -->
-              <polygon points="140,65 145,80 160,80 148,90 153,105 140,95 127,105 132,90 120,80 135,80" fill="#ffd700" opacity="0.7"/>
-              <polygon points="140,70 143,80 153,80 145,86 148,96 140,90 132,96 135,86 127,80 137,80" fill="#fff" opacity="0.5"/>
-              
-              <!-- Estrellas pequeñas alrededor -->
-              <polygon points="85,90 87,96 93,96 88,100 90,106 85,102 80,106 82,100 77,96 83,96" fill="#ffd700" opacity="0.4"/>
-              <polygon points="195,90 197,96 203,96 198,100 200,106 195,102 190,106 192,100 187,96 193,96" fill="#ffd700" opacity="0.4"/>
-              <polygon points="75,135 77,141 83,141 78,145 80,151 75,147 70,151 72,145 67,141 73,141" fill="#ffd700" opacity="0.3"/>
-              <polygon points="205,135 207,141 213,141 208,145 210,151 205,147 200,151 202,145 197,141 203,141" fill="#ffd700" opacity="0.3"/>
-              
+              <defs>
+                <radialGradient id="pGlowBg" cx="50%" cy="42%" r="55%">
+                  <stop offset="0%" stop-color="#b77bdb" stop-opacity="0.32"/>
+                  <stop offset="100%" stop-color="#b77bdb" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="pGold" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#f7e6b4"/>
+                  <stop offset="55%" stop-color="#e8c874"/>
+                  <stop offset="100%" stop-color="#a67c2e"/>
+                </linearGradient>
+                <radialGradient id="pEye" cx="50%" cy="45%" r="60%">
+                  <stop offset="0%" stop-color="#fff6ff"/>
+                  <stop offset="40%" stop-color="#e3b8f7"/>
+                  <stop offset="100%" stop-color="#8a4ab0"/>
+                </radialGradient>
+                <filter id="pSoft" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="2.2" result="b"/>
+                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+
+              <!-- Resplandor de fondo -->
+              <circle cx="140" cy="120" r="98" fill="url(#pGlowBg)"/>
+              <circle cx="140" cy="120" r="80" fill="none" stroke="#e8c874" stroke-width="0.6" opacity="0.25"/>
+              <circle cx="140" cy="120" r="70" fill="none" stroke="#c795e0" stroke-width="0.5" stroke-dasharray="1,4" opacity="0.25"/>
+
               <!-- Luna creciente -->
-              <path d="M175 150 Q162 145 168 132 Q180 125 187 138 Q183 147 175 150 Z" fill="#f7e6b4" opacity="0.6"/>
-              <path d="M177 148 Q165 144 170 134 Q180 128 186 140 Q183 146 177 148 Z" fill="#fff" opacity="0.4"/>
-              
-              <!-- Luna llena -->
-              <circle cx="100" cy="170" r="14" fill="#f7e6b4" opacity="0.3"/>
-              <circle cx="100" cy="170" r="9" fill="#f7e6b4" opacity="0.2"/>
-              <circle cx="97" cy="167" r="3" fill="#fff" opacity="0.15"/>
-              
-              <!-- Patitas de gato elegantes -->
-              <g opacity="0.6">
-                <circle cx="95" cy="190" r="4.5" fill="#c795e0"/>
-                <circle cx="87" cy="193" r="4" fill="#c795e0"/>
-                <circle cx="103" cy="193" r="4" fill="#c795e0"/>
-                <circle cx="90" cy="199" r="4" fill="#c795e0"/>
-                <circle cx="100" cy="199" r="4" fill="#c795e0"/>
-                <ellipse cx="95" cy="186" rx="6" ry="4.5" fill="#c795e0" opacity="0.5"/>
+              <g filter="url(#pSoft)">
+                <path d="M196 62 Q182 58 187 44 Q200 37 208 51 Q204 61 196 62 Z" fill="url(#pGold)" opacity="0.85"/>
               </g>
-              <g opacity="0.6" transform="translate(35,5)">
-                <circle cx="95" cy="200" r="4.5" fill="#c795e0"/>
-                <circle cx="87" cy="203" r="4" fill="#c795e0"/>
-                <circle cx="103" cy="203" r="4" fill="#c795e0"/>
-                <circle cx="90" cy="209" r="4" fill="#c795e0"/>
-                <circle cx="100" cy="209" r="4" fill="#c795e0"/>
-                <ellipse cx="95" cy="196" rx="6" ry="4.5" fill="#c795e0" opacity="0.5"/>
+
+              <!-- Estrellas -->
+              <g fill="#ffd700">
+                <polygon points="72,70 74,76 80,76 75,80 77,86 72,82 67,86 69,80 64,76 70,76" opacity="0.55"/>
+                <polygon points="205,165 207,171 213,171 208,175 210,181 205,177 200,181 202,175 197,171 203,171" opacity="0.5"/>
+                <circle cx="60" cy="150" r="1.6" opacity="0.6"/>
+                <circle cx="222" cy="100" r="1.6" opacity="0.6"/>
+                <circle cx="140" cy="46" r="1.6" opacity="0.6"/>
               </g>
-              
-              <!-- Glifos místicos -->
-              <text x="140" y="168" text-anchor="middle" font-family="Georgia" font-size="16" fill="#c795e0" opacity="0.25" letter-spacing="10">✦ ✦ ✦</text>
-              
-              <!-- Líneas decorativas con detalles -->
-              <line x1="65" y1="100" x2="100" y2="100" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-              <line x1="180" y1="100" x2="215" y2="100" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-              <line x1="65" y1="140" x2="92" y2="140" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-              <line x1="188" y1="140" x2="215" y2="140" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-              
-              <!-- Diamantes decorativos -->
-              <polygon points="108,108 114,114 108,120 102,114" fill="#ffd700" opacity="0.2"/>
-              <polygon points="172,108 178,114 172,120 166,114" fill="#ffd700" opacity="0.2"/>
-              
-              <!-- Puntos decorativos alrededor -->
-              <circle cx="140" cy="62" r="2" fill="#ffd700" opacity="0.4"/>
-              <circle cx="140" cy="178" r="2" fill="#ffd700" opacity="0.4"/>
-              <circle cx="78" cy="120" r="2" fill="#ffd700" opacity="0.3"/>
-              <circle cx="202" cy="120" r="2" fill="#ffd700" opacity="0.3"/>
-              
-              <!-- Círculo de puntos punteado -->
-              <circle cx="140" cy="120" r="66" fill="none" stroke="#c795e0" stroke-width="0.5" stroke-dasharray="2,5" opacity="0.15"/>
+
+              <!-- Orejas -->
+              <g>
+                <polygon points="98,96 116,56 130,100" fill="url(#pGold)" opacity="0.95"/>
+                <polygon points="182,96 164,56 150,100" fill="url(#pGold)" opacity="0.95"/>
+                <polygon points="104,90 116,66 124,92" fill="#5c2f78" opacity="0.85"/>
+                <polygon points="176,90 164,66 156,92" fill="#5c2f78" opacity="0.85"/>
+              </g>
+
+              <!-- Cabeza -->
+              <path d="M97,102 C88,128 88,158 106,176 C118,188 162,188 174,176 C192,158 192,128 183,102 C171,90 109,90 97,102 Z"
+                    fill="#2c1640" stroke="url(#pGold)" stroke-width="1.6" opacity="0.97"/>
+
+              <!-- Gema mística en la frente -->
+              <g filter="url(#pSoft)">
+                <polygon points="140,96 146,104 140,112 134,104" fill="url(#pGold)"/>
+              </g>
+
+              <!-- Ojos brillantes -->
+              <g filter="url(#pSoft)">
+                <path d="M112,132 Q124,120 138,131 Q124,140 112,132 Z" fill="url(#pEye)"/>
+                <path d="M168,132 Q156,120 142,131 Q156,140 168,132 Z" fill="url(#pEye)"/>
+                <line x1="125" y1="124" x2="125" y2="138" stroke="#3a1e4d" stroke-width="1.4"/>
+                <line x1="155" y1="124" x2="155" y2="138" stroke="#3a1e4d" stroke-width="1.4"/>
+              </g>
+
+              <!-- Nariz y boca -->
+              <polygon points="140,146 145,152 135,152" fill="url(#pGold)"/>
+              <path d="M140,152 Q133,159 124,155" fill="none" stroke="#e8c874" stroke-width="1" opacity="0.7"/>
+              <path d="M140,152 Q147,159 156,155" fill="none" stroke="#e8c874" stroke-width="1" opacity="0.7"/>
+
+              <!-- Bigotes -->
+              <g stroke="#e8c874" stroke-width="0.7" opacity="0.5" fill="none">
+                <path d="M96,142 Q75,138 60,140"/>
+                <path d="M96,150 Q74,150 58,155"/>
+                <path d="M96,158 Q76,163 62,170"/>
+                <path d="M184,142 Q205,138 220,140"/>
+                <path d="M184,150 Q206,150 222,155"/>
+                <path d="M184,158 Q204,163 218,170"/>
+              </g>
+
+              <!-- Destellos -->
+              <circle cx="140" cy="70" r="1.8" fill="#ffd700" opacity="0.5"/>
+              <circle cx="90" cy="118" r="1.4" fill="#ffd700" opacity="0.4"/>
+              <circle cx="190" cy="118" r="1.4" fill="#ffd700" opacity="0.4"/>
             </svg>
           </div>
 
@@ -1637,48 +1692,70 @@
         if (esPortada) {
           cartaTarot.classList.add('portada');
           gatoSVG.innerHTML = `
-            <circle cx="140" cy="120" r="72" fill="none" stroke="#c795e0" stroke-width="1.2" opacity="0.3"/>
-            <circle cx="140" cy="120" r="62" fill="none" stroke="#c795e0" stroke-width="0.8" opacity="0.2"/>
-            <circle cx="140" cy="120" r="52" fill="none" stroke="#c795e0" stroke-width="0.5" opacity="0.15"/>
-            <polygon points="140,65 145,80 160,80 148,90 153,105 140,95 127,105 132,90 120,80 135,80" fill="#ffd700" opacity="0.7"/>
-            <polygon points="140,70 143,80 153,80 145,86 148,96 140,90 132,96 135,86 127,80 137,80" fill="#fff" opacity="0.5"/>
-            <polygon points="85,90 87,96 93,96 88,100 90,106 85,102 80,106 82,100 77,96 83,96" fill="#ffd700" opacity="0.4"/>
-            <polygon points="195,90 197,96 203,96 198,100 200,106 195,102 190,106 192,100 187,96 193,96" fill="#ffd700" opacity="0.4"/>
-            <polygon points="75,135 77,141 83,141 78,145 80,151 75,147 70,151 72,145 67,141 73,141" fill="#ffd700" opacity="0.3"/>
-            <polygon points="205,135 207,141 213,141 208,145 210,151 205,147 200,151 202,145 197,141 203,141" fill="#ffd700" opacity="0.3"/>
-            <path d="M175 150 Q162 145 168 132 Q180 125 187 138 Q183 147 175 150 Z" fill="#f7e6b4" opacity="0.6"/>
-            <path d="M177 148 Q165 144 170 134 Q180 128 186 140 Q183 146 177 148 Z" fill="#fff" opacity="0.4"/>
-            <circle cx="100" cy="170" r="14" fill="#f7e6b4" opacity="0.3"/>
-            <circle cx="100" cy="170" r="9" fill="#f7e6b4" opacity="0.2"/>
-            <circle cx="97" cy="167" r="3" fill="#fff" opacity="0.15"/>
-            <g opacity="0.6">
-              <circle cx="95" cy="190" r="4.5" fill="#c795e0"/>
-              <circle cx="87" cy="193" r="4" fill="#c795e0"/>
-              <circle cx="103" cy="193" r="4" fill="#c795e0"/>
-              <circle cx="90" cy="199" r="4" fill="#c795e0"/>
-              <circle cx="100" cy="199" r="4" fill="#c795e0"/>
-              <ellipse cx="95" cy="186" rx="6" ry="4.5" fill="#c795e0" opacity="0.5"/>
+            <defs>
+              <radialGradient id="pGlowBg" cx="50%" cy="42%" r="55%">
+                <stop offset="0%" stop-color="#b77bdb" stop-opacity="0.32"/>
+                <stop offset="100%" stop-color="#b77bdb" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="pGold" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#f7e6b4"/>
+                <stop offset="55%" stop-color="#e8c874"/>
+                <stop offset="100%" stop-color="#a67c2e"/>
+              </linearGradient>
+              <radialGradient id="pEye" cx="50%" cy="45%" r="60%">
+                <stop offset="0%" stop-color="#fff6ff"/>
+                <stop offset="40%" stop-color="#e3b8f7"/>
+                <stop offset="100%" stop-color="#8a4ab0"/>
+              </radialGradient>
+              <filter id="pSoft" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="2.2" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <circle cx="140" cy="120" r="98" fill="url(#pGlowBg)"/>
+            <circle cx="140" cy="120" r="80" fill="none" stroke="#e8c874" stroke-width="0.6" opacity="0.25"/>
+            <circle cx="140" cy="120" r="70" fill="none" stroke="#c795e0" stroke-width="0.5" stroke-dasharray="1,4" opacity="0.25"/>
+            <g filter="url(#pSoft)">
+              <path d="M196 62 Q182 58 187 44 Q200 37 208 51 Q204 61 196 62 Z" fill="url(#pGold)" opacity="0.85"/>
             </g>
-            <g opacity="0.6" transform="translate(35,5)">
-              <circle cx="95" cy="200" r="4.5" fill="#c795e0"/>
-              <circle cx="87" cy="203" r="4" fill="#c795e0"/>
-              <circle cx="103" cy="203" r="4" fill="#c795e0"/>
-              <circle cx="90" cy="209" r="4" fill="#c795e0"/>
-              <circle cx="100" cy="209" r="4" fill="#c795e0"/>
-              <ellipse cx="95" cy="196" rx="6" ry="4.5" fill="#c795e0" opacity="0.5"/>
+            <g fill="#ffd700">
+              <polygon points="72,70 74,76 80,76 75,80 77,86 72,82 67,86 69,80 64,76 70,76" opacity="0.55"/>
+              <polygon points="205,165 207,171 213,171 208,175 210,181 205,177 200,181 202,175 197,171 203,171" opacity="0.5"/>
+              <circle cx="60" cy="150" r="1.6" opacity="0.6"/>
+              <circle cx="222" cy="100" r="1.6" opacity="0.6"/>
+              <circle cx="140" cy="46" r="1.6" opacity="0.6"/>
             </g>
-            <text x="140" y="168" text-anchor="middle" font-family="Georgia" font-size="16" fill="#c795e0" opacity="0.25" letter-spacing="10">✦ ✦ ✦</text>
-            <line x1="65" y1="100" x2="100" y2="100" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-            <line x1="180" y1="100" x2="215" y2="100" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-            <line x1="65" y1="140" x2="92" y2="140" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-            <line x1="188" y1="140" x2="215" y2="140" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-            <polygon points="108,108 114,114 108,120 102,114" fill="#ffd700" opacity="0.2"/>
-            <polygon points="172,108 178,114 172,120 166,114" fill="#ffd700" opacity="0.2"/>
-            <circle cx="140" cy="62" r="2" fill="#ffd700" opacity="0.4"/>
-            <circle cx="140" cy="178" r="2" fill="#ffd700" opacity="0.4"/>
-            <circle cx="78" cy="120" r="2" fill="#ffd700" opacity="0.3"/>
-            <circle cx="202" cy="120" r="2" fill="#ffd700" opacity="0.3"/>
-            <circle cx="140" cy="120" r="66" fill="none" stroke="#c795e0" stroke-width="0.5" stroke-dasharray="2,5" opacity="0.15"/>
+            <g>
+              <polygon points="98,96 116,56 130,100" fill="url(#pGold)" opacity="0.95"/>
+              <polygon points="182,96 164,56 150,100" fill="url(#pGold)" opacity="0.95"/>
+              <polygon points="104,90 116,66 124,92" fill="#5c2f78" opacity="0.85"/>
+              <polygon points="176,90 164,66 156,92" fill="#5c2f78" opacity="0.85"/>
+            </g>
+            <path d="M97,102 C88,128 88,158 106,176 C118,188 162,188 174,176 C192,158 192,128 183,102 C171,90 109,90 97,102 Z"
+                  fill="#2c1640" stroke="url(#pGold)" stroke-width="1.6" opacity="0.97"/>
+            <g filter="url(#pSoft)">
+              <polygon points="140,96 146,104 140,112 134,104" fill="url(#pGold)"/>
+            </g>
+            <g filter="url(#pSoft)">
+              <path d="M112,132 Q124,120 138,131 Q124,140 112,132 Z" fill="url(#pEye)"/>
+              <path d="M168,132 Q156,120 142,131 Q156,140 168,132 Z" fill="url(#pEye)"/>
+              <line x1="125" y1="124" x2="125" y2="138" stroke="#3a1e4d" stroke-width="1.4"/>
+              <line x1="155" y1="124" x2="155" y2="138" stroke="#3a1e4d" stroke-width="1.4"/>
+            </g>
+            <polygon points="140,146 145,152 135,152" fill="url(#pGold)"/>
+            <path d="M140,152 Q133,159 124,155" fill="none" stroke="#e8c874" stroke-width="1" opacity="0.7"/>
+            <path d="M140,152 Q147,159 156,155" fill="none" stroke="#e8c874" stroke-width="1" opacity="0.7"/>
+            <g stroke="#e8c874" stroke-width="0.7" opacity="0.5" fill="none">
+              <path d="M96,142 Q75,138 60,140"/>
+              <path d="M96,150 Q74,150 58,155"/>
+              <path d="M96,158 Q76,163 62,170"/>
+              <path d="M184,142 Q205,138 220,140"/>
+              <path d="M184,150 Q206,150 222,155"/>
+              <path d="M184,158 Q204,163 218,170"/>
+            </g>
+            <circle cx="140" cy="70" r="1.8" fill="#ffd700" opacity="0.5"/>
+            <circle cx="90" cy="118" r="1.4" fill="#ffd700" opacity="0.4"/>
+            <circle cx="190" cy="118" r="1.4" fill="#ffd700" opacity="0.4"/>
           `;
           gatoSVG.style.width = '92%';
           gatoSVG.style.height = '92%';
