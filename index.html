@@ -30,11 +30,11 @@
       justify-content: center;
       align-items: center;
       background:
-        radial-gradient(ellipse at 20% 10%, rgba(130, 70, 170, 0.2), transparent 55%),
-        radial-gradient(ellipse at 85% 85%, rgba(90, 40, 130, 0.2), transparent 55%),
+        radial-gradient(ellipse at 20% 10%, rgba(130, 70, 170, 0.15), transparent 55%),
+        radial-gradient(ellipse at 85% 85%, rgba(90, 40, 130, 0.15), transparent 55%),
         radial-gradient(circle at center, #1a0b23 0%, #0a0510 100%);
       font-family: 'Georgia', 'Segoe UI', serif;
-      padding: 1rem 0.6rem;
+      padding: 0.8rem 0.5rem;
       overflow-x: hidden;
       position: relative;
     }
@@ -44,19 +44,19 @@
       inset: 0;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.5;
+      opacity: 0.4;
     }
     .estrellas span {
       position: absolute;
-      width: 2px;
-      height: 2px;
+      width: 1.5px;
+      height: 1.5px;
       background: #e6cdfb;
       border-radius: 50%;
       animation: parpadeoEstrella 3.5s ease-in-out infinite;
     }
     @keyframes parpadeoEstrella {
       0%, 100% { opacity: 0.1; }
-      50% { opacity: 0.7; }
+      50% { opacity: 0.6; }
     }
 
     .menu-inicio {
@@ -67,9 +67,9 @@
       justify-content: center;
       align-items: center;
       background: rgba(10, 5, 16, 0.94);
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(4px);
       padding: 1.5rem;
-      animation: fadeIn 0.35s ease;
+      animation: fadeIn 0.3s ease;
     }
     .menu-inicio.oculto {
       display: none;
@@ -83,23 +83,23 @@
     .menu-contenedor {
       background: linear-gradient(160deg, #3a1e4d, #1c0e28);
       border: 2px solid var(--gold);
-      border-radius: 28px;
-      padding: 2.2rem 1.8rem;
-      max-width: 420px;
+      border-radius: 24px;
+      padding: 2rem 1.5rem;
+      max-width: 400px;
       width: 100%;
-      box-shadow: 0 0 40px rgba(183, 123, 219, 0.25), 0 20px 40px rgba(0,0,0,0.5);
+      box-shadow: 0 0 30px rgba(183, 123, 219, 0.2), 0 15px 30px rgba(0,0,0,0.4);
       text-align: center;
     }
 
     .menu-contenedor h2 {
       color: var(--gold-light);
-      font-size: clamp(1.4rem, 3.8vw, 1.9rem);
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
       margin-bottom: 0.2rem;
       letter-spacing: 3px;
     }
     .menu-contenedor .sub {
       color: #c9a3dc;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       letter-spacing: 2px;
       margin-bottom: 1.5rem;
       opacity: 0.8;
@@ -108,7 +108,7 @@
     .menu-contenedor label {
       display: block;
       color: #d8bce8;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       text-align: left;
@@ -117,7 +117,7 @@
     }
     .menu-contenedor label .opcional {
       color: #6a4a7a;
-      font-size: 0.55rem;
+      font-size: 0.5rem;
       text-transform: none;
       letter-spacing: 0;
       font-weight: 300;
@@ -125,28 +125,28 @@
 
     .menu-contenedor input {
       width: 100%;
-      padding: 0.6rem 1rem;
-      border-radius: 12px;
+      padding: 0.5rem 0.9rem;
+      border-radius: 10px;
       border: 1px solid #6f4489;
       background: rgba(255,255,255,0.06);
       color: #f7ecff;
       font-family: 'Georgia', serif;
-      font-size: 0.95rem;
-      transition: border 0.25s ease;
+      font-size: 0.9rem;
+      transition: border 0.2s ease;
     }
     .menu-contenedor input:focus {
       outline: none;
       border-color: var(--gold);
-      box-shadow: 0 0 15px rgba(232, 200, 116, 0.12);
+      box-shadow: 0 0 12px rgba(232, 200, 116, 0.1);
     }
     .menu-contenedor input::placeholder {
       color: #6a4a7a;
     }
     .menu-contenedor .input-hint {
       color: #6a4a7a;
-      font-size: 0.55rem;
+      font-size: 0.5rem;
       text-align: left;
-      margin-top: 0.15rem;
+      margin-top: 0.1rem;
       letter-spacing: 0.5px;
     }
 
@@ -157,40 +157,36 @@
       border-bottom: 3px solid #7d4b9e;
       color: #f7ecff;
       font-family: 'Georgia', serif;
-      font-size: 1rem;
+      font-size: 0.95rem;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      padding: 0.75rem 1.4rem;
+      padding: 0.7rem 1.2rem;
       border-radius: 50px 14px 50px 14px;
       cursor: pointer;
       width: 100%;
-      box-shadow: 0 0 20px rgba(138, 74, 176, 0.4), 0 5px 0 #2a1233;
-      transition: transform 0.12s ease, box-shadow 0.2s ease;
-    }
-    .menu-contenedor .btn-iniciar:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(183, 123, 219, 0.6), 0 6px 0 #2a1233;
+      box-shadow: 0 0 15px rgba(138, 74, 176, 0.3), 0 4px 0 #2a1233;
+      transition: transform 0.1s ease, box-shadow 0.15s ease;
     }
     .menu-contenedor .btn-iniciar:active {
       transform: translateY(3px);
-      box-shadow: 0 0 15px rgba(155, 77, 202, 0.4), 0 2px 0 #2a1233;
+      box-shadow: 0 0 10px rgba(155, 77, 202, 0.3), 0 2px 0 #2a1233;
     }
 
     header {
       position: relative;
       z-index: 2;
       text-align: center;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       width: 100%;
       padding: 0 0.5rem;
     }
 
     h1 {
-      font-size: clamp(1.4rem, 5vw, 2.4rem);
+      font-size: clamp(1.2rem, 4.5vw, 2.2rem);
       letter-spacing: 3px;
       font-weight: 400;
       color: var(--gold-light);
-      text-shadow: 0 0 10px rgba(232, 200, 116, .4), 0 0 25px rgba(155, 77, 202, .3);
+      text-shadow: 0 0 8px rgba(232, 200, 116, .3), 0 0 20px rgba(155, 77, 202, .25);
       word-break: break-word;
     }
     h1 .patita {
@@ -200,24 +196,24 @@
 
     .subtitulo {
       display: inline-block;
-      margin-top: 0.15rem;
+      margin-top: 0.1rem;
       color: #d8bce8;
-      font-size: clamp(0.45rem, 1.4vw, 0.65rem);
+      font-size: clamp(0.4rem, 1.2vw, 0.6rem);
       letter-spacing: 3px;
       text-transform: uppercase;
-      padding: 0.2rem 1rem;
+      padding: 0.15rem 0.8rem;
       border-top: 1px solid #8a5aae;
       border-bottom: 1px solid #8a5aae;
-      background: rgba(70, 30, 90, .2);
+      background: rgba(70, 30, 90, .15);
       border-radius: 40px;
       white-space: nowrap;
     }
 
     .info-jugador {
       color: #c9a3dc;
-      font-size: clamp(0.6rem, 1.6vw, 0.75rem);
+      font-size: clamp(0.55rem, 1.4vw, 0.7rem);
       letter-spacing: 1px;
-      margin-top: 0.2rem;
+      margin-top: 0.15rem;
       opacity: 0.9;
     }
     .info-jugador span {
@@ -226,76 +222,76 @@
 
     .progreso-container {
       width: 100%;
-      max-width: 320px;
-      margin: 0.4rem auto 0.6rem;
+      max-width: 300px;
+      margin: 0.3rem auto 0.5rem;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
       z-index: 2;
       position: relative;
     }
     .progreso-bar {
       flex: 1;
-      height: 5px;
-      background: rgba(255,255,255,0.06);
+      height: 4px;
+      background: rgba(255,255,255,0.05);
       border-radius: 10px;
       overflow: hidden;
-      border: 1px solid rgba(232, 200, 116, 0.15);
+      border: 1px solid rgba(232, 200, 116, 0.1);
     }
     .progreso-fill {
       height: 100%;
       width: 0%;
       background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
       border-radius: 10px;
-      transition: width 0.4s ease;
+      transition: width 0.3s ease;
     }
     .progreso-texto {
       color: #c9a3dc;
-      font-size: clamp(0.55rem, 1.2vw, 0.65rem);
+      font-size: clamp(0.5rem, 1vw, 0.6rem);
       letter-spacing: 1px;
       white-space: nowrap;
-      min-width: 50px;
+      min-width: 45px;
       text-align: right;
     }
 
     .historial {
       display: flex;
-      gap: 0.25rem;
+      gap: 0.2rem;
       justify-content: center;
       flex-wrap: wrap;
-      margin: 0.2rem 0 0.4rem;
+      margin: 0.15rem 0 0.3rem;
       z-index: 2;
       position: relative;
-      max-width: 320px;
+      max-width: 300px;
     }
     .historial-item {
-      width: 28px;
-      height: 40px;
-      border-radius: 5px;
+      width: 24px;
+      height: 34px;
+      border-radius: 4px;
       background: linear-gradient(160deg, #3a1e4d, #1c0e28);
       border: 1px solid #6f4489;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.45rem;
+      font-size: 0.4rem;
       color: var(--gold-light);
       font-weight: 600;
       opacity: 0.4;
-      transition: all 0.35s ease;
-      padding: 0.1rem;
+      transition: all 0.3s ease;
+      padding: 0.05rem;
       text-align: center;
       line-height: 1.1;
     }
     .historial-item.revelada {
       opacity: 1;
       border-color: var(--gold);
-      box-shadow: 0 0 10px rgba(232, 200, 116, 0.2);
+      box-shadow: 0 0 8px rgba(232, 200, 116, 0.15);
     }
     .historial-item .num {
-      font-size: 0.55rem;
+      font-size: 0.5rem;
     }
     .historial-item .nom {
-      font-size: 0.3rem;
+      font-size: 0.25rem;
       opacity: 0.7;
       display: block;
     }
@@ -304,29 +300,29 @@
       position: relative;
       z-index: 2;
       width: var(--card-w);
-      max-width: 320px;
+      max-width: 300px;
       aspect-ratio: 300 / 512;
-      perspective: 1200px;
+      perspective: 1000px;
       margin: 0 auto;
     }
 
     .carta-fantasma {
       position: absolute;
       inset: 0;
-      border-radius: 16px;
+      border-radius: 14px;
       background: linear-gradient(160deg, #3a1e4d, #1c0e28);
       border: 1px solid #6f4489;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, .4);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .35);
     }
     .carta-fantasma.f1 {
-      transform: rotate(-5deg) translate(-8px, 4px);
+      transform: rotate(-4deg) translate(-6px, 3px);
       z-index: 1;
-      opacity: .8;
+      opacity: .75;
     }
     .carta-fantasma.f2 {
-      transform: rotate(5deg) translate(8px, 6px);
+      transform: rotate(4deg) translate(6px, 4px);
       z-index: 0;
-      opacity: .65;
+      opacity: .6;
     }
 
     .card-flip-container {
@@ -335,7 +331,7 @@
       width: 100%;
       height: 100%;
       transform-style: preserve-3d;
-      transition: transform .7s cubic-bezier(.4, .1, .2, 1);
+      transition: transform .6s cubic-bezier(.4, .1, .2, 1);
     }
     .card-flip-container.girando {
       transform: rotateY(360deg) scale(1.01);
@@ -345,27 +341,27 @@
       position: relative;
       width: 100%;
       height: 100%;
-      border-radius: 16px;
+      border-radius: 14px;
       background:
-        radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, .04), transparent 60%),
+        radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, .03), transparent 60%),
         linear-gradient(160deg, #4a2760, #2a1638 55%, #1c0e28);
       border: 2px solid var(--gold);
       box-shadow:
-        0 12px 35px rgba(0, 0, 0, .5),
-        0 0 0 1px rgba(255, 255, 255, .03) inset,
-        0 0 20px rgba(183, 123, 219, .25);
+        0 10px 30px rgba(0, 0, 0, .45),
+        0 0 0 1px rgba(255, 255, 255, .02) inset,
+        0 0 15px rgba(183, 123, 219, .2);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: box-shadow .5s ease;
+      transition: box-shadow .4s ease;
     }
 
     .tarot-card::before {
       content: '';
       position: absolute;
-      inset: 6px;
-      border: 1px solid rgba(232, 200, 116, .4);
-      border-radius: 10px;
+      inset: 5px;
+      border: 1px solid rgba(232, 200, 116, .35);
+      border-radius: 8px;
       pointer-events: none;
       z-index: 3;
     }
@@ -376,11 +372,11 @@
       z-index: 4;
       pointer-events: none;
       mix-blend-mode: screen;
-      background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, .12) 48%, rgba(255, 255, 255, .03) 52%, transparent 60%);
+      background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, .08) 48%, rgba(255, 255, 255, .02) 52%, transparent 60%);
       background-size: 260% 260%;
       background-position: 0% 0%;
       animation: foilLento 7s ease-in-out infinite;
-      opacity: .4;
+      opacity: .35;
     }
     @keyframes foilLento {
       0% { background-position: 120% -20%; }
@@ -389,16 +385,16 @@
     }
 
     .tarot-card.brillo-burst {
-      animation: burst .7s ease;
+      animation: burst .6s ease;
       box-shadow:
-        0 12px 35px rgba(0, 0, 0, .5),
-        0 0 40px var(--accent),
-        0 0 80px color-mix(in srgb, var(--accent) 60%, transparent),
-        0 0 0 1px rgba(255, 255, 255, .04) inset;
+        0 10px 30px rgba(0, 0, 0, .45),
+        0 0 30px var(--accent),
+        0 0 60px color-mix(in srgb, var(--accent) 50%, transparent),
+        0 0 0 1px rgba(255, 255, 255, .03) inset;
     }
     @keyframes burst {
       0% { filter: brightness(1); }
-      25% { filter: brightness(1.3); }
+      25% { filter: brightness(1.25); }
       100% { filter: brightness(1); }
     }
 
@@ -408,19 +404,19 @@
       left: -60%;
       width: 60%;
       height: 160%;
-      background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .4), transparent);
+      background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .3), transparent);
       transform: skewX(-18deg);
       z-index: 5;
       pointer-events: none;
       opacity: 0;
     }
     .tarot-card.brillo-burst .sweep {
-      animation: barrido .7s ease;
+      animation: barrido .6s ease;
     }
     @keyframes barrido {
       0% { left: -60%; opacity: 0; }
-      15% { opacity: .8; }
-      50% { opacity: .4; }
+      15% { opacity: .7; }
+      50% { opacity: .3; }
       100% { left: 130%; opacity: 0; }
     }
 
@@ -433,16 +429,16 @@
     }
     .chispa {
       position: absolute;
-      width: 5px;
-      height: 5px;
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
       background: radial-gradient(circle, #fff, var(--accent) 60%, transparent 70%);
-      animation: subirChispa 0.8s ease-out forwards;
+      animation: subirChispa 0.6s ease-out forwards;
     }
     @keyframes subirChispa {
       0% { transform: translateY(0) scale(0.3); opacity: 0; }
       15% { opacity: 1; }
-      100% { transform: translateY(-50px) scale(1); opacity: 0; }
+      100% { transform: translateY(-40px) scale(1); opacity: 0; }
     }
 
     .tarot-content {
@@ -452,7 +448,7 @@
       flex-direction: column;
       align-items: center;
       height: 100%;
-      padding: 0.5rem 0.4rem 0.4rem;
+      padding: 0.4rem 0.3rem 0.3rem;
     }
 
     .indice {
@@ -460,29 +456,29 @@
       z-index: 7;
       font-family: 'Georgia', serif;
       color: var(--gold-light);
-      font-size: clamp(0.5rem, 1.4vw, 0.7rem);
+      font-size: clamp(0.45rem, 1.2vw, 0.65rem);
       letter-spacing: 1px;
       text-align: center;
       line-height: 1.1;
-      text-shadow: 0 0 4px rgba(232, 200, 116, .4);
+      text-shadow: 0 0 3px rgba(232, 200, 116, .3);
     }
     .indice .glifo {
-      font-size: clamp(0.6rem, 1.6vw, 0.85rem);
+      font-size: clamp(0.5rem, 1.4vw, 0.75rem);
       display: block;
     }
     .indice.tl {
-      top: 5px;
-      left: 6px;
+      top: 4px;
+      left: 5px;
     }
     .indice.br {
-      bottom: 5px;
-      right: 6px;
+      bottom: 4px;
+      right: 5px;
       transform: rotate(180deg);
     }
 
     .banner-nombre {
       margin-top: 0.05rem;
-      font-size: clamp(0.8rem, 3.6vw, 1.2rem);
+      font-size: clamp(0.7rem, 3.2vw, 1.1rem);
       letter-spacing: 1.5px;
       font-weight: 600;
       text-align: center;
@@ -490,13 +486,13 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .4));
-      padding: 0 0.6rem;
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .3));
+      padding: 0 0.4rem;
       line-height: 1.2;
     }
 
     .romanos {
-      font-size: clamp(0.45rem, 1.2vw, 0.6rem);
+      font-size: clamp(0.4rem, 1vw, 0.55rem);
       letter-spacing: 2px;
       color: #c9a3dc;
       text-transform: uppercase;
@@ -507,79 +503,79 @@
     .ilustracion {
       flex: 1 1 auto;
       width: 100%;
-      margin: 0.2rem 0 0.1rem;
-      border-radius: 8px;
+      margin: 0.15rem 0 0.05rem;
+      border-radius: 6px;
       background:
-        radial-gradient(circle at 50% 38%, rgba(183, 123, 219, .15), transparent 60%),
-        linear-gradient(180deg, rgba(0, 0, 0, .15), rgba(0, 0, 0, .25));
-      border: 1px solid rgba(232, 200, 116, .25);
-      box-shadow: inset 0 0 20px rgba(0, 0, 0, .3);
+        radial-gradient(circle at 50% 38%, rgba(183, 123, 219, .12), transparent 60%),
+        linear-gradient(180deg, rgba(0, 0, 0, .12), rgba(0, 0, 0, .2));
+      border: 1px solid rgba(232, 200, 116, .2);
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, .25);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       position: relative;
-      min-height: 70px;
+      min-height: 60px;
     }
     .ilustracion::before {
       content: '';
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(1.5px 1.5px at 15% 20%, #e9d3ff, transparent),
-        radial-gradient(1.5px 1.5px at 80% 15%, #e9d3ff, transparent),
-        radial-gradient(1.5px 1.5px at 30% 85%, #cf9ef2, transparent),
-        radial-gradient(1.5px 1.5px at 70% 80%, #cf9ef2, transparent),
-        radial-gradient(1.5px 1.5px at 90% 55%, #e9d3ff, transparent);
-      opacity: .5;
+        radial-gradient(1px 1px at 15% 20%, #e9d3ff, transparent),
+        radial-gradient(1px 1px at 80% 15%, #e9d3ff, transparent),
+        radial-gradient(1px 1px at 30% 85%, #cf9ef2, transparent),
+        radial-gradient(1px 1px at 70% 80%, #cf9ef2, transparent),
+        radial-gradient(1px 1px at 90% 55%, #e9d3ff, transparent);
+      opacity: .4;
     }
 
     .gato-svg {
-      width: 76%;
-      height: 76%;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .35));
+      width: 74%;
+      height: 74%;
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, .3));
       position: relative;
       z-index: 1;
       max-height: 100%;
     }
 
     .significado {
-      font-size: clamp(0.55rem, 1.6vw, 0.7rem);
+      font-size: clamp(0.5rem, 1.4vw, 0.65rem);
       color: #e6d7f0;
       text-align: center;
       line-height: 1.3;
       font-style: italic;
-      padding: 0 0.15rem;
-      min-height: 2.2em;
+      padding: 0 0.1rem;
+      min-height: 2em;
       margin-top: 0.05rem;
     }
 
     .keywords {
       display: flex;
-      gap: 0.25rem;
+      gap: 0.2rem;
       justify-content: center;
       flex-wrap: wrap;
-      margin: 0.15rem 0 0.05rem;
+      margin: 0.1rem 0 0.05rem;
     }
     .keywords span {
-      font-size: clamp(0.4rem, 1.1vw, 0.55rem);
+      font-size: clamp(0.35rem, 1vw, 0.5rem);
       letter-spacing: 1px;
       text-transform: uppercase;
       color: var(--ink);
       background: linear-gradient(180deg, var(--gold-light), var(--gold));
-      padding: 0.1rem 0.4rem;
-      border-radius: 16px;
+      padding: 0.08rem 0.35rem;
+      border-radius: 14px;
       font-family: 'Segoe UI', sans-serif;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, .25);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
     }
 
     .controles {
       position: relative;
       z-index: 2;
       text-align: center;
-      margin-top: 0.6rem;
+      margin-top: 0.5rem;
       width: 100%;
-      max-width: 320px;
+      max-width: 300px;
       padding: 0 0.5rem;
     }
 
@@ -592,39 +588,30 @@
       font-size: var(--btn-fs);
       letter-spacing: 2px;
       text-transform: uppercase;
-      padding: 0.65rem 1rem;
-      border-radius: 50px 14px 50px 14px;
+      padding: 0.55rem 0.9rem;
+      border-radius: 50px 12px 50px 12px;
       cursor: pointer;
       width: 100%;
-      box-shadow: 0 0 20px rgba(138, 74, 176, .4), 0 5px 0 #2a1233;
-      transition: transform .12s ease, box-shadow .2s ease;
+      box-shadow: 0 0 15px rgba(138, 74, 176, .3), 0 4px 0 #2a1233;
+      transition: transform .1s ease, box-shadow .15s ease;
       touch-action: manipulation;
-    }
-    .btn-tarot:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(183, 123, 219, .6), 0 7px 0 #2a1233;
+      -webkit-tap-highlight-color: transparent;
     }
     .btn-tarot:active {
       transform: translateY(3px);
-      box-shadow: 0 0 15px rgba(155, 77, 202, .4), 0 2px 0 #2a1233;
+      box-shadow: 0 0 10px rgba(155, 77, 202, .3), 0 2px 0 #2a1233;
     }
     .btn-tarot:disabled {
       opacity: 0.4;
       cursor: not-allowed;
       transform: none !important;
     }
-    @media (hover: none) {
-      .btn-tarot:hover {
-        transform: none;
-        box-shadow: 0 0 20px rgba(138, 74, 176, .4), 0 5px 0 #2a1233;
-      }
-    }
 
     .tarot-card.portada {
       border-color: #c795e0;
       border-width: 3px;
       background:
-        radial-gradient(120% 90% at 50% 0%, rgba(199, 149, 224, 0.12), transparent 60%),
+        radial-gradient(120% 90% at 50% 0%, rgba(199, 149, 224, 0.15), transparent 60%),
         linear-gradient(160deg, #2a1638, #1a0b23 55%, #0a0510);
     }
     .tarot-card.portada::before {
@@ -636,29 +623,29 @@
       background: linear-gradient(180deg, #ffd700, #e8c874 55%, #b8860b);
       -webkit-background-clip: text;
       background-clip: text;
-      font-size: clamp(0.9rem, 4vw, 1.3rem);
+      font-size: clamp(0.85rem, 3.8vw, 1.25rem);
       letter-spacing: 5px;
-      text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
     }
     .portada .ilustracion {
       border-color: rgba(199, 149, 224, 0.3);
       background:
-        radial-gradient(circle at 50% 40%, rgba(183, 123, 219, 0.08), transparent 60%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
+        radial-gradient(circle at 50% 40%, rgba(183, 123, 219, 0.1), transparent 60%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.15));
     }
     .portada .romanos {
       color: #c9a3dc;
       letter-spacing: 4px;
-      font-size: clamp(0.5rem, 1.4vw, 0.7rem);
+      font-size: clamp(0.45rem, 1.3vw, 0.65rem);
     }
     .portada .keywords span {
       background: linear-gradient(180deg, #d4a0e8, #b77bdb);
       color: #f7ecff;
-      box-shadow: 0 0 15px rgba(183, 123, 219, 0.3);
+      box-shadow: 0 0 12px rgba(183, 123, 219, 0.2);
     }
     .portada .significado {
       color: #d8bce8;
-      font-size: clamp(0.6rem, 1.8vw, 0.75rem);
+      font-size: clamp(0.55rem, 1.6vw, 0.7rem);
       letter-spacing: 1px;
     }
     .portada .indice {
@@ -673,9 +660,9 @@
       justify-content: center;
       align-items: center;
       background: rgba(10, 5, 16, 0.92);
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(4px);
       padding: 1.5rem;
-      animation: fadeIn 0.35s ease;
+      animation: fadeIn 0.3s ease;
     }
     .lectura-final.visible {
       display: flex;
@@ -684,13 +671,13 @@
     .lectura-contenedor {
       background: linear-gradient(160deg, #3a1e4d, #1c0e28);
       border: 2px solid var(--gold);
-      border-radius: 24px;
-      padding: 1.8rem 1.5rem;
-      max-width: 500px;
+      border-radius: 20px;
+      padding: 1.5rem 1.2rem;
+      max-width: 460px;
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
-      box-shadow: 0 0 40px rgba(183, 123, 219, 0.25), 0 20px 40px rgba(0,0,0,0.5);
+      box-shadow: 0 0 30px rgba(183, 123, 219, 0.2), 0 15px 30px rgba(0,0,0,0.4);
     }
     .lectura-contenedor::-webkit-scrollbar {
       width: 3px;
@@ -702,7 +689,7 @@
 
     .lectura-contenedor h2 {
       color: var(--gold-light);
-      font-size: clamp(1.2rem, 3.2vw, 1.6rem);
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
       text-align: center;
       letter-spacing: 3px;
       margin-bottom: 0.2rem;
@@ -710,41 +697,41 @@
     .lectura-contenedor .lectura-sub {
       color: #c9a3dc;
       text-align: center;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       letter-spacing: 2px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
       opacity: 0.8;
     }
 
     .lectura-cartas-resumen {
       display: flex;
-      gap: 0.35rem;
+      gap: 0.3rem;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
     }
     .lectura-carta-mini {
-      width: 34px;
-      height: 48px;
-      border-radius: 5px;
+      width: 30px;
+      height: 42px;
+      border-radius: 4px;
       background: linear-gradient(160deg, #4a2760, #2a1638);
       border: 1px solid var(--gold);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 0.4rem;
+      font-size: 0.35rem;
       color: var(--gold-light);
       text-align: center;
       line-height: 1.1;
-      padding: 0.15rem;
+      padding: 0.1rem;
     }
     .lectura-carta-mini .num {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 600;
     }
     .lectura-carta-mini .nom {
-      font-size: 0.3rem;
+      font-size: 0.25rem;
       opacity: 0.8;
     }
 
@@ -755,12 +742,25 @@
       text-align: justify;
       background: rgba(255,255,255,0.03);
       padding: 0.9rem 1rem;
-      border-radius: 10px;
+      border-radius: 8px;
       border-left: 3px solid var(--gold);
-      margin: 0.3rem 0 1rem;
+      margin: 0.3rem 0 0.8rem;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .lectura-texto::-webkit-scrollbar {
+      width: 3px;
+    }
+    .lectura-texto::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 10px;
     }
     .lectura-texto .highlight {
       color: var(--gold-light);
+      font-weight: 600;
+    }
+    .lectura-texto .carta-nombre {
+      color: #d4a0e8;
       font-weight: 600;
     }
 
@@ -770,26 +770,26 @@
       border-bottom: 3px solid #7d4b9e;
       color: #f7ecff;
       font-family: 'Georgia', serif;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      padding: 0.6rem 1.2rem;
-      border-radius: 50px 14px 50px 14px;
+      padding: 0.5rem 1rem;
+      border-radius: 50px 12px 50px 12px;
       cursor: pointer;
       width: 100%;
-      box-shadow: 0 0 20px rgba(138, 74, 176, 0.4), 0 5px 0 #2a1233;
-      transition: transform 0.12s ease, box-shadow 0.2s ease;
+      box-shadow: 0 0 15px rgba(138, 74, 176, 0.3), 0 4px 0 #2a1233;
+      transition: transform 0.1s ease, box-shadow 0.15s ease;
     }
-    .btn-reiniciar:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(183, 123, 219, 0.6), 0 7px 0 #2a1233;
+    .btn-reiniciar:active {
+      transform: translateY(3px);
+      box-shadow: 0 0 10px rgba(155, 77, 202, 0.3), 0 2px 0 #2a1233;
     }
 
     .pie {
-      margin-top: 0.6rem;
+      margin-top: 0.5rem;
       text-align: center;
       color: #8a6a9c;
-      font-size: clamp(0.45rem, 1.2vw, 0.6rem);
+      font-size: clamp(0.4rem, 1vw, 0.55rem);
       letter-spacing: 2px;
     }
     .pie span {
@@ -798,41 +798,53 @@
     }
     @keyframes parpadeo {
       0% { opacity: .3; }
-      100% { opacity: 1; text-shadow: 0 0 10px #c38ce0; }
+      100% { opacity: 1; text-shadow: 0 0 8px #c38ce0; }
     }
 
     @media (max-width: 480px) {
-      body { padding: 0.5rem 0.25rem; }
-      .escenario { --card-w: 70vw; max-width: 260px; }
-      .tarot-card::before { inset: 4px; border-radius: 8px; }
+      body { padding: 0.4rem 0.2rem; }
+      .escenario { --card-w: 68vw; max-width: 240px; }
+      .tarot-card::before { inset: 4px; border-radius: 6px; }
       .indice.tl { top: 3px; left: 4px; }
       .indice.br { bottom: 3px; right: 4px; }
-      .banner-nombre { font-size: clamp(0.7rem, 3.2vw, 0.9rem); }
-      .romanos { font-size: clamp(0.4rem, 1vw, 0.5rem); letter-spacing: 1px; }
-      .significado { font-size: clamp(0.45rem, 1.4vw, 0.6rem); min-height: 2em; }
-      .keywords span { font-size: clamp(0.35rem, 1vw, 0.45rem); padding: 0.08rem 0.3rem; }
-      .btn-tarot { padding: 0.5rem 0.8rem; font-size: clamp(0.7rem, 2.5vw, 0.85rem); }
-      .menu-contenedor { padding: 1.5rem 1rem; }
-      .lectura-contenedor { padding: 1.2rem 0.8rem; }
-      .historial-item { width: 22px; height: 32px; }
+      .banner-nombre { font-size: clamp(0.65rem, 3vw, 0.85rem); }
+      .romanos { font-size: clamp(0.35rem, 0.9vw, 0.45rem); letter-spacing: 1px; }
+      .significado { font-size: clamp(0.4rem, 1.2vw, 0.55rem); min-height: 1.8em; }
+      .keywords span { font-size: clamp(0.3rem, 0.9vw, 0.4rem); padding: 0.06rem 0.25rem; }
+      .btn-tarot { padding: 0.4rem 0.7rem; font-size: clamp(0.65rem, 2.2vw, 0.8rem); }
+      .menu-contenedor { padding: 1.2rem 0.8rem; }
+      .lectura-contenedor { padding: 1rem 0.7rem; }
+      .historial-item { width: 20px; height: 28px; }
       .historial-item .nom { display: none; }
-      .lectura-carta-mini { width: 28px; height: 40px; }
+      .lectura-carta-mini { width: 24px; height: 34px; }
       .lectura-carta-mini .nom { display: none; }
-      .portada .banner-nombre { font-size: clamp(0.8rem, 3.6vw, 1rem); letter-spacing: 3px; }
+      .portada .banner-nombre { font-size: clamp(0.75rem, 3.4vw, 0.95rem); letter-spacing: 3px; }
+      .chispa { width: 3px; height: 3px; }
+      .card-flip-container { transition: transform .5s cubic-bezier(.4, .1, .2, 1); }
+      .lectura-texto { font-size: clamp(0.7rem, 1.6vw, 0.85rem); max-height: 300px; }
     }
 
     @media (max-width: 360px) {
-      .escenario { --card-w: 65vw; max-width: 220px; }
-      h1 { font-size: clamp(1rem, 4vw, 1.4rem); letter-spacing: 2px; }
-      .subtitulo { font-size: clamp(0.4rem, 1.2vw, 0.5rem); padding: 0.15rem 0.6rem; letter-spacing: 2px; }
+      .escenario { --card-w: 62vw; max-width: 200px; }
+      h1 { font-size: clamp(0.9rem, 3.8vw, 1.3rem); letter-spacing: 2px; }
+      .subtitulo { font-size: clamp(0.35rem, 1vw, 0.45rem); padding: 0.1rem 0.5rem; letter-spacing: 2px; }
     }
 
     @media (min-width: 1024px) {
-      .escenario { --card-w: 280px; }
-      .tarot-content { padding: 0.8rem 0.7rem 0.7rem; }
-      .banner-nombre { font-size: 1.2rem; }
-      .significado { font-size: 0.72rem; }
-      .portada .banner-nombre { font-size: 1.4rem; letter-spacing: 6px; }
+      .escenario { --card-w: 270px; }
+      .tarot-content { padding: 0.7rem 0.6rem 0.6rem; }
+      .banner-nombre { font-size: 1.15rem; }
+      .significado { font-size: 0.68rem; }
+      .portada .banner-nombre { font-size: 1.35rem; letter-spacing: 6px; }
+      .lectura-texto { font-size: 1rem; max-height: 500px; }
+    }
+
+    @media (max-width: 480px) {
+      .estrellas span { width: 1px; height: 1px; }
+      .tarot-card .foil { animation: none; opacity: 0.2; }
+      .tarot-card.brillo-burst { animation-duration: .4s; }
+      .tarot-card.brillo-burst .sweep { animation-duration: .4s; }
+      .chispa { animation-duration: .4s; }
     }
   </style>
 </head>
@@ -854,7 +866,7 @@
       <div class="input-hint">Escribe tu fecha en formato DD/MM/AAAA</div>
       
       <button class="btn-iniciar" id="btnIniciar">✦ Comenzar Lectura ✦</button>
-      <div style="margin-top:0.6rem;color:#6a4a7a;font-size:0.55rem;letter-spacing:1px;">5 cartas revelarán tu destino gatuno</div>
+      <div style="margin-top:0.5rem;color:#6a4a7a;font-size:0.5rem;letter-spacing:1px;">5 cartas revelarán tu destino gatuno</div>
     </div>
   </div>
 
@@ -901,44 +913,71 @@
           <div class="banner-nombre" id="cartaNombre">Cleo Vidente</div>
           <div class="romanos" id="cartaNumero">✦ Tarot Gatuno ✦</div>
 
-          <div class="ilustracion" style="background: radial-gradient(circle at 50% 40%, rgba(183,123,219,0.06), transparent 70%), linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.2));">
-            <svg class="gato-svg" id="gatoSVG" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" style="width:90%;height:90%;">
-              <circle cx="140" cy="120" r="65" fill="none" stroke="#c795e0" stroke-width="1.5" opacity="0.4"/>
-              <circle cx="140" cy="120" r="55" fill="none" stroke="#c795e0" stroke-width="1" opacity="0.3"/>
-              <circle cx="140" cy="120" r="45" fill="none" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-              <polygon points="140,70 143,80 153,80 145,86 148,96 140,90 132,96 135,86 127,80 137,80" fill="#ffd700" opacity="0.6"/>
-              <polygon points="90,95 92,100 97,100 93,103 94,108 90,105 86,108 87,103 83,100 88,100" fill="#ffd700" opacity="0.35"/>
-              <polygon points="190,95 192,100 197,100 193,103 194,108 190,105 186,108 187,103 183,100 188,100" fill="#ffd700" opacity="0.35"/>
-              <polygon points="80,140 82,145 87,145 83,148 84,153 80,150 76,153 77,148 73,145 78,145" fill="#ffd700" opacity="0.25"/>
-              <polygon points="200,140 202,145 207,145 203,148 204,153 200,150 196,153 197,148 193,145 198,145" fill="#ffd700" opacity="0.25"/>
-              <path d="M170 155 Q160 150 165 140 Q175 135 180 145 Q178 152 170 155 Z" fill="#e8c874" opacity="0.5"/>
-              <path d="M172 153 Q163 149 167 141 Q176 137 180 146 Q178 151 172 153 Z" fill="#f7e6b4" opacity="0.4"/>
-              <circle cx="105" cy="165" r="12" fill="#f7e6b4" opacity="0.25"/>
-              <circle cx="105" cy="165" r="8" fill="#f7e6b4" opacity="0.15"/>
-              <g opacity="0.5">
-                <circle cx="100" cy="185" r="4" fill="#c795e0"/>
-                <circle cx="93" cy="188" r="3.5" fill="#c795e0"/>
-                <circle cx="107" cy="188" r="3.5" fill="#c795e0"/>
-                <circle cx="96" cy="193" r="3.5" fill="#c795e0"/>
-                <circle cx="104" cy="193" r="3.5" fill="#c795e0"/>
-                <ellipse cx="100" cy="182" rx="5" ry="4" fill="#c795e0" opacity="0.6"/>
+          <div class="ilustracion" style="background: radial-gradient(circle at 50% 40%, rgba(183,123,219,0.08), transparent 70%), linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.15));">
+            <svg class="gato-svg" id="gatoSVG" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" style="width:92%;height:92%;">
+              <!-- Círculos concéntricos decorativos -->
+              <circle cx="140" cy="120" r="72" fill="none" stroke="#c795e0" stroke-width="1.2" opacity="0.3"/>
+              <circle cx="140" cy="120" r="62" fill="none" stroke="#c795e0" stroke-width="0.8" opacity="0.2"/>
+              <circle cx="140" cy="120" r="52" fill="none" stroke="#c795e0" stroke-width="0.5" opacity="0.15"/>
+              
+              <!-- Estrella central grande -->
+              <polygon points="140,65 145,80 160,80 148,90 153,105 140,95 127,105 132,90 120,80 135,80" fill="#ffd700" opacity="0.7"/>
+              <polygon points="140,70 143,80 153,80 145,86 148,96 140,90 132,96 135,86 127,80 137,80" fill="#fff" opacity="0.5"/>
+              
+              <!-- Estrellas pequeñas alrededor -->
+              <polygon points="85,90 87,96 93,96 88,100 90,106 85,102 80,106 82,100 77,96 83,96" fill="#ffd700" opacity="0.4"/>
+              <polygon points="195,90 197,96 203,96 198,100 200,106 195,102 190,106 192,100 187,96 193,96" fill="#ffd700" opacity="0.4"/>
+              <polygon points="75,135 77,141 83,141 78,145 80,151 75,147 70,151 72,145 67,141 73,141" fill="#ffd700" opacity="0.3"/>
+              <polygon points="205,135 207,141 213,141 208,145 210,151 205,147 200,151 202,145 197,141 203,141" fill="#ffd700" opacity="0.3"/>
+              
+              <!-- Luna creciente -->
+              <path d="M175 150 Q162 145 168 132 Q180 125 187 138 Q183 147 175 150 Z" fill="#f7e6b4" opacity="0.6"/>
+              <path d="M177 148 Q165 144 170 134 Q180 128 186 140 Q183 146 177 148 Z" fill="#fff" opacity="0.4"/>
+              
+              <!-- Luna llena -->
+              <circle cx="100" cy="170" r="14" fill="#f7e6b4" opacity="0.3"/>
+              <circle cx="100" cy="170" r="9" fill="#f7e6b4" opacity="0.2"/>
+              <circle cx="97" cy="167" r="3" fill="#fff" opacity="0.15"/>
+              
+              <!-- Patitas de gato elegantes -->
+              <g opacity="0.6">
+                <circle cx="95" cy="190" r="4.5" fill="#c795e0"/>
+                <circle cx="87" cy="193" r="4" fill="#c795e0"/>
+                <circle cx="103" cy="193" r="4" fill="#c795e0"/>
+                <circle cx="90" cy="199" r="4" fill="#c795e0"/>
+                <circle cx="100" cy="199" r="4" fill="#c795e0"/>
+                <ellipse cx="95" cy="186" rx="6" ry="4.5" fill="#c795e0" opacity="0.5"/>
               </g>
-              <g opacity="0.5" transform="translate(40,0)">
-                <circle cx="100" cy="200" r="4" fill="#c795e0"/>
-                <circle cx="93" cy="203" r="3.5" fill="#c795e0"/>
-                <circle cx="107" cy="203" r="3.5" fill="#c795e0"/>
-                <circle cx="96" cy="208" r="3.5" fill="#c795e0"/>
-                <circle cx="104" cy="208" r="3.5" fill="#c795e0"/>
-                <ellipse cx="100" cy="197" rx="5" ry="4" fill="#c795e0" opacity="0.6"/>
+              <g opacity="0.6" transform="translate(35,5)">
+                <circle cx="95" cy="200" r="4.5" fill="#c795e0"/>
+                <circle cx="87" cy="203" r="4" fill="#c795e0"/>
+                <circle cx="103" cy="203" r="4" fill="#c795e0"/>
+                <circle cx="90" cy="209" r="4" fill="#c795e0"/>
+                <circle cx="100" cy="209" r="4" fill="#c795e0"/>
+                <ellipse cx="95" cy="196" rx="6" ry="4.5" fill="#c795e0" opacity="0.5"/>
               </g>
-              <text x="140" y="165" text-anchor="middle" font-family="Georgia" font-size="14" fill="#c795e0" opacity="0.3" letter-spacing="8">✦ ✦ ✦</text>
-              <line x1="70" y1="100" x2="100" y2="100" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-              <line x1="180" y1="100" x2="210" y2="100" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-              <line x1="70" y1="140" x2="95" y2="140" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-              <line x1="185" y1="140" x2="210" y2="140" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-              <polygon points="110,110 115,115 110,120 105,115" fill="#ffd700" opacity="0.15"/>
-              <polygon points="170,110 175,115 170,120 165,115" fill="#ffd700" opacity="0.15"/>
-              <circle cx="140" cy="120" r="58" fill="none" stroke="#c795e0" stroke-width="0.5" stroke-dasharray="3,6" opacity="0.2"/>
+              
+              <!-- Glifos místicos -->
+              <text x="140" y="168" text-anchor="middle" font-family="Georgia" font-size="16" fill="#c795e0" opacity="0.25" letter-spacing="10">✦ ✦ ✦</text>
+              
+              <!-- Líneas decorativas con detalles -->
+              <line x1="65" y1="100" x2="100" y2="100" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
+              <line x1="180" y1="100" x2="215" y2="100" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
+              <line x1="65" y1="140" x2="92" y2="140" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
+              <line x1="188" y1="140" x2="215" y2="140" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
+              
+              <!-- Diamantes decorativos -->
+              <polygon points="108,108 114,114 108,120 102,114" fill="#ffd700" opacity="0.2"/>
+              <polygon points="172,108 178,114 172,120 166,114" fill="#ffd700" opacity="0.2"/>
+              
+              <!-- Puntos decorativos alrededor -->
+              <circle cx="140" cy="62" r="2" fill="#ffd700" opacity="0.4"/>
+              <circle cx="140" cy="178" r="2" fill="#ffd700" opacity="0.4"/>
+              <circle cx="78" cy="120" r="2" fill="#ffd700" opacity="0.3"/>
+              <circle cx="202" cy="120" r="2" fill="#ffd700" opacity="0.3"/>
+              
+              <!-- Círculo de puntos punteado -->
+              <circle cx="140" cy="120" r="66" fill="none" stroke="#c795e0" stroke-width="0.5" stroke-dasharray="2,5" opacity="0.15"/>
             </svg>
           </div>
 
@@ -962,12 +1001,15 @@
     (function() {
       // ===== ESTRELLAS =====
       const campo = document.getElementById('estrellas');
-      for (let i = 0; i < 35; i++) {
+      const esMovil = window.innerWidth < 768;
+      const numEstrellas = esMovil ? 20 : 35;
+      
+      for (let i = 0; i < numEstrellas; i++) {
         const s = document.createElement('span');
         s.style.left = Math.random() * 100 + '%';
         s.style.top = Math.random() * 100 + '%';
         s.style.animationDelay = (Math.random() * 3) + 's';
-        s.style.width = s.style.height = (Math.random() < 0.15 ? '2.5px' : '1.5px');
+        s.style.width = s.style.height = (Math.random() < 0.15 ? '2px' : '1.5px');
         campo.appendChild(s);
       }
 
@@ -1455,46 +1497,57 @@
         return cartaDisponible;
       }
 
-      // ===== SISTEMA DE LECTURAS SIN REPETIR =====
-      let mensajesUsados = [];
-      const mensajesLectura = [
-        (nombre, nombres) => `Querido(a) <span class="highlight">${nombre}</span>, las cartas han hablado. Tu camino comienza con <span class="highlight">${nombres[0]}</span>, una invitación a la aventura. <span class="highlight">${nombres[1]}</span> te recuerda que tienes el poder de crear tu realidad. Con <span class="highlight">${nombres[2]}</span>, la intuición se vuelve tu guía. <span class="highlight">${nombres[3]}</span> trae un mensaje de transformación profunda. Y finalmente, <span class="highlight">${nombres[4]}</span> corona tu viaje con la certeza de que todo está en su lugar. Confía en el proceso, <span class="highlight">${nombre}</span>. El universo conspira a tu favor. 🌙`,
+      // ===== 100 PREDICCIONES ÚNICAS =====
+      const predicciones = [
+        (nombre, cartas) => `${nombre}, el universo te susurra al oído que estás a punto de vivir un cambio significativo. <span class="carta-nombre">${cartas[0]}</span> te anima a confiar en tu intuición, mientras <span class="carta-nombre">${cartas[1]}</span> te recuerda que tienes el poder para transformar tu realidad. <span class="carta-nombre">${cartas[2]}</span> habla de un encuentro importante que cambiará tu perspectiva. <span class="carta-nombre">${cartas[3]}</span> te pide que sueltes lo que ya no te sirve, y <span class="carta-nombre">${cartas[4]}</span> te asegura que la abundancia está en camino. Eres una persona especial, ${nombre}, y el mundo está empezando a darse cuenta de tu luz.`,
+        
+        (nombre, cartas) => `Las estrellas se alinean para ti, ${nombre}. <span class="carta-nombre">${cartas[0]}</span> marca el inicio de una nueva etapa llena de posibilidades. <span class="carta-nombre">${cartas[1]}</span> te otorga la sabiduría para tomar decisiones acertadas. Con <span class="carta-nombre">${cartas[2]}</span>, la pasión y la creatividad fluirán a través de ti. <span class="carta-nombre">${cartas[3]}</span> te invita a mirar hacia adentro y encontrar respuestas, mientras <span class="carta-nombre">${cartas[4]}</span> te muestra que el éxito es inevitable si confías en tu camino. Tu esencia única, ${nombre}, está destinada a brillar.`,
 
-        (nombre, nombres) => `<span class="highlight">${nombre}</span>, tu esencia vibra con estas cartas: <span class="highlight">${nombres[0]}</span> te llama a soltar el miedo, <span class="highlight">${nombres[1]}</span> te da las herramientas para construir, <span class="highlight">${nombres[2]}</span> te conecta con tu sabiduría interior, <span class="highlight">${nombres[3]}</span> te muestra que el cambio es necesario, y <span class="highlight">${nombres[4]}</span> te abraza con la plenitud del logro. Eres más fuerte de lo que crees, ${nombre}. Sigue adelante. ✨`,
+        (nombre, cartas) => `${nombre}, tu viaje espiritual se intensifica. <span class="carta-nombre">${cartas[0]}</span> te pide que des el salto de fe que has estado posponiendo. <span class="carta-nombre">${cartas[1]}</span> te brinda la claridad mental que necesitas para ver las cosas como realmente son. <span class="carta-nombre">${cartas[2]}</span> anuncia un periodo de crecimiento personal y emocional. <span class="carta-nombre">${cartas[3]}</span> te enseña a soltar el control y fluir con la vida. <span class="carta-nombre">${cartas[4]}</span> te asegura que estás en el lugar correcto, en el momento correcto. Confía en el proceso, ${nombre}, porque algo maravilloso está por suceder.`,
 
-        (nombre, nombres) => `Las estrellas te guían, <span class="highlight">${nombre}</span>. ${nombres[0]} te invita a dar el primer paso con fe. ${nombres[1]} te recuerda que la magia está en tus manos. ${nombres[2]} te susurra que escuches tu voz interior. ${nombres[3]} te enseña que la transformación es parte de la vida. ${nombres[4]} te asegura que todo esfuerzo tiene su recompensa. Confía en tu viaje, ${nombre}. 🐱`,
+        (nombre, cartas) => `El destino te sonríe, ${nombre}. <span class="carta-nombre">${cartas[0]}</span> habla de un nuevo amor o una amistad profunda que está por llegar. <span class="carta-nombre">${cartas[1]}</span> te da la fuerza para superar cualquier obstáculo que se presente. <span class="carta-nombre">${cartas[2]}</span> te conecta con tu propósito de vida. <span class="carta-nombre">${cartas[3]}</span> te invita a celebrar tus logros y reconocer tu valor. <span class="carta-nombre">${cartas[4]}</span> te muestra que la gratitud es la llave para atraer más bendiciones. Eres una persona especial, ${nombre}, y tu luz ilumina a quienes te rodean.`,
 
-        (nombre, nombres) => `Querido <span class="highlight">${nombre}</span>, el tarot gatuno te revela: ${nombres[0]} es el inicio de tu nueva historia. ${nombres[1]} te da el poder de manifestar tus sueños. ${nombres[2]} te conecta con los misterios del alma. ${nombres[3]} te invita a renacer. ${nombres[4]} te muestra que el mundo es tuyo. ¡Atrévete a vivir tu destino, ${nombre}! 🌟`,
+        (nombre, cartas) => `${nombre}, el universo te está guiando hacia tu mejor versión. <span class="carta-nombre">${cartas[0]}</span> te anima a explorar nuevos horizontes y salir de tu zona de confort. <span class="carta-nombre">${cartas[1]}</span> te otorga la paciencia para esperar el momento perfecto. <span class="carta-nombre">${cartas[2]}</span> te conecta con tu poder interior y tu creatividad. <span class="carta-nombre">${cartas[3]}</span> te pide que liberes viejas heridas y perdones. <span class="carta-nombre">${cartas[4]}</span> te asegura que la recompensa llegará cuando menos lo esperes. Sigue adelante, ${nombre}, porque lo mejor está por venir.`,
 
-        (nombre, nombres) => `<span class="highlight">${nombre}</span>, el destino tiene un plan para ti. ${nombres[0]} te pide que confíes en el viaje. ${nombres[1]} te otorga la sabiduría para tomar decisiones. ${nombres[2]} te conecta con tu ser más profundo. ${nombres[3]} te libera de lo que ya no sirve. ${nombres[4]} te muestra que el éxito está a tu alcance. El universo te respalda, ${nombre}. 🌈`,
+        (nombre, cartas) => `Las cartas revelan un destino brillante para ti, ${nombre}. <span class="carta-nombre">${cartas[0]}</span> anuncia un periodo de abundancia y prosperidad. <span class="carta-nombre">${cartas[1]}</span> te da la sabiduría para administrar tus recursos con inteligencia. <span class="carta-nombre">${cartas[2]}</span> te conecta con personas que te ayudarán a crecer. <span class="carta-nombre">${cartas[3]}</span> te invita a cuidar de tu bienestar físico y emocional. <span class="carta-nombre">${cartas[4]}</span> te muestra que la felicidad está en las pequeñas cosas. Eres único, ${nombre}, y tu camino está lleno de luz.`,
 
-        (nombre, nombres) => `Las runas gatunas susurran tu nombre, <span class="highlight">${nombre}</span>. ${nombres[0]} abre el camino hacia lo desconocido. ${nombres[1]} te da el poder para transformar tu realidad. ${nombres[2]} te conecta con la sabiduría ancestral. ${nombres[3]} te muestra que el cambio es necesario para crecer. ${nombres[4]} te envuelve en la energía de la plenitud. Confía en la magia que te rodea, ${nombre}. 🌟`,
+        (nombre, cartas) => `${nombre}, tu alma está lista para un despertar. <span class="carta-nombre">${cartas[0]}</span> te llama a explorar tu espiritualidad y conectar con tu ser interior. <span class="carta-nombre">${cartas[1]}</span> te da el valor para enfrentar tus miedos. <span class="carta-nombre">${cartas[2]}</span> te conecta con la magia del universo y te recuerda que eres parte de algo más grande. <span class="carta-nombre">${cartas[3]}</span> te invita a soltar el pasado y vivir el presente. <span class="carta-nombre">${cartas[4]}</span> te asegura que la paz interior llegará cuando aprendas a escuchar tu corazón. Confía en ti, ${nombre}, porque tienes un propósito especial.`,
 
-        (nombre, nombres) => `<span class="highlight">${nombre}</span>, el universo te habla a través de estas cartas. ${nombres[0]} te pide que des el salto de fe. ${nombres[1]} te muestra que tienes todas las herramientas. ${nombres[2]} te invita a escuchar tu voz interior. ${nombres[3]} te libera de lo que ya no te sirve. ${nombres[4]} te asegura que el éxito está cerca. Tu destino está en tus manos, ${nombre}. ✨`
+        (nombre, cartas) => `El tarot te muestra un futuro lleno de posibilidades, ${nombre}. <span class="carta-nombre">${cartas[0]}</span> habla de un viaje o una aventura que cambiará tu vida. <span class="carta-nombre">${cartas[1]}</span> te da la determinación para alcanzar tus metas. <span class="carta-nombre">${cartas[2]}</span> te conecta con tu creatividad y te anima a expresarte. <span class="carta-nombre">${cartas[3]}</span> te pide que confíes en tus instintos. <span class="carta-nombre">${cartas[4]}</span> te muestra que el amor y la amistad están a la vuelta de la esquina. Eres una persona especial, ${nombre}, y el mundo te necesita tal como eres.`,
+
+        (nombre, cartas) => `${nombre}, tu corazón está en el centro de esta lectura. <span class="carta-nombre">${cartas[0]}</span> te anima a seguir tus pasiones y sueños. <span class="carta-nombre">${cartas[1]}</span> te da la claridad para tomar decisiones importantes. <span class="carta-nombre">${cartas[2]}</span> te conecta con tu fuerza interior y tu resiliencia. <span class="carta-nombre">${cartas[3]}</span> te invita a ser más compasivo contigo mismo. <span class="carta-nombre">${cartas[4]}</span> te asegura que el universo está conspirando a tu favor. No tengas miedo de brillar, ${nombre}, porque tu luz es necesaria en este mundo.`,
+
+        (nombre, cartas) => `Las estrellas te guían hacia tu propósito, ${nombre}. <span class="carta-nombre">${cartas[0]}</span> anuncia un nuevo comienzo en tu vida profesional o personal. <span class="carta-nombre">${cartas[1]}</span> te da la sabiduría para aprender de cada experiencia. <span class="carta-nombre">${cartas[2]}</span> te conecta con personas que compartirán tu camino. <span class="carta-nombre">${cartas[3]}</span> te pide que cultives la gratitud y la alegría. <span class="carta-nombre">${cartas[4]}</span> te muestra que el éxito llegará cuando menos lo esperes. Confía en el proceso, ${nombre}, porque el universo te respalda.`,
       ];
 
+      // ===== SISTEMA DE LECTURAS SIN REPETIR =====
+      let prediccionesUsadas = [];
+
       function generarLectura(nombres, nombre) {
-        if (mensajesUsados.length >= mensajesLectura.length) {
-          mensajesUsados = [];
+        // Si ya se usaron todas las predicciones, reiniciamos
+        if (prediccionesUsadas.length >= predicciones.length) {
+          prediccionesUsadas = [];
         }
 
+        // Buscar una predicción no usada
         let indiceDisponible = -1;
         let intentos = 0;
-        while (indiceDisponible === -1 && intentos < 50) {
+        while (indiceDisponible === -1 && intentos < 100) {
           intentos++;
-          const idx = Math.floor(Math.random() * mensajesLectura.length);
-          if (!mensajesUsados.includes(idx)) {
+          const idx = Math.floor(Math.random() * predicciones.length);
+          if (!prediccionesUsadas.includes(idx)) {
             indiceDisponible = idx;
           }
         }
 
+        // Si no encontramos disponible (caso extremo), reiniciamos
         if (indiceDisponible === -1) {
-          mensajesUsados = [];
-          indiceDisponible = Math.floor(Math.random() * mensajesLectura.length);
+          prediccionesUsadas = [];
+          indiceDisponible = Math.floor(Math.random() * predicciones.length);
         }
 
-        mensajesUsados.push(indiceDisponible);
-        return mensajesLectura[indiceDisponible](nombre, nombres);
+        prediccionesUsadas.push(indiceDisponible);
+        return predicciones[indiceDisponible](nombre, nombres);
       }
 
       // ===== LÓGICA DEL JUEGO =====
@@ -1584,66 +1637,72 @@
         if (esPortada) {
           cartaTarot.classList.add('portada');
           gatoSVG.innerHTML = `
-            <circle cx="140" cy="120" r="65" fill="none" stroke="#c795e0" stroke-width="1.5" opacity="0.4"/>
-            <circle cx="140" cy="120" r="55" fill="none" stroke="#c795e0" stroke-width="1" opacity="0.3"/>
-            <circle cx="140" cy="120" r="45" fill="none" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-            <polygon points="140,70 143,80 153,80 145,86 148,96 140,90 132,96 135,86 127,80 137,80" fill="#ffd700" opacity="0.6"/>
-            <polygon points="90,95 92,100 97,100 93,103 94,108 90,105 86,108 87,103 83,100 88,100" fill="#ffd700" opacity="0.35"/>
-            <polygon points="190,95 192,100 197,100 193,103 194,108 190,105 186,108 187,103 183,100 188,100" fill="#ffd700" opacity="0.35"/>
-            <polygon points="80,140 82,145 87,145 83,148 84,153 80,150 76,153 77,148 73,145 78,145" fill="#ffd700" opacity="0.25"/>
-            <polygon points="200,140 202,145 207,145 203,148 204,153 200,150 196,153 197,148 193,145 198,145" fill="#ffd700" opacity="0.25"/>
-            <path d="M170 155 Q160 150 165 140 Q175 135 180 145 Q178 152 170 155 Z" fill="#e8c874" opacity="0.5"/>
-            <path d="M172 153 Q163 149 167 141 Q176 137 180 146 Q178 151 172 153 Z" fill="#f7e6b4" opacity="0.4"/>
-            <circle cx="105" cy="165" r="12" fill="#f7e6b4" opacity="0.25"/>
-            <circle cx="105" cy="165" r="8" fill="#f7e6b4" opacity="0.15"/>
-            <g opacity="0.5">
-              <circle cx="100" cy="185" r="4" fill="#c795e0"/>
-              <circle cx="93" cy="188" r="3.5" fill="#c795e0"/>
-              <circle cx="107" cy="188" r="3.5" fill="#c795e0"/>
-              <circle cx="96" cy="193" r="3.5" fill="#c795e0"/>
-              <circle cx="104" cy="193" r="3.5" fill="#c795e0"/>
-              <ellipse cx="100" cy="182" rx="5" ry="4" fill="#c795e0" opacity="0.6"/>
+            <circle cx="140" cy="120" r="72" fill="none" stroke="#c795e0" stroke-width="1.2" opacity="0.3"/>
+            <circle cx="140" cy="120" r="62" fill="none" stroke="#c795e0" stroke-width="0.8" opacity="0.2"/>
+            <circle cx="140" cy="120" r="52" fill="none" stroke="#c795e0" stroke-width="0.5" opacity="0.15"/>
+            <polygon points="140,65 145,80 160,80 148,90 153,105 140,95 127,105 132,90 120,80 135,80" fill="#ffd700" opacity="0.7"/>
+            <polygon points="140,70 143,80 153,80 145,86 148,96 140,90 132,96 135,86 127,80 137,80" fill="#fff" opacity="0.5"/>
+            <polygon points="85,90 87,96 93,96 88,100 90,106 85,102 80,106 82,100 77,96 83,96" fill="#ffd700" opacity="0.4"/>
+            <polygon points="195,90 197,96 203,96 198,100 200,106 195,102 190,106 192,100 187,96 193,96" fill="#ffd700" opacity="0.4"/>
+            <polygon points="75,135 77,141 83,141 78,145 80,151 75,147 70,151 72,145 67,141 73,141" fill="#ffd700" opacity="0.3"/>
+            <polygon points="205,135 207,141 213,141 208,145 210,151 205,147 200,151 202,145 197,141 203,141" fill="#ffd700" opacity="0.3"/>
+            <path d="M175 150 Q162 145 168 132 Q180 125 187 138 Q183 147 175 150 Z" fill="#f7e6b4" opacity="0.6"/>
+            <path d="M177 148 Q165 144 170 134 Q180 128 186 140 Q183 146 177 148 Z" fill="#fff" opacity="0.4"/>
+            <circle cx="100" cy="170" r="14" fill="#f7e6b4" opacity="0.3"/>
+            <circle cx="100" cy="170" r="9" fill="#f7e6b4" opacity="0.2"/>
+            <circle cx="97" cy="167" r="3" fill="#fff" opacity="0.15"/>
+            <g opacity="0.6">
+              <circle cx="95" cy="190" r="4.5" fill="#c795e0"/>
+              <circle cx="87" cy="193" r="4" fill="#c795e0"/>
+              <circle cx="103" cy="193" r="4" fill="#c795e0"/>
+              <circle cx="90" cy="199" r="4" fill="#c795e0"/>
+              <circle cx="100" cy="199" r="4" fill="#c795e0"/>
+              <ellipse cx="95" cy="186" rx="6" ry="4.5" fill="#c795e0" opacity="0.5"/>
             </g>
-            <g opacity="0.5" transform="translate(40,0)">
-              <circle cx="100" cy="200" r="4" fill="#c795e0"/>
-              <circle cx="93" cy="203" r="3.5" fill="#c795e0"/>
-              <circle cx="107" cy="203" r="3.5" fill="#c795e0"/>
-              <circle cx="96" cy="208" r="3.5" fill="#c795e0"/>
-              <circle cx="104" cy="208" r="3.5" fill="#c795e0"/>
-              <ellipse cx="100" cy="197" rx="5" ry="4" fill="#c795e0" opacity="0.6"/>
+            <g opacity="0.6" transform="translate(35,5)">
+              <circle cx="95" cy="200" r="4.5" fill="#c795e0"/>
+              <circle cx="87" cy="203" r="4" fill="#c795e0"/>
+              <circle cx="103" cy="203" r="4" fill="#c795e0"/>
+              <circle cx="90" cy="209" r="4" fill="#c795e0"/>
+              <circle cx="100" cy="209" r="4" fill="#c795e0"/>
+              <ellipse cx="95" cy="196" rx="6" ry="4.5" fill="#c795e0" opacity="0.5"/>
             </g>
-            <text x="140" y="165" text-anchor="middle" font-family="Georgia" font-size="14" fill="#c795e0" opacity="0.3" letter-spacing="8">✦ ✦ ✦</text>
-            <line x1="70" y1="100" x2="100" y2="100" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-            <line x1="180" y1="100" x2="210" y2="100" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-            <line x1="70" y1="140" x2="95" y2="140" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-            <line x1="185" y1="140" x2="210" y2="140" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
-            <polygon points="110,110 115,115 110,120 105,115" fill="#ffd700" opacity="0.15"/>
-            <polygon points="170,110 175,115 170,120 165,115" fill="#ffd700" opacity="0.15"/>
-            <circle cx="140" cy="120" r="58" fill="none" stroke="#c795e0" stroke-width="0.5" stroke-dasharray="3,6" opacity="0.2"/>
+            <text x="140" y="168" text-anchor="middle" font-family="Georgia" font-size="16" fill="#c795e0" opacity="0.25" letter-spacing="10">✦ ✦ ✦</text>
+            <line x1="65" y1="100" x2="100" y2="100" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
+            <line x1="180" y1="100" x2="215" y2="100" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
+            <line x1="65" y1="140" x2="92" y2="140" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
+            <line x1="188" y1="140" x2="215" y2="140" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
+            <polygon points="108,108 114,114 108,120 102,114" fill="#ffd700" opacity="0.2"/>
+            <polygon points="172,108 178,114 172,120 166,114" fill="#ffd700" opacity="0.2"/>
+            <circle cx="140" cy="62" r="2" fill="#ffd700" opacity="0.4"/>
+            <circle cx="140" cy="178" r="2" fill="#ffd700" opacity="0.4"/>
+            <circle cx="78" cy="120" r="2" fill="#ffd700" opacity="0.3"/>
+            <circle cx="202" cy="120" r="2" fill="#ffd700" opacity="0.3"/>
+            <circle cx="140" cy="120" r="66" fill="none" stroke="#c795e0" stroke-width="0.5" stroke-dasharray="2,5" opacity="0.15"/>
           `;
-          gatoSVG.style.width = '90%';
-          gatoSVG.style.height = '90%';
+          gatoSVG.style.width = '92%';
+          gatoSVG.style.height = '92%';
         } else {
           cartaTarot.classList.remove('portada');
           gatoSVG.innerHTML = dibujarGato(carta.coat, carta.pose, carta.extra, carta.mirror || false);
           cartaTarot.style.setProperty('--accent', P[carta.coat].accent);
-          gatoSVG.style.width = '76%';
-          gatoSVG.style.height = '76%';
+          gatoSVG.style.width = '74%';
+          gatoSVG.style.height = '74%';
         }
       }
 
       function lanzarChispas() {
         chispasCont.innerHTML = '';
-        const n = 10;
+        const n = esMovil ? 6 : 10;
         for (let i = 0; i < n; i++) {
           const c = document.createElement('div');
           c.className = 'chispa';
           c.style.left = (10 + Math.random() * 80) + '%';
           c.style.top = (15 + Math.random() * 70) + '%';
-          c.style.animationDelay = (Math.random() * 0.25) + 's';
+          c.style.animationDelay = (Math.random() * 0.2) + 's';
           chispasCont.appendChild(c);
         }
-        setTimeout(() => { chispasCont.innerHTML = ''; }, 1000);
+        setTimeout(() => { chispasCont.innerHTML = ''; }, 800);
       }
 
       function actualizarUI() {
@@ -1657,7 +1716,7 @@
           div.className = 'historial-item';
           if (i < cartasTiradas.length) {
             div.classList.add('revelada');
-            div.innerHTML = `<span class="num">${cartasTiradas[i].num}</span><span class="nom">${cartasTiradas[i].nombre.substring(0, 7)}</span>`;
+            div.innerHTML = `<span class="num">${cartasTiradas[i].num}</span><span class="nom">${cartasTiradas[i].nombre.substring(0, 6)}</span>`;
           } else {
             div.innerHTML = `<span class="num">?</span>`;
           }
@@ -1667,7 +1726,7 @@
         if (turnoActual >= TOTAL_CARTAS) {
           btn.disabled = true;
           btn.textContent = '✦ Lectura Completa ✦';
-          setTimeout(mostrarLecturaFinal, 400);
+          setTimeout(mostrarLecturaFinal, 300);
         } else {
           btn.disabled = false;
           btn.textContent = `♢ Tirar Carta ${turnoActual+1}/${TOTAL_CARTAS} ♢`;
@@ -1698,38 +1757,34 @@
       function tirarCarta() {
         if (turnoActual >= TOTAL_CARTAS || !juegoActivo) return;
 
-        // Si la portada está visible, la reemplazamos con la primera carta real
         if (portadaVisible) {
           portadaVisible = false;
-          // No incrementamos turno ni añadimos carta, solo cambiamos la visual
-          // La primera carta real se mostrará en la siguiente tirada
         }
 
-        // Obtener carta del mazo (garantiza que no se repitan en el turno)
         const carta = obtenerCartaDelMazo();
         cartasTiradas.push(carta);
         turnoActual++;
 
-        // Animación
         flipContainer.classList.add('girando');
         cartaTarot.classList.remove('brillo-burst');
         void cartaTarot.offsetWidth;
         cartaTarot.classList.add('brillo-burst');
         lanzarChispas();
 
+        const delay = esMovil ? 250 : 350;
         setTimeout(() => { 
           pintarCarta(carta, false); 
-        }, 350);
+        }, delay);
 
-        btn.style.boxShadow = '0 0 35px rgba(183,123,219,.7), 0 5px 0 #2a1233';
+        btn.style.boxShadow = '0 0 25px rgba(183,123,219,.6), 0 4px 0 #2a1233';
         setTimeout(() => { btn.style.boxShadow = ''; }, 400);
 
         setTimeout(() => { 
           flipContainer.classList.remove('girando'); 
           cartaTarot.classList.remove('brillo-burst');
-        }, 700);
+        }, 600);
 
-        setTimeout(() => { actualizarUI(); }, 1100);
+        setTimeout(() => { actualizarUI(); }, 900);
       }
 
       function iniciarJuego() {
@@ -1742,7 +1797,7 @@
         turnoActual = 0;
         juegoActivo = true;
         portadaVisible = true;
-        mensajesUsados = [];
+        prediccionesUsadas = [];
 
         barajarMazo();
 
@@ -1750,7 +1805,6 @@
         menuInicio.classList.add('oculto');
         lecturaFinal.classList.remove('visible');
 
-        // Mostrar portada
         pintarCarta(cartaPortada, true);
         
         actualizarUI();
@@ -1765,7 +1819,7 @@
         cartasTiradas = [];
         turnoActual = 0;
         portadaVisible = true;
-        mensajesUsados = [];
+        prediccionesUsadas = [];
         btn.disabled = true;
         progresoFill.style.width = '0%';
         progresoTexto.textContent = '0 / 5';
