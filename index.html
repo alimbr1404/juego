@@ -1565,7 +1565,6 @@
           [mazoBarajado[i], mazoBarajado[j]] = [mazoBarajado[j], mazoBarajado[i]];
         }
         indiceMazo = 0;
-        cartasUsadasEnTurno = [];
       }
 
       function obtenerCartaDelMazo() {
@@ -1988,8 +1987,7 @@
         juegoActivo = true;
         portadaVisible = true;
         prediccionesUsadas = [];
-
-        barajarMazo();
+        cartasUsadasEnTurno = [];
 
         infoJugador.innerHTML = `Bienvenido, <span>${nombreJugador}</span> ✦`;
         menuInicio.classList.add('oculto');
@@ -2025,7 +2023,6 @@
         datosMisticos.innerHTML = '';
         mensajeMistico.textContent = '';
         pintarCarta(cartaPortada, true);
-        barajarMazo();
       }
 
       // ===== EVENTOS =====
