@@ -39,7 +39,6 @@
       position: relative;
     }
 
-    /* ===== ESTRELLAS ===== */
     .estrellas {
       position: fixed;
       inset: 0;
@@ -60,7 +59,6 @@
       50% { opacity: 0.7; }
     }
 
-    /* ===== MENÚ DE INICIO ===== */
     .menu-inicio {
       position: fixed;
       inset: 0;
@@ -178,7 +176,6 @@
       box-shadow: 0 0 15px rgba(155, 77, 202, 0.4), 0 2px 0 #2a1233;
     }
 
-    /* ===== HEADER ===== */
     header {
       position: relative;
       z-index: 2;
@@ -227,7 +224,6 @@
       color: var(--gold-light);
     }
 
-    /* ===== PROGRESO ===== */
     .progreso-container {
       width: 100%;
       max-width: 320px;
@@ -262,7 +258,6 @@
       text-align: right;
     }
 
-    /* ===== HISTORIAL DE CARTAS ===== */
     .historial {
       display: flex;
       gap: 0.25rem;
@@ -305,7 +300,6 @@
       display: block;
     }
 
-    /* ===== ESCENARIO ===== */
     .escenario {
       position: relative;
       z-index: 2;
@@ -451,7 +445,6 @@
       100% { transform: translateY(-50px) scale(1); opacity: 0; }
     }
 
-    /* ===== CONTENIDO DE LA CARTA ===== */
     .tarot-content {
       position: relative;
       z-index: 2;
@@ -580,7 +573,6 @@
       box-shadow: 0 1px 3px rgba(0, 0, 0, .25);
     }
 
-    /* ===== CONTROLES ===== */
     .controles {
       position: relative;
       z-index: 2;
@@ -628,7 +620,6 @@
       }
     }
 
-    /* ===== PORTADA ESPECIAL ===== */
     .tarot-card.portada {
       border-color: #c795e0;
       border-width: 3px;
@@ -674,7 +665,6 @@
       color: #c9a3dc;
     }
 
-    /* ===== LECTURA FINAL ===== */
     .lectura-final {
       position: fixed;
       inset: 0;
@@ -811,7 +801,6 @@
       100% { opacity: 1; text-shadow: 0 0 10px #c38ce0; }
     }
 
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 480px) {
       body { padding: 0.5rem 0.25rem; }
       .escenario { --card-w: 70vw; max-width: 260px; }
@@ -851,7 +840,7 @@
 
   <div class="estrellas" id="estrellas"></div>
 
-  <!-- ===== MENÚ DE INICIO ===== -->
+  <!-- MENÚ DE INICIO -->
   <div class="menu-inicio" id="menuInicio">
     <div class="menu-contenedor">
       <h2>🐱 Cleo Vidente</h2>
@@ -869,18 +858,13 @@
     </div>
   </div>
 
-  <!-- ===== LECTURA FINAL ===== -->
+  <!-- LECTURA FINAL -->
   <div class="lectura-final" id="lecturaFinal">
     <div class="lectura-contenedor">
       <h2>🔮 Tu Lectura</h2>
       <div class="lectura-sub" id="lecturaSaludo">para ti, viajero</div>
-      
       <div class="lectura-cartas-resumen" id="lecturaResumen"></div>
-      
-      <div class="lectura-texto" id="lecturaTexto">
-        Las cartas han hablado...
-      </div>
-      
+      <div class="lectura-texto" id="lecturaTexto">Las cartas han hablado...</div>
       <button class="btn-reiniciar" id="btnReiniciar">♢ Nueva Lectura ♢</button>
     </div>
   </div>
@@ -891,7 +875,6 @@
     <div class="info-jugador" id="infoJugador">Bienvenido, <span>viajero</span> ✦</div>
   </header>
 
-  <!-- ===== PROGRESO ===== -->
   <div class="progreso-container">
     <div class="progreso-bar">
       <div class="progreso-fill" id="progresoFill"></div>
@@ -899,10 +882,8 @@
     <span class="progreso-texto" id="progresoTexto">0 / 5</span>
   </div>
 
-  <!-- ===== HISTORIAL ===== -->
   <div class="historial" id="historial"></div>
 
-  <!-- ===== ESCENARIO ===== -->
   <div class="escenario">
     <div class="carta-fantasma f2"></div>
     <div class="carta-fantasma f1"></div>
@@ -922,7 +903,6 @@
 
           <div class="ilustracion" style="background: radial-gradient(circle at 50% 40%, rgba(183,123,219,0.06), transparent 70%), linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.2));">
             <svg class="gato-svg" id="gatoSVG" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" style="width:90%;height:90%;">
-              <!-- Fondo de la portada - Diseño elegante sin gato -->
               <circle cx="140" cy="120" r="65" fill="none" stroke="#c795e0" stroke-width="1.5" opacity="0.4"/>
               <circle cx="140" cy="120" r="55" fill="none" stroke="#c795e0" stroke-width="1" opacity="0.3"/>
               <circle cx="140" cy="120" r="45" fill="none" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
@@ -1427,7 +1407,7 @@
           extra: `<circle cx="140" cy="155" r="14" fill="#4a90d9" stroke="#333" stroke-width="1.5"/><path d="M130 145 Q140 155 150 145" stroke="#2dcc70" stroke-width="2" fill="none"/><path d="M130 165 Q140 155 150 165" stroke="#2dcc70" stroke-width="2" fill="none"/><line x1="140" y1="141" x2="140" y2="169" stroke="#333" stroke-width="1"/><line x1="126" y1="155" x2="154" y2="155" stroke="#333" stroke-width="1"/>` },
       ];
 
-      // ===== SISTEMA DE BARAJADO MEJORADO =====
+      // ===== SISTEMA DE BARAJADO =====
       let mazoBarajado = [];
       let indiceMazo = 0;
       let cartasUsadasEnTurno = [];
@@ -1443,12 +1423,10 @@
       }
 
       function obtenerCartaDelMazo() {
-        // Si ya se usaron todas las cartas en este turno, reiniciamos
         if (cartasUsadasEnTurno.length >= cartas.length) {
           cartasUsadasEnTurno = [];
         }
 
-        // Buscar una carta que no se haya usado en este turno
         let cartaDisponible = null;
         let intentos = 0;
         const maxIntentos = 100;
@@ -1461,13 +1439,11 @@
           const carta = mazoBarajado[indiceMazo];
           indiceMazo++;
           
-          // Verificar si esta carta ya se usó en este turno
           if (!cartasUsadasEnTurno.includes(carta)) {
             cartaDisponible = carta;
           }
         }
 
-        // Si no encontramos carta disponible (caso extremo), reiniciamos y tomamos una
         if (!cartaDisponible) {
           cartasUsadasEnTurno = [];
           barajarMazo();
@@ -1498,12 +1474,10 @@
       ];
 
       function generarLectura(nombres, nombre) {
-        // Si ya se usaron todos los mensajes, reiniciamos
         if (mensajesUsados.length >= mensajesLectura.length) {
           mensajesUsados = [];
         }
 
-        // Buscar un mensaje no usado
         let indiceDisponible = -1;
         let intentos = 0;
         while (indiceDisponible === -1 && intentos < 50) {
@@ -1514,7 +1488,6 @@
           }
         }
 
-        // Si no encontramos disponible (caso extremo), reiniciamos
         if (indiceDisponible === -1) {
           mensajesUsados = [];
           indiceDisponible = Math.floor(Math.random() * mensajesLectura.length);
@@ -1531,7 +1504,7 @@
       let turnoActual = 0;
       const TOTAL_CARTAS = 5;
       let juegoActivo = false;
-      let primeraTiradaRealizada = false;
+      let portadaVisible = true;
 
       const nombreEl = document.getElementById('cartaNombre');
       const numeroEl = document.getElementById('cartaNumero');
@@ -1557,6 +1530,14 @@
       const lecturaTexto = document.getElementById('lecturaTexto');
       const lecturaResumen = document.getElementById('lecturaResumen');
       const btnReiniciar = document.getElementById('btnReiniciar');
+
+      const cartaPortada = {
+        num: '★',
+        romano: '✦ Tarot Gatuno ✦',
+        nombre: 'Cleo Vidente',
+        kws: ['★ Misterio', '✦ Magia', '☆ Destino'],
+        significado: 'El tarot gatuno te espera. Prepárate para descubrir tu destino.'
+      };
 
       function parsearFecha(fechaStr) {
         if (!fechaStr) return null;
@@ -1602,7 +1583,44 @@
         
         if (esPortada) {
           cartaTarot.classList.add('portada');
-          // SVG de portada ya está en el HTML, solo aseguramos que se vea
+          gatoSVG.innerHTML = `
+            <circle cx="140" cy="120" r="65" fill="none" stroke="#c795e0" stroke-width="1.5" opacity="0.4"/>
+            <circle cx="140" cy="120" r="55" fill="none" stroke="#c795e0" stroke-width="1" opacity="0.3"/>
+            <circle cx="140" cy="120" r="45" fill="none" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
+            <polygon points="140,70 143,80 153,80 145,86 148,96 140,90 132,96 135,86 127,80 137,80" fill="#ffd700" opacity="0.6"/>
+            <polygon points="90,95 92,100 97,100 93,103 94,108 90,105 86,108 87,103 83,100 88,100" fill="#ffd700" opacity="0.35"/>
+            <polygon points="190,95 192,100 197,100 193,103 194,108 190,105 186,108 187,103 183,100 188,100" fill="#ffd700" opacity="0.35"/>
+            <polygon points="80,140 82,145 87,145 83,148 84,153 80,150 76,153 77,148 73,145 78,145" fill="#ffd700" opacity="0.25"/>
+            <polygon points="200,140 202,145 207,145 203,148 204,153 200,150 196,153 197,148 193,145 198,145" fill="#ffd700" opacity="0.25"/>
+            <path d="M170 155 Q160 150 165 140 Q175 135 180 145 Q178 152 170 155 Z" fill="#e8c874" opacity="0.5"/>
+            <path d="M172 153 Q163 149 167 141 Q176 137 180 146 Q178 151 172 153 Z" fill="#f7e6b4" opacity="0.4"/>
+            <circle cx="105" cy="165" r="12" fill="#f7e6b4" opacity="0.25"/>
+            <circle cx="105" cy="165" r="8" fill="#f7e6b4" opacity="0.15"/>
+            <g opacity="0.5">
+              <circle cx="100" cy="185" r="4" fill="#c795e0"/>
+              <circle cx="93" cy="188" r="3.5" fill="#c795e0"/>
+              <circle cx="107" cy="188" r="3.5" fill="#c795e0"/>
+              <circle cx="96" cy="193" r="3.5" fill="#c795e0"/>
+              <circle cx="104" cy="193" r="3.5" fill="#c795e0"/>
+              <ellipse cx="100" cy="182" rx="5" ry="4" fill="#c795e0" opacity="0.6"/>
+            </g>
+            <g opacity="0.5" transform="translate(40,0)">
+              <circle cx="100" cy="200" r="4" fill="#c795e0"/>
+              <circle cx="93" cy="203" r="3.5" fill="#c795e0"/>
+              <circle cx="107" cy="203" r="3.5" fill="#c795e0"/>
+              <circle cx="96" cy="208" r="3.5" fill="#c795e0"/>
+              <circle cx="104" cy="208" r="3.5" fill="#c795e0"/>
+              <ellipse cx="100" cy="197" rx="5" ry="4" fill="#c795e0" opacity="0.6"/>
+            </g>
+            <text x="140" y="165" text-anchor="middle" font-family="Georgia" font-size="14" fill="#c795e0" opacity="0.3" letter-spacing="8">✦ ✦ ✦</text>
+            <line x1="70" y1="100" x2="100" y2="100" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
+            <line x1="180" y1="100" x2="210" y2="100" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
+            <line x1="70" y1="140" x2="95" y2="140" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
+            <line x1="185" y1="140" x2="210" y2="140" stroke="#c795e0" stroke-width="0.5" opacity="0.2"/>
+            <polygon points="110,110 115,115 110,120 105,115" fill="#ffd700" opacity="0.15"/>
+            <polygon points="170,110 175,115 170,120 165,115" fill="#ffd700" opacity="0.15"/>
+            <circle cx="140" cy="120" r="58" fill="none" stroke="#c795e0" stroke-width="0.5" stroke-dasharray="3,6" opacity="0.2"/>
+          `;
           gatoSVG.style.width = '90%';
           gatoSVG.style.height = '90%';
         } else {
@@ -1680,45 +1698,36 @@
       function tirarCarta() {
         if (turnoActual >= TOTAL_CARTAS || !juegoActivo) return;
 
-        // Primera tirada: solo mostramos animación, la portada ya está visible
-        if (!primeraTiradaRealizada) {
-          primeraTiradaRealizada = true;
-          turnoActual++;
-          
-          // Animación ligera de revelación
-          flipContainer.classList.add('girando');
-          cartaTarot.classList.remove('brillo-burst');
-          void cartaTarot.offsetWidth;
-          cartaTarot.classList.add('brillo-burst');
-          lanzarChispas();
-
-          setTimeout(() => { 
-            flipContainer.classList.remove('girando'); 
-            cartaTarot.classList.remove('brillo-burst');
-          }, 700);
-          
-          setTimeout(() => { actualizarUI(); }, 800);
-          return;
+        // Si la portada está visible, la reemplazamos con la primera carta real
+        if (portadaVisible) {
+          portadaVisible = false;
+          // No incrementamos turno ni añadimos carta, solo cambiamos la visual
+          // La primera carta real se mostrará en la siguiente tirada
         }
 
-        // Tiradas normales: obtener carta del mazo (garantiza que no se repitan en el turno)
+        // Obtener carta del mazo (garantiza que no se repitan en el turno)
         const carta = obtenerCartaDelMazo();
         cartasTiradas.push(carta);
         turnoActual++;
 
+        // Animación
         flipContainer.classList.add('girando');
         cartaTarot.classList.remove('brillo-burst');
         void cartaTarot.offsetWidth;
         cartaTarot.classList.add('brillo-burst');
         lanzarChispas();
 
-        setTimeout(() => { pintarCarta(carta, false); }, 350);
+        setTimeout(() => { 
+          pintarCarta(carta, false); 
+        }, 350);
 
         btn.style.boxShadow = '0 0 35px rgba(183,123,219,.7), 0 5px 0 #2a1233';
         setTimeout(() => { btn.style.boxShadow = ''; }, 400);
 
-        setTimeout(() => { flipContainer.classList.remove('girando'); }, 700);
-        setTimeout(() => { cartaTarot.classList.remove('brillo-burst'); }, 1000);
+        setTimeout(() => { 
+          flipContainer.classList.remove('girando'); 
+          cartaTarot.classList.remove('brillo-burst');
+        }, 700);
 
         setTimeout(() => { actualizarUI(); }, 1100);
       }
@@ -1732,7 +1741,7 @@
         cartasTiradas = [];
         turnoActual = 0;
         juegoActivo = true;
-        primeraTiradaRealizada = false;
+        portadaVisible = true;
         mensajesUsados = [];
 
         barajarMazo();
@@ -1742,13 +1751,7 @@
         lecturaFinal.classList.remove('visible');
 
         // Mostrar portada
-        pintarCarta({
-          num: '★',
-          romano: '✦ Tarot Gatuno ✦',
-          nombre: 'Cleo Vidente',
-          kws: ['★ Misterio', '✦ Magia', '☆ Destino'],
-          significado: 'El tarot gatuno te espera. Prepárate para descubrir tu destino.'
-        }, true);
+        pintarCarta(cartaPortada, true);
         
         actualizarUI();
         btn.disabled = false;
@@ -1761,7 +1764,7 @@
         juegoActivo = false;
         cartasTiradas = [];
         turnoActual = 0;
-        primeraTiradaRealizada = false;
+        portadaVisible = true;
         mensajesUsados = [];
         btn.disabled = true;
         progresoFill.style.width = '0%';
@@ -1775,13 +1778,7 @@
         }
         nombreInput.value = '';
         fechaInput.value = '';
-        pintarCarta({
-          num: '★',
-          romano: '✦ Tarot Gatuno ✦',
-          nombre: 'Cleo Vidente',
-          kws: ['★ Misterio', '✦ Magia', '☆ Destino'],
-          significado: 'El tarot gatuno te espera. Prepárate para descubrir tu destino.'
-        }, true);
+        pintarCarta(cartaPortada, true);
         barajarMazo();
       }
 
@@ -1804,7 +1801,6 @@
 
       btnReiniciar.addEventListener('click', reiniciarJuego);
 
-      // Los inputs NO inician el juego automáticamente
       nombreInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
           e.preventDefault();
@@ -1825,13 +1821,7 @@
           div.innerHTML = `<span class="num">?</span>`;
           historialEl.appendChild(div);
         }
-        pintarCarta({
-          num: '★',
-          romano: '✦ Tarot Gatuno ✦',
-          nombre: 'Cleo Vidente',
-          kws: ['★ Misterio', '✦ Magia', '☆ Destino'],
-          significado: 'El tarot gatuno te espera. Prepárate para descubrir tu destino.'
-        }, true);
+        pintarCarta(cartaPortada, true);
         barajarMazo();
       });
     })();
